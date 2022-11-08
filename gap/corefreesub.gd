@@ -16,5 +16,7 @@
 
 #! @Description
 #!   Insert documentation for your function here
-DeclareGlobalFunction( "CoreFreeSubs" );
+DeclareGlobalFunction( "CoreFreeConjugacyClassesSubgroups" );
+DeclareGlobalFunction( "AllCoreFreeSubgroups" );
 DeclareGlobalFunction( "CoreFreeDegrees" );
+DeclareGlobalFunction( "IsCoreFree");
