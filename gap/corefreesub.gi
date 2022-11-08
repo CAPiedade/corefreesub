@@ -3,8 +3,16 @@
 #
 # Implementations
 #
-InstallGlobalFunction( corefreesub_Example,
-function()
+InstallGlobalFunction( CoreFreeSubs,
+function(G)
+	local
+	if not IsPermGroup(G) then G := Image(IsomorphismPermGroup(G)) fi;
 	Print( "This is a placeholder function, replace it with your own code.\n" );
 end );
 
+InstallGlobalFunction( CoreFreeDegrees,
+function(G)
+	local 
+	subgroups = CoreFreeSubs(G)
+
+end );

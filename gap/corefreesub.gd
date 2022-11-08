@@ -16,4 +16,5 @@
 
 #! @Description
 #!   Insert documentation for your function here
-DeclareGlobalFunction( "corefreesub_Example" );
+DeclareGlobalFunction( "CoreFreeSubs" );
+DeclareGlobalFunction( "CoreFreeDegrees" );
