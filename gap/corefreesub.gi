@@ -10,7 +10,7 @@ end);
 
 InstallGlobalFunction( CoreFreeConjugacyClassesSubgroups,
 function(G)
-	local iso, H, ccs, n, i;
+	local iso, H, n, i;
 	if not IsPermGroup(G) then 
 		iso := IsomorphismPermGroup(G);
 		H := Image(iso);

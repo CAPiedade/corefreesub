@@ -19,4 +19,4 @@
 DeclareGlobalFunction( "CoreFreeConjugacyClassesSubgroups" );
 DeclareGlobalFunction( "AllCoreFreeSubgroups" );
 DeclareGlobalFunction( "CoreFreeDegrees" );
-DeclareGlobalFunction( "IsCoreFree");
+DeclareGlobalFunction( "IsCoreFree" );
