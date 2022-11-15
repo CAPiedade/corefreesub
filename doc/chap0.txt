@@ -1,0 +1,45 @@
+  
+  
+                                 [1X corefreesub [101X
+  
+  
+   [1X A [5XGAP[105X Package for calculating the core-free subgroups and their faithful
+                    transitive permutation representations [101X
+  
+  
+                                      0.1
+  
+  
+                                8 November 2022
+  
+  
+                           Claudio Alexandre Piedade
+  
+                                 Manuel Delgado
+  
+  
+  
+  Claudio Alexandre Piedade
+      Email:    [7Xmailto:claudioalexandrepiedade@gmail.com[107X
+      Homepage: [7Xhttps://www.fc.up.pt/pessoas/claudio.piedade/[107X
+  Manuel Delgado
+      Email:    [7Xmailto:[107X
+  
+  -------------------------------------------------------
+  
+  
+  [1XContents (corefreesub)[101X
+  
+  1 [33X[0;0YIntroduction[133X
+  2 [33X[0;0YCore Free Subgroups[133X
+    2.1 [33X[0;0YIsCoreFree[133X
+      2.1-1 IsCoreFree
+    2.2 [33X[0;0YCoreFreeConjugacyClassesSubgroups[133X
+      2.2-1 CoreFreeConjugacyClassesSubgroups
+    2.3 [33X[0;0YAllCoreFreeSubgroups[133X
+      2.3-1 AllCoreFreeSubgroups
+    2.4 [33X[0;0YCoreFreeDegrees[133X
+      2.4-1 CoreFreeDegrees
+  
+  
+  [32X

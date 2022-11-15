@@ -1,0 +1,30 @@
+#SIXFORMAT  GapDocGAP
+HELPBOOKINFOSIXTMP := rec(
+encoding := "UTF-8",
+bookname := "corefreesub",
+entries :=
+[ [ "Title page", ".", [ 0, 0, 0 ], 1,, "title page", "X7D2C85EC87DD46E5" ], 
+  [ "Table of Contents", ".-1", [ 0, 0, 1 ], 29,, "table of contents", 
+      "X8537FEB07AF2BEC8" ], 
+  [ "\033[1X\033[33X\033[0;-2YIntroduction\033[133X\033[101X", "1", [ 1, 0, 0 ], 1,, 
+      "introduction", "X7DFB63A97E67C0A1" ], 
+  [ "\033[1X\033[33X\033[0;-2YCore Free Subgroups\033[133X\033[101X", "2", [ 2, 0, 0 ], 
+      1,, "core free subgroups", "X862FB71F7CF27B49" ], 
+  [ "\033[1X\033[33X\033[0;-2YIsCoreFree\033[133X\033[101X", "2.1", [ 2, 1, 0 ], 4,, 
+      "iscorefree", "X7A9042C27F0BA85B" ], 
+  [ "\033[1X\033[33X\033[0;-2YCoreFreeConjugacyClassesSubgroups\033[133X\033[101X", 
+      "2.2", [ 2, 2, 0 ], 28,, "corefreeconjugacyclassessubgroups", "X7D0391668782765C" 
+     ], [ "\033[1X\033[33X\033[0;-2YAllCoreFreeSubgroups\033[133X\033[101X", "2.3", 
+      [ 2, 3, 0 ], 47,, "allcorefreesubgroups", "X821F9BD687383C1F" ], 
+  [ "\033[1X\033[33X\033[0;-2YCoreFreeDegrees\033[133X\033[101X", "2.4", [ 2, 4, 0 ], 
+      66,, "corefreedegrees", "X844F04457C6EDC67" ], 
+  [ "Index", "ind", [ "Ind", 0, 0 ], 1,, "index", "X83A0356F839C696F" ], 
+  [ "\033[2XIsCoreFree\033[102X", "2.1-1", [ 2, 1, 1 ], 7,, "iscorefree", 
+      "X7A9042C27F0BA85B" ], 
+  [ "\033[2XCoreFreeConjugacyClassesSubgroups\033[102X", "2.2-1", [ 2, 2, 1 ], 31,, 
+      "corefreeconjugacyclassessubgroups", "X7D0391668782765C" ], 
+  [ "\033[2XAllCoreFreeSubgroups\033[102X", "2.3-1", [ 2, 3, 1 ], 50,, 
+      "allcorefreesubgroups", "X821F9BD687383C1F" ], 
+  [ "\033[2XCoreFreeDegrees\033[102X", "2.4-1", [ 2, 4, 1 ], 69,, "corefreedegrees", 
+      "X844F04457C6EDC67" ] ]
+);

@@ -1,0 +1,11 @@
+  
+  
+  [1XIndex[101X
+  
+  [2XAllCoreFreeSubgroups[102X 2.3-1 
+  [2XCoreFreeConjugacyClassesSubgroups[102X 2.2-1 
+  [2XCoreFreeDegrees[102X 2.4-1 
+  [2XIsCoreFree[102X 2.1-1 
+  
+  
+  -------------------------------------------------------
