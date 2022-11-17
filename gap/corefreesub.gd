@@ -16,10 +16,12 @@
 #! corefreesub is a package which calculates the core-free subgroups and their faithful transitive permutation representations
 #! 
 #!
-#! @Chapter Core Free Subgroups
+#! @Chapter Obtaining Core-Free Subgroups
 #
-#! @Section IsCoreFree
+#! @Section Core-Free Subgroups
 #! 
+#! A core-free subgroup is a subgroup in which its (normal) core is trivial.
+#!
 #! @Arguments G, H
 #! @Returns a boolean
 #! @Description
@@ -39,7 +41,7 @@
 #! @EndExampleSession
 DeclareGlobalFunction( "IsCoreFree" );
 
-#! @Section CoreFreeConjugacyClassesSubgroups
+#!
 #! 
 #! @Arguments G
 #! @Returns a list
@@ -55,7 +57,7 @@ DeclareGlobalFunction( "IsCoreFree" );
 #!@EndExampleSession
 DeclareGlobalFunction( "CoreFreeConjugacyClassesSubgroups" );
 
-#! @Section AllCoreFreeSubgroups
+#!
 #! 
 #! @Arguments G
 #! @Returns a list
@@ -71,8 +73,10 @@ DeclareGlobalFunction( "CoreFreeConjugacyClassesSubgroups" );
 #!@EndExampleSession
 DeclareGlobalFunction( "AllCoreFreeSubgroups" );
 
-#! @Section CoreFreeDegrees
+#! @Section Degrees of Core-Free subgroups
 #! 
+#! 
+#!
 #! @Arguments G
 #! @Returns a list
 #! @Description
@@ -87,10 +91,41 @@ DeclareGlobalFunction( "AllCoreFreeSubgroups" );
 #! @EndExampleSession
 DeclareGlobalFunction( "CoreFreeDegrees" );
 
+#! @Chapter Faithful Transitive Permutation Representations
+#!
+#! The action of a group G on the coset space of a subgroup gives us a transitive permutation representation of the group.
+#! Whenever the subgroup is core-free, we have that the action of G on the coset space of the subgroup will be faithful. 
+#! Moreover, the stabilizer of a point on a faithful transitive permutation representation of G will always be a core-free subgroup. 
+#!
+#! @Section Obtaining Faithful Transitive Permutation Representations
+#!
+#! @Arguments G, [all_ftpr]
+#! @Returns a list
+#! @Description
+#!  Returns a list of a faithful transitive permutation representation of <A>G</A> for each degree.
+#!  If <A>all_ftpr</A> is true, then it will return a list of all faithful transitive permutation representations.
+#! @BeginExampleSession
+#! gap> LoadPackage("CoreFreeSub");
+#! gap> sp := SymplecticGroup(4,2);;
+#! gap> CoreFreeDegrees(sp);
+#! [ 720, 360, 240, 180, 144, 120, 90, 80, 72, 60, 45, 40, 36, 30, 20, 15, 12, 10, 6 ]
+#! gap> ftprs := FaithfulTransitivePermutationRepresentations(sp);; Size(ftprs);
+#! 19
+#! gap> all_ftprs := FaithfulTransitivePermutationRepresentations(sp,true);; Size(all_ftprs);
+#! 54
+#! @EndExampleSession
+DeclareOperation( "FaithfulTransitivePermutationRepresentations", [IsGroup]);
+
+
+#! @Section Faithful Transitive Permutation Representation of Minimal Degree
+
 DeclareOperation( "MinimalFaithfulTransitivePermutationRepresentation", [IsGroup]);
 
 
 DeclareGlobalFunction( "MinimalFaithfulTransitivePermutationRepresentationDegree" );
 
+DeclareOperation("DrawFTPRGraph", [IsPermGroup,IsString,IsString,IsString];)
 
+DeclareInfoClass( "InfoCoreFreeSub" );
+SetInfoLevel( InfoCoreFreeSub, 1 );
 
