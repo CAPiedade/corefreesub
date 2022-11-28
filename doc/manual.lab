@@ -2,13 +2,19 @@
 \makelabel{corefreesub:Title page}{}{X7D2C85EC87DD46E5}
 \makelabel{corefreesub:Table of Contents}{}{X8537FEB07AF2BEC8}
 \makelabel{corefreesub:Introduction}{1}{X7DFB63A97E67C0A1}
-\makelabel{corefreesub:Core Free Subgroups}{2}{X862FB71F7CF27B49}
-\makelabel{corefreesub:IsCoreFree}{2.1}{X7A9042C27F0BA85B}
-\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroups}{2.2}{X7D0391668782765C}
-\makelabel{corefreesub:AllCoreFreeSubgroups}{2.3}{X821F9BD687383C1F}
-\makelabel{corefreesub:CoreFreeDegrees}{2.4}{X844F04457C6EDC67}
+\makelabel{corefreesub:Obtaining Core-Free Subgroups}{2}{X78D8803A84DB6CE8}
+\makelabel{corefreesub:Core-Free Subgroups}{2.1}{X79EF503F837B7702}
+\makelabel{corefreesub:Degrees of Core-Free subgroups}{2.2}{X847B222E84342E88}
+\makelabel{corefreesub:Faithful Transitive Permutation Representations}{3}{X857DD6BF86E302D0}
+\makelabel{corefreesub:Obtaining Faithful Transitive Permutation Representations}{3.1}{X839E0E8B87479AB5}
+\makelabel{corefreesub:Faithful Transitive Permutation Representation of Minimal Degree}{3.2}{X836069DB849BD28D}
+\makelabel{corefreesub:Drawing the Faithful Transitive Permutation Representation Graph}{3.3}{X85BCED3F87DE1C07}
 \makelabel{corefreesub:Index}{Ind}{X83A0356F839C696F}
 \makelabel{corefreesub:IsCoreFree}{2.1.1}{X7A9042C27F0BA85B}
-\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroups}{2.2.1}{X7D0391668782765C}
-\makelabel{corefreesub:AllCoreFreeSubgroups}{2.3.1}{X821F9BD687383C1F}
-\makelabel{corefreesub:CoreFreeDegrees}{2.4.1}{X844F04457C6EDC67}
+\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroups}{2.1.2}{X7D0391668782765C}
+\makelabel{corefreesub:AllCoreFreeSubgroups}{2.1.3}{X821F9BD687383C1F}
+\makelabel{corefreesub:CoreFreeDegrees}{2.2.1}{X844F04457C6EDC67}
+\makelabel{corefreesub:FaithfulTransitivePermutationRepresentations for IsGroup}{3.1.1}{X80D610507B1029C9}
+\makelabel{corefreesub:MinimalFaithfulTransitivePermutationRepresentation for IsGroup}{3.2.1}{X8746DBA2866336CC}
+\makelabel{corefreesub:MinimalFaithfulTransitivePermutationDegree}{3.2.2}{X7B0EBFFA86B38A0F}
+\makelabel{corefreesub:DrawFTPRGraph for IsPermGroup,IsString,IsString,IsString}{3.3.1}{X81BD070A7B2D0DA3}

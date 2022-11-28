@@ -1,0 +1,119 @@
+  
+  [1X3 [33X[0;0YFaithful Transitive Permutation Representations[133X[101X
+  
+  [33X[0;0YThe  action  of  a  group  G  on  the  coset  space of a subgroup gives us a
+  transitive permutation representation of the group. Whenever the subgroup is
+  core-free,  we  have that the action of G on the coset space of the subgroup
+  will  be  faithful.  Moreover,  the  stabilizer  of  a  point  on a faithful
+  transitive  permutation  representation  of  G  will  always  be a core-free
+  subgroup.[133X
+  
+  
+  [1X3.1 [33X[0;0YObtaining Faithful Transitive Permutation Representations[133X[101X
+  
+  [1X3.1-1 FaithfulTransitivePermutationRepresentations[101X
+  
+  [33X[1;0Y[29X[2XFaithfulTransitivePermutationRepresentations[102X( [3XG[103X[, [3Xall_ftpr[103X] ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Ya list[133X
+  
+  [33X[0;0YFor a finite group [3XG[103X, [3XFaithfulTransitivePermutationRepresentations[103X returns a
+  list  of  a  faithful  transitive  permutation  representation of [3XG[103X for each
+  degree.  If  [3Xall_ftpr[103X  is  true,  then it will return a list of all faithful
+  transitive permutation representations.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage("CoreFreeSub");[127X[104X
+    [4X[25Xgap>[125X [27Xsp := SymplecticGroup(4,2);;[127X[104X
+    [4X[25Xgap>[125X [27XCoreFreeDegrees(sp);[127X[104X
+    [4X[28X[ 720, 360, 240, 180, 144, 120, 90, 80, 72, 60, 45, 40, 36, 30, 20, 15, 12, 10, 6 ][128X[104X
+    [4X[25Xgap>[125X [27Xftprs := FaithfulTransitivePermutationRepresentations(sp);; Size(ftprs);[127X[104X
+    [4X[28X19[128X[104X
+    [4X[25Xgap>[125X [27Xall_ftprs := FaithfulTransitivePermutationRepresentations(sp,true);; Size(all_ftprs);[127X[104X
+    [4X[28X54[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X3.2 [33X[0;0YFaithful Transitive Permutation Representation of Minimal Degree[133X[101X
+  
+  [33X[0;0YTo     complement     the     already     existing    functions    in    GAP
+  [3XMinimalFaithfulPermutationRepresentation[103X                                 and
+  [3XMinimalFaithfulPermutationDegree[103X,  the  following  functions to retreive the
+  [3XMinimalFaithfulTransitivePermutationRepresentation[103X                       and
+  [3XMinimalFaithfulTransitivePermutationDegree[103X.[133X
+  
+  [1X3.2-1 MinimalFaithfulTransitivePermutationRepresentation[101X
+  
+  [33X[1;0Y[29X[2XMinimalFaithfulTransitivePermutationRepresentation[102X( [3XG[103X[, [3Xall_minimal_ftpr[103X] ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan isomorphism (or a list of isomorphisms)[133X
+  
+  [33X[0;0YFor  a  finite  group  [3XG[103X, [3XMinimalFaithfulTransitivePermutationRepresentation[103X
+  returns  an  isomorphism  of  [3XG[103X  into  the symmetric group of minimal degree
+  acting  transitively on its domain. If [3Xall_minimal_ftpr[103X is set as [3Xtrue[103X, then
+  it  returns a list of all isomorphisms [3XG[103X into the symmetric group of minimal
+  degree.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage("CoreFreeSub");[127X[104X
+    [4X[25Xgap>[125X [27Xsp := SymplecticGroup(4,2);;[127X[104X
+    [4X[25Xgap>[125X [27Xmin_ftpr := MinimalFaithfulTransitivePermutationRepresentation(sp);[127X[104X
+    [4X[28XCompositionMapping( <action epimorphism>, <action isomorphism> )[128X[104X
+    [4X[25Xgap>[125X [27Xmin_ftprs(sp);[127X[104X
+    [4X[28XGroup([ (1,3,2,4), (1,3)(2,5,6,4) ])[128X[104X
+    [4X[25Xgap>[125X [27Xmin_ftprs := MinimalFaithfulTransitivePermutationRepresentation(sp,true);[127X[104X
+    [4X[28X[ CompositionMapping( <action epimorphism>, <action isomorphism> ), CompositionMapping( <action epimorphism>, <action isomorphism> ) ][128X[104X
+    [4X[25Xgap>[125X [27Xmin_ftprs[2](sp);[127X[104X
+    [4X[28XGroup([ (1,3,4,2), (1,2,5,3)(4,6) ])[128X[104X
+  [4X[32X[104X
+  
+  [1X3.2-2 MinimalFaithfulTransitivePermutationDegree[101X
+  
+  [33X[1;0Y[29X[2XMinimalFaithfulTransitivePermutationDegree[102X( [3XG[103X ) [32X function[133X
+  [6XReturns:[106X  [33X[0;10Yan integer[133X
+  
+  [33X[0;0YFor a finite group [3XG[103X, [3XMinimalFaithfulTransitivePermutationDegree[103X returns the
+  least  positive  integer  n  such  that [3XG[103X is isomorphic to a subgroup of the
+  symmetric group of degree n acting transitively on its domain.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XLoadPackage("CoreFreeSub");[127X[104X
+    [4X[25Xgap>[125X [27Xsp := SymplecticGroup(4,2);; g:=SimpleGroup("PSL",3,5);[127X[104X
+    [4X[25Xgap>[125X [27XMinimalFaithfulTransitivePermutationDegree(sp);[127X[104X
+    [4X[28X6[128X[104X
+    [4X[25Xgap>[125X [27XMinimalFaithfulTransitivePermutationRepresentationDegree(g);[127X[104X
+    [4X[28X31[128X[104X
+  [4X[32X[104X
+  
+  
+  [1X3.3 [33X[0;0YDrawing the Faithful Transitive Permutation Representation Graph[133X[101X
+  
+  [33X[0;0YOne  of  the  advantages  of  Faithful Transitive Permutation Representation
+  Graph are on Groups generated by involutions, such as C-groups. These graphs
+  are very useful in the research of abstract polytopes and hypertopes, mainly
+  called as "Schreier coset graphs" or "CPR graphs" in this area. Here we will
+  give  a  function that builds this graph given a permutation group generated
+  by  involutions,  a group and one of its core-free subgroups or by giving an
+  isomorphism  of  the  group  into  the symmetric group acting faithfully and
+  transitively  on  its  domain.  To use Graphviz in order to create the image
+  file,  you  need to be running GAP on a Linux Environment (Windows Subsystem
+  for Linux is supported), with graphviz installed.[133X
+  
+  [1X3.3-1 DrawFTPRGraph[101X
+  
+  [33X[1;0Y[29X[2XDrawFTPRGraph[102X( [3XH[103X, [3XK[103X, [3Xfilename[103X[, [3Xlayout[103X, [3Xfiletype[103X] ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yexports both a .dot file and an image file[133X
+  
+  [33X[0;0YGiven  a  transitive  permutation group [3XG[103X, a faithful transitive permutation
+  representation  of  a  group  [3Xmap[103X  or  a  group  [3XH[103X  and one of its core-free
+  subgroups  [3XK[103X,  the function will write a .dot file in the current path where
+  GAP  is  running. If Graphviz is installed, the function will also create an
+  image  file  on  the  current  path.  If  neither layout nor the filetype is
+  specified, then the default layout is "neato" and the filetype is "svg". The
+  layouts  can  be  one  of  the following: ["dot", "neato", "twopi", "circo",
+  "fdp",  "sfdp",  "patchwork", "osage"] while the filetypes can be one of the
+  following:  ["dot", "xdot", "ps", "pdf", "svg", "svgz", "png", "gif", "jpg",
+  "jpeg", "json", "imap", "cmapx"].[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[28X[128X[104X
+  [4X[32X[104X
+  

@@ -2,4 +2,5 @@
 
 <!-- This is an automatically generated file. -->
 <#Include SYSTEM "_Chapter_Introduction.xml">
-<#Include SYSTEM "_Chapter_Core_Free_Subgroups.xml">
+<#Include SYSTEM "_Chapter_Obtaining_Core-Free_Subgroups.xml">
+<#Include SYSTEM "_Chapter_Faithful_Transitive_Permutation_Representations.xml">
