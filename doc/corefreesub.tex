@@ -168,9 +168,9 @@ a boolean
 
 
 
- Returns whether the subgroup \mbox{\texttt{\mdseries\slshape H}} is core-free in its parent group \mbox{\texttt{\mdseries\slshape G}} 
+ Given a group \mbox{\texttt{\mdseries\slshape G}} and one of its subgroups \mbox{\texttt{\mdseries\slshape H}}, it returns whether \mbox{\texttt{\mdseries\slshape H}} is core-free in \mbox{\texttt{\mdseries\slshape G}}. 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");|
+  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");;|
   !gapprompt@gap>| !gapinput@G := SymmetricGroup(4);; H := Subgroup(G, [(1,3)(2,4)]);;|
   !gapprompt@gap>| !gapinput@Core(G,H);|
   Group(())
@@ -201,10 +201,10 @@ a list
 
  Returns a list of all conjugacy classes of core-free subgroups of \mbox{\texttt{\mdseries\slshape G}} 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");|
+  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");;|
   !gapprompt@gap>| !gapinput@G := SymmetricGroup(4);; dh := DihedralGroup(10);;|
   !gapprompt@gap>| !gapinput@CoreFreeConjugacyClassesSubgroups(G);|
-  [ Group( () )^G, Group( [ (1,3)(2,4) ] )^G, Group( [ (3,4) ] )^G, Group( [ (2,4,3) ] )^G, Group( [ (1,4)(2,3), (1,3)(2,4) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G, Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G, Group( [ (1,4)(2,3), (1,3)(2,4), (3,4) ] )^G, Group( [ (1,4)(2,3), (1,3)(2,4), (2,4,3) ] )^G, Group( [ (1,4)(2,3), (1,3)(2,4), (2,4,3), (3,4) ] )^G ]
+  [ Group( () )^G, Group( [ (1,3)(2,4) ] )^G, Group( [ (3,4) ] )^G, Group( [ (2,4,3) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G, Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G ]
   !gapprompt@gap>| !gapinput@CoreFreeConjugacyClassesSubgroups(dh);|
   [ Group( <identity> of ... )^G, Group( [ f1 ] )^G ] 
 \end{Verbatim}
@@ -227,7 +227,7 @@ a list
 
  Returns a list of all core-free subgroups of \mbox{\texttt{\mdseries\slshape G}} 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");|
+  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");;|
   !gapprompt@gap>| !gapinput@G := SymmetricGroup(4);; dh := DihedralGroup(10);;|
   !gapprompt@gap>| !gapinput@AllCoreFreeSubgroups(G);|
   [ Group(()), Group([ (1,3)(2,4) ]), Group([ (1,4)(2,3) ]), Group([ (1,2)(3,4) ]), Group([ (3,4) ]), Group([ (2,4) ]), Group([ (2,3) ]), Group([ (1,4) ]), Group([ (1,3) ]), Group([ (1,2) ]), Group([ (2,4,3) ]), Group([ (1,3,2) ]), Group([ (1,3,4) ]), Group([ (1,4,2) ]), Group([ (3,4), (1,2)(3,4) ]), Group([ (2,4), (1,3)(2,4) ]), Group([ (2,3), (1,4)(2,3) ]), Group([ (1,3,2,4), (1,2)(3,4) ]), Group([ (1,2,3,4), (1,3)(2,4) ]), Group([ (1,2,4,3), (1,4)(2,3) ]), Group([ (3,4), (2,4,3) ]), Group([ (1,3), (1,3,2) ]), Group([ (1,3), (1,3,4) ]), Group([ (1,4), (1,4,2) ]) ]
@@ -261,7 +261,7 @@ a list
  Returns a list of all possible degrees of faithful transitive permutation
 representations of \mbox{\texttt{\mdseries\slshape G}}. The degrees of a faithful transitive permutation representation of \mbox{\texttt{\mdseries\slshape G}} are the index of its core-free subgroups. 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");|
+  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");;|
   !gapprompt@gap>| !gapinput@G := SymmetricGroup(4);; dh := DihedralGroup(10);;|
   !gapprompt@gap>| !gapinput@CoreFreeDegrees(G);|
   [ 24, 12, 8, 6, 4 ]
@@ -310,7 +310,7 @@ a list
  For a finite group \mbox{\texttt{\mdseries\slshape G}}, \mbox{\texttt{\mdseries\slshape FaithfulTransitivePermutationRepresentations}} returns a list of a faithful transitive permutation representation of \mbox{\texttt{\mdseries\slshape G}} for each degree. If \mbox{\texttt{\mdseries\slshape all{\textunderscore}ftpr}} is true, then it will return a list of all faithful transitive permutation
 representations. 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");|
+  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");;|
   !gapprompt@gap>| !gapinput@sp := SymplecticGroup(4,2);;|
   !gapprompt@gap>| !gapinput@CoreFreeDegrees(sp);|
   [ 720, 360, 240, 180, 144, 120, 90, 80, 72, 60, 45, 40, 36, 30, 20, 15, 12, 10, 6 ]
@@ -348,11 +348,11 @@ an isomorphism (or a list of isomorphisms)
  For a finite group \mbox{\texttt{\mdseries\slshape G}}, \mbox{\texttt{\mdseries\slshape MinimalFaithfulTransitivePermutationRepresentation}} returns an isomorphism of \mbox{\texttt{\mdseries\slshape G}} into the symmetric group of minimal degree acting transitively on its domain.
 If \mbox{\texttt{\mdseries\slshape all{\textunderscore}minimal{\textunderscore}ftpr}} is set as \mbox{\texttt{\mdseries\slshape true}}, then it returns a list of all isomorphisms \mbox{\texttt{\mdseries\slshape G}} into the symmetric group of minimal degree. 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");|
+  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");;|
   !gapprompt@gap>| !gapinput@sp := SymplecticGroup(4,2);;|
   !gapprompt@gap>| !gapinput@min_ftpr := MinimalFaithfulTransitivePermutationRepresentation(sp);|
   CompositionMapping( <action epimorphism>, <action isomorphism> )
-  !gapprompt@gap>| !gapinput@min_ftprs(sp);|
+  !gapprompt@gap>| !gapinput@min_ftpr(sp);|
   Group([ (1,3,2,4), (1,3)(2,5,6,4) ])
   !gapprompt@gap>| !gapinput@min_ftprs := MinimalFaithfulTransitivePermutationRepresentation(sp,true);|
   [ CompositionMapping( <action epimorphism>, <action isomorphism> ), CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
@@ -377,11 +377,11 @@ an integer
  For a finite group \mbox{\texttt{\mdseries\slshape G}}, \mbox{\texttt{\mdseries\slshape MinimalFaithfulTransitivePermutationDegree}} returns the least positive integer n such that \mbox{\texttt{\mdseries\slshape G}} is isomorphic to a subgroup of the symmetric group of degree n acting
 transitively on its domain. 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");|
-  !gapprompt@gap>| !gapinput@sp := SymplecticGroup(4,2);; g:=SimpleGroup("PSL",3,5);|
+  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");;|
+  !gapprompt@gap>| !gapinput@sp := SymplecticGroup(4,2);; g:=SimpleGroup("PSL",3,5);;|
   !gapprompt@gap>| !gapinput@MinimalFaithfulTransitivePermutationDegree(sp);|
   6
-  !gapprompt@gap>| !gapinput@MinimalFaithfulTransitivePermutationRepresentationDegree(g);|
+  !gapprompt@gap>| !gapinput@MinimalFaithfulTransitivePermutationDegree(g);|
   31
 \end{Verbatim}
  }

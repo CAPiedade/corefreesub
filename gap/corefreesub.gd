@@ -29,7 +29,7 @@ SetInfoLevel( InfoCoreFreeSub, 1 );
 #! @Description
 #! Given a group <A>G</A> and one of its subgroups <A>H</A>, it returns whether <A>H</A> is core-free in <A>G</A>.
 #! @BeginExampleSession
-#! gap> LoadPackage("CoreFreeSub");
+#! gap> LoadPackage("CoreFreeSub");;
 #! gap> G := SymmetricGroup(4);; H := Subgroup(G, [(1,3)(2,4)]);;
 #! gap> Core(G,H);
 #! Group(())
@@ -50,10 +50,10 @@ DeclareGlobalFunction( "IsCoreFree" );
 #! @Description
 #!  Returns a list of all conjugacy classes of core-free subgroups of <A>G</A>
 #! @BeginExampleSession
-#! gap> LoadPackage("CoreFreeSub");
+#! gap> LoadPackage("CoreFreeSub");;
 #! gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
 #! gap> CoreFreeConjugacyClassesSubgroups(G);
-#! [ Group( () )^G, Group( [ (1,3)(2,4) ] )^G, Group( [ (3,4) ] )^G, Group( [ (2,4,3) ] )^G, Group( [ (1,4)(2,3), (1,3)(2,4) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G, Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G, Group( [ (1,4)(2,3), (1,3)(2,4), (3,4) ] )^G, Group( [ (1,4)(2,3), (1,3)(2,4), (2,4,3) ] )^G, Group( [ (1,4)(2,3), (1,3)(2,4), (2,4,3), (3,4) ] )^G ]
+#! [ Group( () )^G, Group( [ (1,3)(2,4) ] )^G, Group( [ (3,4) ] )^G, Group( [ (2,4,3) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G, Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G ]
 #! gap> CoreFreeConjugacyClassesSubgroups(dh);
 #! [ Group( <identity> of ... )^G, Group( [ f1 ] )^G ] 
 #!@EndExampleSession
@@ -66,7 +66,7 @@ DeclareGlobalFunction( "CoreFreeConjugacyClassesSubgroups" );
 #! @Description
 #!  Returns a list of all core-free subgroups of <A>G</A>
 #! @BeginExampleSession
-#! gap> LoadPackage("CoreFreeSub");
+#! gap> LoadPackage("CoreFreeSub");;
 #! gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
 #! gap> AllCoreFreeSubgroups(G);
 #! [ Group(()), Group([ (1,3)(2,4) ]), Group([ (1,4)(2,3) ]), Group([ (1,2)(3,4) ]), Group([ (3,4) ]), Group([ (2,4) ]), Group([ (2,3) ]), Group([ (1,4) ]), Group([ (1,3) ]), Group([ (1,2) ]), Group([ (2,4,3) ]), Group([ (1,3,2) ]), Group([ (1,3,4) ]), Group([ (1,4,2) ]), Group([ (3,4), (1,2)(3,4) ]), Group([ (2,4), (1,3)(2,4) ]), Group([ (2,3), (1,4)(2,3) ]), Group([ (1,3,2,4), (1,2)(3,4) ]), Group([ (1,2,3,4), (1,3)(2,4) ]), Group([ (1,2,4,3), (1,4)(2,3) ]), Group([ (3,4), (2,4,3) ]), Group([ (1,3), (1,3,2) ]), Group([ (1,3), (1,3,4) ]), Group([ (1,4), (1,4,2) ]) ]
@@ -84,7 +84,7 @@ DeclareGlobalFunction( "AllCoreFreeSubgroups" );
 #! @Description
 #!  Returns a list of all possible degrees of faithful transitive permutation representations of <A>G</A>. The degrees of a faithful transitive permutation representation of <A>G</A> are the index of its core-free subgroups.
 #! @BeginExampleSession
-#! gap> LoadPackage("CoreFreeSub");
+#! gap> LoadPackage("CoreFreeSub");;
 #! gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
 #! gap> CoreFreeDegrees(G);
 #! [ 24, 12, 8, 6, 4 ]
@@ -107,7 +107,7 @@ DeclareGlobalFunction( "CoreFreeDegrees" );
 #!  For a finite group <A>G</A>, <A>FaithfulTransitivePermutationRepresentations</A> returns a list of a faithful transitive permutation representation of <A>G</A> for each degree.
 #!  If <A>all_ftpr</A> is true, then it will return a list of all faithful transitive permutation representations.
 #! @BeginExampleSession
-#! gap> LoadPackage("CoreFreeSub");
+#! gap> LoadPackage("CoreFreeSub");;
 #! gap> sp := SymplecticGroup(4,2);;
 #! gap> CoreFreeDegrees(sp);
 #! [ 720, 360, 240, 180, 144, 120, 90, 80, 72, 60, 45, 40, 36, 30, 20, 15, 12, 10, 6 ]
@@ -130,11 +130,11 @@ DeclareOperation( "FaithfulTransitivePermutationRepresentations", [IsGroup]);
 #! For a finite group <A>G</A>, <A>MinimalFaithfulTransitivePermutationRepresentation</A> returns an isomorphism of <A>G</A> into the symmetric group of minimal degree acting transitively on its domain. 
 #! If <A>all_minimal_ftpr</A> is set as <A>true</A>, then it returns a list of all isomorphisms <A>G</A> into the symmetric group of minimal degree.
 #! @BeginExampleSession
-#! gap> LoadPackage("CoreFreeSub");
+#! gap> LoadPackage("CoreFreeSub");;
 #! gap> sp := SymplecticGroup(4,2);;
 #! gap> min_ftpr := MinimalFaithfulTransitivePermutationRepresentation(sp);
 #! CompositionMapping( <action epimorphism>, <action isomorphism> )
-#! gap> min_ftprs(sp);
+#! gap> min_ftpr(sp);
 #! Group([ (1,3,2,4), (1,3)(2,5,6,4) ])
 #! gap> min_ftprs := MinimalFaithfulTransitivePermutationRepresentation(sp,true);
 #! [ CompositionMapping( <action epimorphism>, <action isomorphism> ), CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
@@ -148,37 +148,15 @@ DeclareOperation( "MinimalFaithfulTransitivePermutationRepresentation", [IsGroup
 #! @Description
 #! For a finite group <A>G</A>, <A>MinimalFaithfulTransitivePermutationDegree</A> returns the least positive integer n such that <A>G</A> is isomorphic to a subgroup of the symmetric group of degree n acting transitively on its domain.
 #! @BeginExampleSession
-#! gap> LoadPackage("CoreFreeSub");
-#! gap> sp := SymplecticGroup(4,2);; g:=SimpleGroup("PSL",3,5);
+#! gap> LoadPackage("CoreFreeSub");;
+#! gap> sp := SymplecticGroup(4,2);; g:=SimpleGroup("PSL",3,5);;
 #! gap> MinimalFaithfulTransitivePermutationDegree(sp);
 #! 6
-#! gap> MinimalFaithfulTransitivePermutationRepresentationDegree(g);
+#! gap> MinimalFaithfulTransitivePermutationDegree(g);
 #! 31
 #! @EndExampleSession
 DeclareGlobalFunction( "MinimalFaithfulTransitivePermutationDegree" );
 
-
-#! @Section Drawing the Faithful Transitive Permutation Representation Graph
-#!
-#! One of the advantages of Faithful Transitive Permutation Representation Graph are on Groups generated by involutions, such as C-groups.
-#! These graphs are very useful in the research of abstract polytopes and hypertopes, mainly called as "Schreier coset graphs" or "CPR graphs" in this area. 
-#! Here we will give a function that builds this graph given a permutation group generated by involutions, a group and one of its core-free subgroups or by giving an isomorphism of the group into the symmetric group acting faithfully and transitively on its domain.
-#! To use Graphviz in order to create the image file, you need to be running GAP on a Linux Environment (Windows Subsystem for Linux is supported), with graphviz installed.
-#!
-#! @Arguments G, filename [, layout, filetype]
-#! @Arguments map , filename [, layout, filetype]
-#! @Arguments H, K, filename [, layout, filetype]
-#! @Returns exports both a .dot file and an image file
-#! @Description
-#! Given a transitive permutation group <A>G</A>, a faithful transitive permutation representation of a group <A>map</A> or a group <A>H</A> and one of its core-free subgroups <A>K</A>, the function will write a .dot file in the current path where GAP is running. 
-#! If Graphviz is installed, the function will also create an image file on the current path.
-#! If neither layout nor the filetype is specified, then the default layout is "neato" and the filetype is "svg".
-#! The layouts can be one of the following: ["dot", "neato", "twopi", "circo", "fdp", "sfdp", "patchwork", "osage"] while the
-#! filetypes can be one of the following: ["dot", "xdot", "ps", "pdf", "svg", "svgz", "png", "gif", "jpg", "jpeg", "json", "imap", "cmapx"].
-#! @BeginExampleSession
-#! 
-#! @EndExampleSession
-DeclareOperation("DrawFTPRGraph", [IsPermGroup,IsString,IsString,IsString]);
 
 
 

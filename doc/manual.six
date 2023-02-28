@@ -3,56 +3,68 @@ HELPBOOKINFOSIXTMP := rec(
 encoding := "UTF-8",
 bookname := "corefreesub",
 entries :=
-[ [ "Title page", ".", [ 0, 0, 0 ], 1,, "title page", "X7D2C85EC87DD46E5" ], 
+[ [ "Title page", ".", [ 0, 0, 0 ], 1,, "title page", "X7D2C85EC87DD46E5" 
+     ], 
   [ "Table of Contents", ".-1", [ 0, 0, 1 ], 29,, "table of contents", 
       "X8537FEB07AF2BEC8" ], 
-  [ "\033[1X\033[33X\033[0;-2YIntroduction\033[133X\033[101X", "1", [ 1, 0, 0 ], 1,, 
-      "introduction", "X7DFB63A97E67C0A1" ], 
-  [ "\033[1X\033[33X\033[0;-2YObtaining Core-Free Subgroups\033[133X\033[101X", "2", 
-      [ 2, 0, 0 ], 1,, "obtaining core-free subgroups", "X78D8803A84DB6CE8" ], 
-  [ "\033[1X\033[33X\033[0;-2YCore-Free Subgroups\033[133X\033[101X", "2.1", 
-      [ 2, 1, 0 ], 4,, "core-free subgroups", "X79EF503F837B7702" ], 
-  [ "\033[1X\033[33X\033[0;-2YDegrees of Core-Free subgroups\033[133X\033[101X", "2.2", 
-      [ 2, 2, 0 ], 62,, "degrees of core-free subgroups", "X847B222E84342E88" ], 
+  [ "\033[1X\033[33X\033[0;-2YIntroduction\033[133X\033[101X", "1", 
+      [ 1, 0, 0 ], 1,, "introduction", "X7DFB63A97E67C0A1" ], 
   [ 
-      "\033[1X\033[33X\033[0;-2YFaithful Transitive Permutation Representations\033[133X\\
-033[101X", "3", [ 3, 0, 0 ], 1,, "faithful transitive permutation representations", 
-      "X857DD6BF86E302D0" ], 
-  [ 
-      "\033[1X\033[33X\033[0;-2YObtaining Faithful Transitive Permutation Representations\\
-033[133X\033[101X", "3.1", [ 3, 1, 0 ], 11,, 
-      "obtaining faithful transitive permutation representations", "X839E0E8B87479AB5" ]
+      "\033[1X\033[33X\033[0;-2YObtaining Core-Free Subgroups\033[133X\033[10\
+1X", "2", [ 2, 0, 0 ], 1,, "obtaining core-free subgroups", 
+      "X78D8803A84DB6CE8" ], 
+  [ "\033[1X\033[33X\033[0;-2YCore-Free Subgroups\033[133X\033[101X", 
+      "2.1", [ 2, 1, 0 ], 4,, "core-free subgroups", "X79EF503F837B7702" ]
     , 
   [ 
-      "\033[1X\033[33X\033[0;-2YFaithful Transitive Permutation Representation of Minimal D\
-egree\033[133X\033[101X", "3.2", [ 3, 2, 0 ], 35,, 
+      "\033[1X\033[33X\033[0;-2YDegrees of Core-Free subgroups\033[133X\033[1\
+01X", "2.2", [ 2, 2, 0 ], 63,, "degrees of core-free subgroups", 
+      "X847B222E84342E88" ], 
+  [ 
+      "\033[1X\033[33X\033[0;-2YFaithful Transitive Permutation Representatio\
+ns\033[133X\033[101X", "3", [ 3, 0, 0 ], 1,, 
+      "faithful transitive permutation representations", 
+      "X857DD6BF86E302D0" ], 
+  [ 
+      "\033[1X\033[33X\033[0;-2YObtaining Faithful Transitive Permutation Rep\
+resentations\033[133X\033[101X", "3.1", [ 3, 1, 0 ], 11,, 
+      "obtaining faithful transitive permutation representations", 
+      "X839E0E8B87479AB5" ], 
+  [ 
+      "\033[1X\033[33X\033[0;-2YFaithful Transitive Permutation Representatio\
+n of Minimal Degree\033[133X\033[101X", "3.2", [ 3, 2, 0 ], 35,, 
       "faithful transitive permutation representation of minimal degree", 
       "X836069DB849BD28D" ], 
   [ 
-      "\033[1X\033[33X\033[0;-2YDrawing the Faithful Transitive Permutation Representation \
-Graph\033[133X\033[101X", "3.3", [ 3, 3, 0 ], 86,, 
+      "\033[1X\033[33X\033[0;-2YDrawing the Faithful Transitive Permutation R\
+epresentation Graph\033[133X\033[101X", "3.3", [ 3, 3, 0 ], 86,, 
       "drawing the faithful transitive permutation representation graph", 
       "X85BCED3F87DE1C07" ], 
   [ "Index", "ind", [ "Ind", 0, 0 ], 1,, "index", "X83A0356F839C696F" ], 
   [ "\033[2XIsCoreFree\033[102X", "2.1-1", [ 2, 1, 1 ], 9,, "iscorefree", 
       "X7A9042C27F0BA85B" ], 
-  [ "\033[2XCoreFreeConjugacyClassesSubgroups\033[102X", "2.1-2", [ 2, 1, 2 ], 30,, 
-      "corefreeconjugacyclassessubgroups", "X7D0391668782765C" ], 
-  [ "\033[2XAllCoreFreeSubgroups\033[102X", "2.1-3", [ 2, 1, 3 ], 46,, 
+  [ "\033[2XCoreFreeConjugacyClassesSubgroups\033[102X", "2.1-2", 
+      [ 2, 1, 2 ], 31,, "corefreeconjugacyclassessubgroups", 
+      "X7D0391668782765C" ], 
+  [ "\033[2XAllCoreFreeSubgroups\033[102X", "2.1-3", [ 2, 1, 3 ], 47,, 
       "allcorefreesubgroups", "X821F9BD687383C1F" ], 
-  [ "\033[2XCoreFreeDegrees\033[102X", "2.2-1", [ 2, 2, 1 ], 65,, "corefreedegrees", 
-      "X844F04457C6EDC67" ], 
-  [ "\033[2XFaithfulTransitivePermutationRepresentations\033[102X for IsGroup", 
-      "3.1-1", [ 3, 1, 1 ], 14,, 
-      "faithfultransitivepermutationrepresentations for isgroup", "X80D610507B1029C9" ],
-  [ "\033[2XMinimalFaithfulTransitivePermutationRepresentation\033[102X for IsGroup", 
-      "3.2-1", [ 3, 2, 1 ], 44,, 
+  [ "\033[2XCoreFreeDegrees\033[102X", "2.2-1", [ 2, 2, 1 ], 66,, 
+      "corefreedegrees", "X844F04457C6EDC67" ], 
+  [ 
+      "\033[2XFaithfulTransitivePermutationRepresentations\033[102X for IsGro\
+up", "3.1-1", [ 3, 1, 1 ], 14,, 
+      "faithfultransitivepermutationrepresentations for isgroup", 
+      "X80D610507B1029C9" ], 
+  [ 
+      "\033[2XMinimalFaithfulTransitivePermutationRepresentation\033[102X for\
+ IsGroup", "3.2-1", [ 3, 2, 1 ], 44,, 
       "minimalfaithfultransitivepermutationrepresentation for isgroup", 
       "X8746DBA2866336CC" ], 
-  [ "\033[2XMinimalFaithfulTransitivePermutationDegree\033[102X", "3.2-2", [ 3, 2, 2 ], 
-      68,, "minimalfaithfultransitivepermutationdegree", "X7B0EBFFA86B38A0F" ], 
-  [ "\033[2XDrawFTPRGraph\033[102X for IsPermGroup,IsString,IsString,IsString", 
-      "3.3-1", [ 3, 3, 1 ], 100,, 
-      "drawftprgraph for ispermgroup isstring isstring isstring", "X81BD070A7B2D0DA3" ] 
- ]
+  [ "\033[2XMinimalFaithfulTransitivePermutationDegree\033[102X", 
+      "3.2-2", [ 3, 2, 2 ], 68,, 
+      "minimalfaithfultransitivepermutationdegree", "X7B0EBFFA86B38A0F" ],
+  [ "\033[2XDrawFTPRGraph\033[102X for IsPermGroup,IsString,IsString,IsStr\
+ing", "3.3-1", [ 3, 3, 1 ], 100,, 
+      "drawftprgraph for ispermgroup isstring isstring isstring", 
+      "X81BD070A7B2D0DA3" ] ]
 );
