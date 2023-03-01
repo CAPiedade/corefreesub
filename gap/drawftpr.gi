@@ -49,7 +49,7 @@ end );
 InstallOtherMethod( DotFTPRGraph, [IsGroup,IsGroup],
 function( G, H )
 	if IsSubgroup(G,H) and IsCoreFree(G,H) then
-		return DotFTPRGraph(Image(FactorCosetAction(G,H)), filename, layout, filetype);
+		return DotFTPRGraph(Image(FactorCosetAction(G,H)));
 	else
 		Info(InfoDrawFTPR,1,"The second group should be a subgroup of the first or it is not core-free");
 		return fail;
@@ -59,7 +59,7 @@ end);
 InstallOtherMethod( DotFTPRGraph, [IsGeneralMapping],
 function(FTPR_mapping)
 	if IsGroupHomomorphism(FTPR_mapping) and IsBijective(FTPR_mapping) and IsPermGroup(Image(FTPR_mapping)) and IsTransitive(Image(FTPR_mapping)) then
-		return DotFTPRGraph(Image(FTPR_mapping), filename, layout, filetype);
+		return DotFTPRGraph(Image(FTPR_mapping));
 	else
 		Info(InfoDrawFTPR,1,"The mapping provided isn't of a faithful transitive permutation representation");
 		return fail;
