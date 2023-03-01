@@ -4,3 +4,4 @@
 # Reading the implementation part of the package.
 #
 ReadPackage( "corefreesub", "gap/corefreesub.gi");
+ReadPackage( "corefreesub", "gap/drawftpr.gi");

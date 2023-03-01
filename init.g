@@ -5,3 +5,4 @@
 #
 
 ReadPackage( "corefreesub", "gap/corefreesub.gd");
+ReadPackage( "corefreesub", "gap/drawftpr.gd");

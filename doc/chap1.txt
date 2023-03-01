@@ -1,0 +1,6 @@
+  
+  [1X1 [33X[0;0YIntroduction[133X[101X
+  
+  [33X[0;0Ycorefreesub  is a package which calculates the core-free subgroups and their
+  faithful transitive permutation representations[133X
+  

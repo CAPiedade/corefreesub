@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This is an automatically generated file. -->
+<TitlePage>
+  <Title>
+    corefreesub
+  </Title>
+  <Subtitle>
+    A &GAP; Package for calculating the core-free subgroups and their faithful transitive permutation representations
+  </Subtitle>
+  <Version>
+    0.1
+  </Version>
+  <Author>
+    Claudio Alexandre Piedade<Alt Only="LaTeX"><Br/></Alt>
+<Email>claudioalexandrepiedade@gmail.com</Email>
+<Homepage>https://www.fc.up.pt/pessoas/claudio.piedade/</Homepage>
+
+  </Author>
+  <Author>
+    Manuel Delgado<Alt Only="LaTeX"><Br/></Alt>
+<Email></Email>
+
+  </Author>
+  <Date>
+    8 November 2022
+  </Date>
+  </TitlePage>
