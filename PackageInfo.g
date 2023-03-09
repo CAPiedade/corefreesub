@@ -29,7 +29,7 @@ Persons := [
   rec(
     FirstNames := "Manuel",
     LastName := "Delgado",
-    WWWHome := https://cmup.fc.up.pt/cmup/mdelgado/,
+    WWWHome := "https://cmup.fc.up.pt/cmup/mdelgado/",
     Email := "mdelgado@fc.up.pt",
     IsAuthor := true,
     IsMaintainer := true,
