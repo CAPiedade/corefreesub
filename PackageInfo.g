@@ -10,7 +10,7 @@ SetPackageInfo( rec(
 
 PackageName := "corefreesub",
 Subtitle := "A GAP Package for calculating the core-free subgroups and their faithful transitive permutation representations",
-Version := "0.1",
+Version := "0.2",
 Date := "08/11/2022", # dd/mm/yyyy format
 License := "GPL-2.0-or-later",
 
@@ -19,7 +19,7 @@ Persons := [
     FirstNames := "Claudio Alexandre",
     LastName := "Piedade",
     WWWHome := "https://www.fc.up.pt/pessoas/claudio.piedade/",
-    Email := "claudioalexandrepiedade@gmail.com",
+    Email := "claudio.piedade@fc.up.pt",
     IsAuthor := true,
     IsMaintainer := true,
     #PostalAddress := TODO,
@@ -29,8 +29,8 @@ Persons := [
   rec(
     FirstNames := "Manuel",
     LastName := "Delgado",
-    #WWWHome := TODO,
-    Email := "",
+    WWWHome := https://cmup.fc.up.pt/cmup/mdelgado/,
+    Email := "mdelgado@fc.up.pt",
     IsAuthor := true,
     IsMaintainer := true,
     #PostalAddress := TODO,
