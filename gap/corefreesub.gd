@@ -57,7 +57,11 @@ DeclareGlobalFunction( "IsCoreFree" );
 #! gap> CoreFreeConjugacyClassesSubgroups(dh);
 #! [ Group( <identity> of ... )^G, Group( [ f1 ] )^G ] 
 #!@EndExampleSession
+#DeclareOperation( "CoreFreeConjugacyClassesSubgroups", [IsGroup and IsFinite] );
 DeclareGlobalFunction( "CoreFreeConjugacyClassesSubgroups" );
+DeclareOperation("CoreFreeConjugacyClassesSubgroupsOfSolvableGroup", [IsGroup and IsFinite and IsSolvableGroup]);
+DeclareGlobalFunction("CoreFreeConjugacyClassesSubgroupsCyclicExtension");
+DeclareOperation("CoreFreeConjugacyClassesSubgroupsNiceMonomorphism", [IsGroup and IsFinite and IsHandledByNiceMonomorphism]);
 
 #!
 #! 
@@ -156,7 +160,6 @@ DeclareOperation( "MinimalFaithfulTransitivePermutationRepresentation", [IsGroup
 #! 31
 #! @EndExampleSession
 DeclareGlobalFunction( "MinimalFaithfulTransitivePermutationDegree" );
-
 
 
 
