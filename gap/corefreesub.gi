@@ -584,7 +584,7 @@ InstallMethod( MinimalFaithfulTransitivePermutationRepresentation, [IsGroup],
 function(G)
 	local core_free_ccs;
 	if Index(G,Reversed(CoreFreeConjugacyClassesSubgroups(G))[1][1]) = MinimumList(CoreFreeDegrees(G)) then
-		FactorCosetAction(G,Reversed(CoreFreeConjugacyClassesSubgroups(G))[1][1]);
+	  return FactorCosetAction(G,Reversed(CoreFreeConjugacyClassesSubgroups(G))[1][1]);
 	else 
 		Error("Core-free subgroups are not being ordered correctly");
 	fi;
