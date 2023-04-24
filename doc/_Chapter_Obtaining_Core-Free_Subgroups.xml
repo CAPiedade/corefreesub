@@ -37,7 +37,7 @@ Group([ (1,4)(2,3), (1,3)(2,4) ])
 
 <P/>
 <ManSection>
-  <Func Arg="G" Name="CoreFreeConjugacyClassesSubgroups" />
+  <Oper Arg="G" Name="CoreFreeConjugacyClassesSubgroups" Label="for IsGroup and IsFinite"/>
  <Returns>a list
 </Returns>
  <Description>
@@ -52,6 +52,38 @@ gap> CoreFreeConjugacyClassesSubgroups(dh);
 ]]></Example>
 
 
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="arg" Name="CoreFreeConjugacyClassesSubgroups" />
+ <Description>
+<P/>
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="arg" Name="CoreFreeConjugacyClassesSubgroupsOfSolvableGroup" Label="for IsGroup and IsFinite and IsSolvableGroup"/>
+ <Description>
+<P/>
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Func Arg="arg" Name="CoreFreeConjugacyClassesSubgroupsCyclicExtension" />
+ <Description>
+<P/>
+ </Description>
+</ManSection>
+
+
+<ManSection>
+  <Oper Arg="arg" Name="CoreFreeConjugacyClassesSubgroupsNiceMonomorphism" Label="for IsGroup and IsFinite and IsHandledByNiceMonomorphism"/>
+ <Description>
+<P/>
  </Description>
 </ManSection>
 

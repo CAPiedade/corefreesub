@@ -82,7 +82,7 @@ SOLVABILITY_IMPLYING_FUNCTIONS:=
 
 InstallGlobalFunction(CoreFreeConjugacyClassesSubgroupsCyclicExtension,
 function(arg)
-	local   G,                 # group
+	local G,                 # group
         func,              # test function
         zuppofunc,         # test fct for zuppos
         noperf,            # discard perfect groups
@@ -115,7 +115,7 @@ function(arg)
         Jzups,             # zuppos of a conjugate of <I>
         Kzups,             # zuppos of a representative in <classes>
         reps,              # transversal of <N> in <G>
-		corefreedegrees,
+		    corefreedegrees,
         ac,
         transv,
         factored,
@@ -123,24 +123,24 @@ function(arg)
         expandmem,
         h,i,k,l,ri,rl,r;      # loop variables
 
-    G:=arg[1];
-    noperf:=false;
-    zuppofunc:=false;
-    if Length(arg)>1 and (IsFunction(arg[2]) or IsList(arg[2])) then
-      func:=arg[2];
-      Info(InfoLattice,1,"lattice discarding function active!");
-      if IsList(func) then
-        zuppofunc:=func[2];
-        func:=func[1];
-      fi;
-      if Length(arg)>2 and IsBool(arg[3]) then
-        noperf:=arg[3];
-      fi;
-    else
-      func:=false;
+  G:=arg[1];
+  noperf:=false;
+  zuppofunc:=false;
+  if Length(arg)>1 and (IsFunction(arg[2]) or IsList(arg[2])) then
+    func:=arg[2];
+    Info(InfoLattice,1,"lattice discarding function active!");
+    if IsList(func) then
+      zuppofunc:=func[2];
+      func:=func[1];
     fi;
+    if Length(arg)>2 and IsBool(arg[3]) then
+      noperf:=arg[3];
+    fi;
+  else
+    func:=false;
+  fi;
 
-    expandmem:=ValueOption("Expand")=true;
+  expandmem:=ValueOption("Expand")=true;
 
   # if store is true, an element list will be kept in `Ielms' if possible
   ZupposSubgroup:=function(U,store)
@@ -162,61 +162,61 @@ function(arg)
     return zups;
   end;
 
-    # compute the factorized size of <G>
-    factors:=Factors(Size(G));
+  # compute the factorized size of <G>
+  factors:=Factors(Size(G));
 
-    # compute a system of generators for the cyclic sgr. of prime power size
-    if zuppofunc<>false then
-      zuppos:=Zuppos(G,zuppofunc);
-    else
-      zuppos:=Zuppos(G);
-    fi;
+  # compute a system of generators for the cyclic sgr. of prime power size
+  if zuppofunc<>false then
+    zuppos:=Zuppos(G,zuppofunc);
+  else
+    zuppos:=Zuppos(G);
+  fi;
 
-    Info(InfoLattice,1,"<G> has ",Length(zuppos)," zuppos");
+  Info(InfoLattice,1,"<G> has ",Length(zuppos)," zuppos");
 
-    # compute zuppo permutation
-    if IsPermGroup(G) then
-      zuppos:=List(zuppos,SmallestGeneratorPerm);
-      zuppos:=AsSSortedList(zuppos);
-      zuperms:=List(GeneratorsOfGroup(G),
-                i->Permutation(i,zuppos,function(x,a)
-                                          return SmallestGeneratorPerm(x^a);
-                                        end));
-      if NrMovedPoints(zuperms)<200*NrMovedPoints(G) then
-        zuperms:=GroupHomomorphismByImagesNC(G,Group(zuperms),
-                  GeneratorsOfGroup(G),zuperms);
-        # force kernel, also enforces injective setting
-        Gimg:=Image(zuperms);
-        if Size(KernelOfMultiplicativeGeneralMapping(zuperms))=1 then
-          SetSize(Gimg,Size(G));
-        fi;
-      else
-        zuperms:=fail;
+  # compute zuppo permutation
+  if IsPermGroup(G) then
+    zuppos:=List(zuppos,SmallestGeneratorPerm);
+    zuppos:=AsSSortedList(zuppos);
+    zuperms:=List(GeneratorsOfGroup(G),
+              i->Permutation(i,zuppos,function(x,a)
+                                        return SmallestGeneratorPerm(x^a);
+                                      end));
+    if NrMovedPoints(zuperms)<200*NrMovedPoints(G) then
+      zuperms:=GroupHomomorphismByImagesNC(G,Group(zuperms),
+                GeneratorsOfGroup(G),zuperms);
+      # force kernel, also enforces injective setting
+      Gimg:=Image(zuperms);
+      if Size(KernelOfMultiplicativeGeneralMapping(zuperms))=1 then
+        SetSize(Gimg,Size(G));
       fi;
     else
-      zuppos:=AsSSortedList(zuppos);
       zuperms:=fail;
     fi;
+  else
+    zuppos:=AsSSortedList(zuppos);
+    zuperms:=fail;
+  fi;
 
-    # compute the prime corresponding to each zuppo and the index of power
-    zupposPrime:=[];
-    zupposPower:=[];
-    for r  in zuppos  do
-      i:=SmallestRootInt(Order(r));
-      Add(zupposPrime,i);
-      k:=0;
-      while k <> false  do
-        k:=k + 1;
-        if GcdInt(i,k) = 1  then
-          l:=Position(zuppos,r^(i*k));
-          if l <> fail  then
-            Add(zupposPower,l);
-            k:=false;
-          fi;
+  # compute the prime corresponding to each zuppo and the index of power
+  zupposPrime:=[];
+  zupposPower:=[];
+  for r  in zuppos  do
+    i:=SmallestRootInt(Order(r));
+    Add(zupposPrime,i);
+    k:=0;
+    while k <> false  do
+      k:=k + 1;
+      if GcdInt(i,k) = 1  then
+        l:=Position(zuppos,r^(i*k));
+        if l <> fail  then
+          Add(zupposPower,l);
+          k:=false;
         fi;
-      od;
+      fi;
     od;
-    Info(InfoLattice,1,"powers computed");
+  od;
+  Info(InfoLattice,1,"powers computed");
 
     if func<>false and
       (noperf or func in SOLVABILITY_IMPLYING_FUNCTIONS) then
@@ -252,7 +252,7 @@ function(arg)
     classes:=ConjugacyClassSubgroups(G,TrivialSubgroup(G));
     SetSize(classes,1);
     classes:=[classes];
-	corefreedegrees := [Size(G)];
+	  corefreedegrees := [Size(G)];
     classesZups:=[BlistList(zuppos,[One(G)])];
     classesExts:=[DifferenceBlist(BlistList(zuppos,zuppos),classesZups[1])];
     layerb:=1;
@@ -307,15 +307,15 @@ function(arg)
                     SetStabilizerOfExternalSet(C,N);
                     nrClasses:=nrClasses + 1;
                     classes[nrClasses]:=C;
-					Add(corefreedegrees,Index(G,I));
+				          	Add(corefreedegrees,Index(G,I));
 
                     # store the extend by list
                     if l < Length(factors)-1  then
-                    classesZups[nrClasses]:=Izups;
-                    #Nzups:=BlistList(zuppos,AsSSortedListNonstored(N));
-                    Nzups:=ZupposSubgroup(N,false);
-                    SubtractBlist(Nzups,Izups);
-                    classesExts[nrClasses]:=Nzups;
+                      classesZups[nrClasses]:=Izups;
+                      #Nzups:=BlistList(zuppos,AsSSortedListNonstored(N));
+                      Nzups:=ZupposSubgroup(N,false);
+                      SubtractBlist(Nzups,Izups);
+                      classesExts[nrClasses]:=Nzups;
                     fi;
 
                     # compute the right transversal

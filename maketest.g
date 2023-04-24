@@ -2,7 +2,7 @@
 ## Changes will be discarded by the next call of the AutoDoc method.
 
 
-AUTODOC_file_scan_list := [ "../PackageInfo.g", "../gap/corefreesub.gd", "../gap/corefreesub.gi", "../init.g", "../makedoc.g", "../maketest.g", "../read.g", "/mnt/c/Users/Claudio/GAP Packages/pkg/corefreesub/doc/_Chunks.xml" ];
+AUTODOC_file_scan_list := [ "../PackageInfo.g", "../gap/corefreesub.gd", "../gap/corefreesub.gi", "../gap/drawftpr.gd", "../gap/drawftpr.gi", "../init.g", "../makedoc.g", "../maketest.g", "../read.g", "/mnt/c/Users/Claudio/GAP Packages/pkg/corefreesub/doc/_Chunks.xml" ];
 
 LoadPackage( "GAPDoc" );
 

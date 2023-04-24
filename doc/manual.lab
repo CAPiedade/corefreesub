@@ -8,13 +8,21 @@
 \makelabel{corefreesub:Faithful Transitive Permutation Representations}{3}{X857DD6BF86E302D0}
 \makelabel{corefreesub:Obtaining Faithful Transitive Permutation Representations}{3.1}{X839E0E8B87479AB5}
 \makelabel{corefreesub:Faithful Transitive Permutation Representation of Minimal Degree}{3.2}{X836069DB849BD28D}
-\makelabel{corefreesub:Drawing the Faithful Transitive Permutation Representation Graph}{3.3}{X85BCED3F87DE1C07}
+\makelabel{corefreesub:Drawing the Faithful Transitive Permutation Representation Graph}{4}{X85BCED3F87DE1C07}
+\makelabel{corefreesub:Drawing functions}{4.1}{X82F35AB4823114BD}
 \makelabel{corefreesub:Index}{Ind}{X83A0356F839C696F}
 \makelabel{corefreesub:IsCoreFree}{2.1.1}{X7A9042C27F0BA85B}
-\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroups}{2.1.2}{X7D0391668782765C}
-\makelabel{corefreesub:AllCoreFreeSubgroups}{2.1.3}{X821F9BD687383C1F}
+\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroups for IsGroup and IsFinite}{2.1.2}{X79F841B27961E0BA}
+\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroups}{2.1.3}{X7D0391668782765C}
+\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroupsOfSolvableGroup for IsGroup and IsFinite and IsSolvableGroup}{2.1.4}{X86BA81DD84900187}
+\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroupsCyclicExtension}{2.1.5}{X82E7BE6081D48BE7}
+\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroupsNiceMonomorphism for IsGroup and IsFinite and IsHandledByNiceMonomorphism}{2.1.6}{X843DA0F77A0F3074}
+\makelabel{corefreesub:AllCoreFreeSubgroups}{2.1.7}{X821F9BD687383C1F}
 \makelabel{corefreesub:CoreFreeDegrees}{2.2.1}{X844F04457C6EDC67}
 \makelabel{corefreesub:FaithfulTransitivePermutationRepresentations for IsGroup}{3.1.1}{X80D610507B1029C9}
 \makelabel{corefreesub:MinimalFaithfulTransitivePermutationRepresentation for IsGroup}{3.2.1}{X8746DBA2866336CC}
 \makelabel{corefreesub:MinimalFaithfulTransitivePermutationDegree}{3.2.2}{X7B0EBFFA86B38A0F}
-\makelabel{corefreesub:DrawFTPRGraph for IsPermGroup,IsString,IsString,IsString}{3.3.1}{X81BD070A7B2D0DA3}
+\makelabel{corefreesub:DotFTPRGraph for IsPermGroup}{4.1.1}{X785A165E8417A1D8}
+\makelabel{corefreesub:DrawImageFTPRGraph for IsPermGroup,IsString,IsString}{4.1.2}{X82E5208E8731D895}
+\makelabel{corefreesub:TeXFTPRGraph for IsPermGroup,IsString}{4.1.3}{X7A83E8048625D369}
+\makelabel{corefreesub:DrawTeXFTPRGraph for IsPermGroup,IsString}{4.1.4}{X7A2D33797B6993C8}
