@@ -24,9 +24,8 @@ IsItInstalled :=  function(IT)
 	return true;
 end;
 
-
 AvailableProgramsFTPRGraph := function()
-	local programs, display_programs, pdf_viewer, graphviz_layouts_supported ;
+	local programs, display_programs, pdf_viewer, graphviz_layouts_supported, graphviz_installed;
 	programs := Filtered(["dot2tex"], n -> IsItInstalled(n));
 	if Size(programs) = 0 then
 		Error("Dot2Tex not installed");
@@ -44,7 +43,8 @@ AvailableProgramsFTPRGraph := function()
 		Error("None of the supported display programs are installed. Please install one of the following: okular, evince.");
 	fi;
 	graphviz_layouts_supported := ["dot", "neato", "twopi", "circo", "fdp", "sfdp", "patchwork", "osage"];
-	if Size(pdf_viewer) = 0 then
+	graphviz_installed := Filtered(graphviz_layouts_supported , n -> IsItInstalled(n));
+	if Size(graphviz_installed) = 0 then
 		Error("None of the supported GraphViz layouts are installed. Please install GraphViz.");
 	fi;
 	return	[programs[1],display_programs[1],pdf_viewer[1],graphviz_layouts_supported];
@@ -116,12 +116,13 @@ end );
 
 InstallMethod( DrawImageFTPRGraph, [IsPermGroup,IsString, IsString],
 function( G , layout, filetype )
-	local temp_location, path, image_file_path, tmp_path ;
-	if not layout in ["dot", "neato", "twopi", "circo", "fdp", "sfdp", "patchwork", "osage"] then
-		return Error(Concatenation("Usage DrawFTPRGraph: layout should be one of the supported by Graphviz, not ",layout,".\n"));
+	local temp_location, path, image_file_path, tmp_path, available ;
+	available := AvailableProgramsFTPRGraph();
+	if not layout in available[3] then
+		return Error(Concatenation("Usage DrawFTPRGraph: layout '",layout,"' might not be installed or it is not one of the supported by Graphviz.\n"));
 	fi;
 	if not filetype in ["dot", "xdot", "ps", "pdf", "svg", "svgz", "png", "gif", "jpg", "jpeg", "json", "imap", "cmapx"] then
-		return Error(Concatenation("Usage DrawFTPRGraph: filetype ",filetype," is not supported. Please choose one supported by Graphviz.\n"));
+		return Error(Concatenation("Usage DrawFTPRGraph: filetype '",filetype,"' is not supported. Please choose one supported by Graphviz.\n"));
 	fi;
     temp_location := DirectoryTemporary();
     path := Filename(temp_location,"graph.dot");
@@ -129,7 +130,7 @@ function( G , layout, filetype )
     image_file_path := Filename(temp_location,Concatenation("graph.",filetype));
     PrintTo(path, DotFTPRGraph(G));
     if IsItInstalled(layout) then
-		if "display" = AvailableProgramsFTPRGraph()[2] then
+		if "display" = available[2] then
 			Exec( Concatenation(layout," -T",filetype, " ",path," -o ",image_file_path ));
 			Info(InfoCoreFreeSub,1, Concatenation("File written temporarily to path ", image_file_path));
 			Exec( Concatenation("display ", image_file_path));
@@ -140,7 +141,6 @@ function( G , layout, filetype )
 	else
         Info(InfoCoreFreeSub, 1, "Graphviz might not be available or chosen layout is not installed");
     fi;	
-    #Exec( Concatenation("rm ", tmp_path , "graph.*"));
     return true;
 end );
 
@@ -205,7 +205,6 @@ function(FTPR_mapping)
 	Info(InfoDrawFTPR,1,"No layout provided. Using 'neato' as default");
 	return TeXFTPRGraph(Image(FTPR_mapping), "neato");
 end );
-
 
 
 InstallMethod( DrawTeXFTPRGraph, [IsPermGroup,IsString],
