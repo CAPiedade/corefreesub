@@ -26,9 +26,9 @@
 </span>
 <div class="ContSSBlock">
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X785A165E8417A1D8">4.1-1 DotFTPRGraph</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X82E5208E8731D895">4.1-2 DrawImageFTPRGraph</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7A83E8048625D369">4.1-3 TeXFTPRGraph</a></span>
-<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7A2D33797B6993C8">4.1-4 DrawTeXFTPRGraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8692BA897CFF04D4">4.1-2 DrawFTPRGraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D0B40427CC8BFC5">4.1-3 TeXFTPRGraph</a></span>
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8721FD6E83582BA3">4.1-4 DrawTeXFTPRGraph</a></span>
 </div></div>
 </div>
 
@@ -44,31 +44,124 @@
 
 <h5>4.1-1 DotFTPRGraph</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DotFTPRGraph</code>( <var class="Arg">H</var>, <var class="Arg">K</var>, <var class="Arg">filename</var>[, <var class="Arg">layout</var>, <var class="Arg">filetype</var>] )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p>Returns: exports both a .dot file and an image file</p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DotFTPRGraph</code>( <var class="Arg">G</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DotFTPRGraph</code>( <var class="Arg">map</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DotFTPRGraph</code>( <var class="Arg">H</var>, <var class="Arg">K</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: a graph written in dot</p>
 
-<p>Given a transitive permutation group <var class="Arg">G</var>, a faithful transitive permutation representation of a group <var class="Arg">map</var> or a group <var class="Arg">H</var> and one of its core-free subgroups <var class="Arg">K</var>, the function will write a .dot file in the current path where GAP is running. If Graphviz is installed, the function will also create an image file on the current path. If neither layout nor the filetype is specified, then the default layout is "neato" and the filetype is "svg". The layouts can be one of the following: ["dot", "neato", "twopi", "circo", "fdp", "sfdp", "patchwork", "osage"] while the filetypes can be one of the following: ["dot", "xdot", "ps", "pdf", "svg", "svgz", "png", "gif", "jpg", "jpeg", "json", "imap", "cmapx"].</p>
+<p>Given a transitive permutation group <var class="Arg">G</var>, a faithful transitive permutation representation of a group <var class="Arg">map</var> or a group <var class="Arg">H</var> and one of its core-free subgroups <var class="Arg">K</var>, the function will output the permutation representation graph written in the language of a Dot file.</p>
 
 
 <div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup(4);; H := Subgroup(G,[(1,2)]);; K := Subgroup(G,[(1,2,3)]);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DotFTPRGraph(G);</span>
+"digraph {\n1 -&gt; 2 [label = r0];\n 2 -&gt; 3 [label = r0];\n 3 -&gt; 4 [label = r0];\n 4 -&gt; 1 [label = r0];\n 1 -&gt; 2 [label = r1,dir=none];\n }\n"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DotFTPRGraph(G,H);</span>
+"digraph {\n1 -&gt; 10 [label = r0];\n 2 -&gt; 12 [label = r0];\n 3 -&gt; 11 [label = r0];\n 4 -&gt; 8 [label = r0];\n 5 -&gt; 9 [label = r0];\n 6 -&gt; 7 [label = r0];\n 7 -&gt; 3 [label = r0];\n 8 -&gt; 2 [label = r0];\n 9 -&gt; 1 [label = r0];\n 10 -&gt; 5 [label = r0];\n 11 -&gt; 6 [label = r0];\n 12 -&gt; 4 [label = r0];\n 2 -&gt; 3 [label = r1,dir=none];\n 4 -&gt; 7 [label = r1,dir=none];\n 5 -&gt; 8 [label = r1,dir=none];\n 6 -&gt; 9 [label = r1,dir=none];\n 10 -&gt; 11 [label = r1,dir=none];\n }\n"
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Print(DotFTPRGraph(FactorCosetAction(G,K)));</span>
+digraph {
+1 -&gt; 3 [label = r0];
+2 -&gt; 4 [label = r0];
+3 -&gt; 5 [label = r0];
+4 -&gt; 6 [label = r0];
+5 -&gt; 8 [label = r0];
+6 -&gt; 7 [label = r0];
+7 -&gt; 2 [label = r0];
+8 -&gt; 1 [label = r0];
+1 -&gt; 2 [label = r1,dir=none];
+3 -&gt; 5 [label = r1,dir=none];
+4 -&gt; 6 [label = r1,dir=none];
+7 -&gt; 8 [label = r1,dir=none];
+}
+</pre></div>
+
+<p><a id="X8692BA897CFF04D4" name="X8692BA897CFF04D4"></a></p>
+
+<h5>4.1-2 DrawFTPRGraph</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DrawFTPRGraph</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: an image of the faithful transitive permutation representation graph</p>
+
+<p>This global function takes as input the following arguments:</p>
+
+
+<ul>
+<li><p><var class="Arg">arg</var> := <var class="Arg">dotstring</var>[, <var class="Arg">rec</var>]</p>
+
+</li>
+<li><p><var class="Arg">arg</var> := <var class="Arg">G</var>[, <var class="Arg">rec</var>]</p>
+
+</li>
+<li><p><var class="Arg">arg</var> := <var class="Arg">map</var>[,<var class="Arg">rec</var>]</p>
+
+</li>
+<li><p><var class="Arg">arg</var> := <var class="Arg">H</var>,<var class="Arg">K</var>[,<var class="Arg">rec</var>]</p>
+
+</li>
+</ul>
+<p>Given a string of a graph in dot <var class="Arg">dotstring</var>, this function will output and show an image of the graph. Alternatively, a transitive permutation group <var class="Arg">G</var>, a faithful transitive permutation representation of a group <var class="Arg">map</var> or a group <var class="Arg">H</var> and one of its core-free subgroups <var class="Arg">K</var>, can be given. This will use <var class="Arg">DotFTPRGraph</var> to calculate the <var class="Arg">dotstring</var>. Moreover, extra parameters can be given as a form of a record <var class="Arg">rec</var>. The set of parameters that can be given inside a record can be found below, with information regarding their effect:</p>
+
+
+<ul>
+<li><p><var class="Arg">layout</var> - (a string) the engine that is used to calculate the layout of the vertices and edges of graph to output in the dot image (not used for TeX output). The supported layouts are "dot", "neato", "twopi", "circo", "fdp", "sfdp", "patchwork", "osage". By default "neato" is used.</p>
+
+</li>
+<li><p><var class="Arg">directory</var> - (a string) the name of the folder where the dot and image files are created. By default, a temporary folder of GAP is used.</p>
+
+</li>
+<li><p><var class="Arg">path</var> - (a string) the path where the directory will be created. If the directory is not specified, a folder "tmp.viz" will be created at the determined path. If no path is given, the default path is "~/". If no path nor directory is given, it will be saved in a temporary path of GAP.</p>
+
+</li>
+<li><p><var class="Arg">file</var> - (a string) the name of the dot and image files created. By default, the name will be "vizpicture".</p>
+
+</li>
+<li><p><var class="Arg">filetype</var> - (a string) the image file type that will be created. By default, the filetype will be "pdf".</p>
+
+</li>
+<li><p><var class="Arg">viewer</var> - (a string) the name of the visualizer used to open the image. The supported ones are "evince","xpdf","xdg-open","okular", "gv", "open" (for the different System Architectures).</p>
+
+</li>
+<li><p><var class="Arg">tikz</var> - (a boolean) if true, then the function will produce a TeX file, compile it to pdf and open.</p>
+
+</li>
+<li><p><var class="Arg">viewtex</var> - (a boolean) if true, then the function will produce a TeX file and return the Tex file (but it will not compile and open any pdf from the TeX file).</p>
+
+</li>
+</ul>
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup(4);; H := Subgroup(G,[(1,2)]);; K := Subgroup(G,[(1,2,3)]);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DrawFTPRGraph(G);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">texfile := DrawFTPRGraph(G,H,rec(viewtex := true));; Print(texfile{[1..152]});</span>
+\documentclass{article}
+\usepackage[x11names, svgnames, rgb]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{snakes,arrows,shapes}
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetInfoLevel(InfoDrawFTPR,2);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DrawFTPRGraph(FactorCosetAction(G,K),rec(directory := "myfolder", layout := "fdp"));</span>
+#I  The temporary directory used is: ~/myfolder/
 
 </pre></div>
 
-<p><a id="X82E5208E8731D895" name="X82E5208E8731D895"></a></p>
-
-<h5>4.1-2 DrawImageFTPRGraph</h5>
-
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DrawImageFTPRGraph</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var>, <var class="Arg">arg3</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X7A83E8048625D369" name="X7A83E8048625D369"></a></p>
+<p><a id="X7D0B40427CC8BFC5" name="X7D0B40427CC8BFC5"></a></p>
 
 <h5>4.1-3 TeXFTPRGraph</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TeXFTPRGraph</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
-<p><a id="X7A2D33797B6993C8" name="X7A2D33797B6993C8"></a></p>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TeXFTPRGraph</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: an image of the faithful transitive permutation representation graph</p>
+
+<p>The same as <var class="Arg">DrawFTPRGraph</var> with the parameter <var class="Arg">viewtex := true</var>.</p>
+
+<p><a id="X8721FD6E83582BA3" name="X8721FD6E83582BA3"></a></p>
 
 <h5>4.1-4 DrawTeXFTPRGraph</h5>
 
-<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DrawTeXFTPRGraph</code>( <var class="Arg">arg1</var>, <var class="Arg">arg2</var> )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; DrawTeXFTPRGraph</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
+<p>Returns: an image of the faithful transitive permutation representation graph</p>
+
+<p>The same as <var class="Arg">DrawFTPRGraph</var> with the parameter <var class="Arg">tikz := true</var>.</p>
+
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapInd.html">[Next Chapter]</a>&nbsp;  </div>
 
