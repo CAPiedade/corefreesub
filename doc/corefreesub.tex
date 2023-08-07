@@ -99,26 +99,27 @@
 permutation representations \mbox{}}}\\
 \vfill
 
-{\Huge  0.1 \mbox{}}\\[1cm]
-{ 8 November 2022 \mbox{}}\\[1cm]
+{\Huge  0.3 \mbox{}}\\[1cm]
+{ 7 August 2023 \mbox{}}\\[1cm]
 \mbox{}\\[2cm]
 {\Large \textbf{ Claudio Alexandre Piedade\\
    \mbox{}}}\\
 {\Large \textbf{ Manuel Delgado\\
-  \mbox{}}}\\
+   \mbox{}}}\\
 \hypersetup{pdfauthor= Claudio Alexandre Piedade\\
    ;  Manuel Delgado\\
-  }
+   }
 \end{center}\vfill
 
 \mbox{}\\
 {\mbox{}\\
 \small \noindent \textbf{ Claudio Alexandre Piedade\\
-   }  Email: \href{mailto://claudioalexandrepiedade@gmail.com} {\texttt{claudioalexandrepiedade@gmail.com}}\\
+   }  Email: \href{mailto://claudio.piedade@fc.up.pt} {\texttt{claudio.piedade@fc.up.pt}}\\
   Homepage: \href{https://www.fc.up.pt/pessoas/claudio.piedade/} {\texttt{https://www.fc.up.pt/pessoas/claudio.piedade/}}}\\
 {\mbox{}\\
 \small \noindent \textbf{ Manuel Delgado\\
-  }  Email: \href{mailto://} {\texttt{}}}\\
+   }  Email: \href{mailto://mdelgado@fc.up.pt} {\texttt{mdelgado@fc.up.pt}}\\
+  Homepage: \href{https://cmup.fc.up.pt/cmup/mdelgado/} {\texttt{https://cmup.fc.up.pt/cmup/mdelgado/}}}\\
 \end{titlepage}
 
 \newpage\setcounter{page}{2}
@@ -170,7 +171,6 @@ a boolean
 
  Given a group \mbox{\texttt{\mdseries\slshape G}} and one of its subgroups \mbox{\texttt{\mdseries\slshape H}}, it returns whether \mbox{\texttt{\mdseries\slshape H}} is core-free in \mbox{\texttt{\mdseries\slshape G}}. 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");;|
   !gapprompt@gap>| !gapinput@G := SymmetricGroup(4);; H := Subgroup(G, [(1,3)(2,4)]);;|
   !gapprompt@gap>| !gapinput@Core(G,H);|
   Group(())
@@ -201,7 +201,6 @@ a list
 
  Returns a list of all conjugacy classes of core-free subgroups of \mbox{\texttt{\mdseries\slshape G}} 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");;|
   !gapprompt@gap>| !gapinput@G := SymmetricGroup(4);; dh := DihedralGroup(10);;|
   !gapprompt@gap>| !gapinput@CoreFreeConjugacyClassesSubgroups(G);|
   [ Group( () )^G, Group( [ (1,3)(2,4) ] )^G, Group( [ (3,4) ] )^G, Group( [ (2,4,3) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G, Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G ]
@@ -283,7 +282,6 @@ a list
 
  Returns a list of all core-free subgroups of \mbox{\texttt{\mdseries\slshape G}} 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");;|
   !gapprompt@gap>| !gapinput@G := SymmetricGroup(4);; dh := DihedralGroup(10);;|
   !gapprompt@gap>| !gapinput@AllCoreFreeSubgroups(G);|
   [ Group(()), Group([ (1,3)(2,4) ]), Group([ (1,4)(2,3) ]), Group([ (1,2)(3,4) ]), Group([ (3,4) ]), Group([ (2,4) ]), Group([ (2,3) ]), Group([ (1,4) ]), Group([ (1,3) ]), Group([ (1,2) ]), Group([ (2,4,3) ]), Group([ (1,3,2) ]), Group([ (1,3,4) ]), Group([ (1,4,2) ]), Group([ (3,4), (1,2)(3,4) ]), Group([ (2,4), (1,3)(2,4) ]), Group([ (2,3), (1,4)(2,3) ]), Group([ (1,3,2,4), (1,2)(3,4) ]), Group([ (1,2,3,4), (1,3)(2,4) ]), Group([ (1,2,4,3), (1,4)(2,3) ]), Group([ (3,4), (2,4,3) ]), Group([ (1,3), (1,3,2) ]), Group([ (1,3), (1,3,4) ]), Group([ (1,4), (1,4,2) ]) ]
@@ -317,7 +315,6 @@ a list
  Returns a list of all possible degrees of faithful transitive permutation
 representations of \mbox{\texttt{\mdseries\slshape G}}. The degrees of a faithful transitive permutation representation of \mbox{\texttt{\mdseries\slshape G}} are the index of its core-free subgroups. 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");;|
   !gapprompt@gap>| !gapinput@G := SymmetricGroup(4);; dh := DihedralGroup(10);;|
   !gapprompt@gap>| !gapinput@CoreFreeDegrees(G);|
   [ 24, 12, 8, 6, 4 ]
@@ -366,7 +363,6 @@ a list
  For a finite group \mbox{\texttt{\mdseries\slshape G}}, \mbox{\texttt{\mdseries\slshape FaithfulTransitivePermutationRepresentations}} returns a list of a faithful transitive permutation representation of \mbox{\texttt{\mdseries\slshape G}} for each degree. If \mbox{\texttt{\mdseries\slshape all{\textunderscore}ftpr}} is true, then it will return a list of all faithful transitive permutation
 representations. 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");;|
   !gapprompt@gap>| !gapinput@sp := SymplecticGroup(4,2);;|
   !gapprompt@gap>| !gapinput@CoreFreeDegrees(sp);|
   [ 720, 360, 240, 180, 144, 120, 90, 80, 72, 60, 45, 40, 36, 30, 20, 15, 12, 10, 6 ]
@@ -404,7 +400,6 @@ an isomorphism (or a list of isomorphisms)
  For a finite group \mbox{\texttt{\mdseries\slshape G}}, \mbox{\texttt{\mdseries\slshape MinimalFaithfulTransitivePermutationRepresentation}} returns an isomorphism of \mbox{\texttt{\mdseries\slshape G}} into the symmetric group of minimal degree acting transitively on its domain.
 If \mbox{\texttt{\mdseries\slshape all{\textunderscore}minimal{\textunderscore}ftpr}} is set as \mbox{\texttt{\mdseries\slshape true}}, then it returns a list of all isomorphisms \mbox{\texttt{\mdseries\slshape G}} into the symmetric group of minimal degree. 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");;|
   !gapprompt@gap>| !gapinput@sp := SymplecticGroup(4,2);;|
   !gapprompt@gap>| !gapinput@min_ftpr := MinimalFaithfulTransitivePermutationRepresentation(sp);|
   CompositionMapping( <action epimorphism>, <action isomorphism> )
@@ -433,7 +428,6 @@ an integer
  For a finite group \mbox{\texttt{\mdseries\slshape G}}, \mbox{\texttt{\mdseries\slshape MinimalFaithfulTransitivePermutationDegree}} returns the least positive integer n such that \mbox{\texttt{\mdseries\slshape G}} is isomorphic to a subgroup of the symmetric group of degree n acting
 transitively on its domain. 
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@LoadPackage("CoreFreeSub");;|
   !gapprompt@gap>| !gapinput@sp := SymplecticGroup(4,2);; g:=SimpleGroup("PSL",3,5);;|
   !gapprompt@gap>| !gapinput@MinimalFaithfulTransitivePermutationDegree(sp);|
   6
@@ -629,6 +623,8 @@ an image of the faithful transitive permutation representation graph
 
 \printindex
 
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
+\immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \immediate\write\pagenrlog{["Ind", 0, 0], \arabic{page},}
 \newpage
 \immediate\write\pagenrlog{["End"], \arabic{page}];}

@@ -10,8 +10,8 @@ SetPackageInfo( rec(
 
 PackageName := "corefreesub",
 Subtitle := "A GAP Package for calculating the core-free subgroups and their faithful transitive permutation representations",
-Version := "0.2",
-Date := "08/11/2022", # dd/mm/yyyy format
+Version := "0.3",
+Date := "07/08/2023", # dd/mm/yyyy format
 License := "GPL-2.0-or-later",
 
 Persons := [

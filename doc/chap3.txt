@@ -22,7 +22,6 @@
   transitive permutation representations.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage("CoreFreeSub");;[127X[104X
     [4X[25Xgap>[125X [27Xsp := SymplecticGroup(4,2);;[127X[104X
     [4X[25Xgap>[125X [27XCoreFreeDegrees(sp);[127X[104X
     [4X[28X[ 720, 360, 240, 180, 144, 120, 90, 80, 72, 60, 45, 40, 36, 30, 20, 15, 12, 10, 6 ][128X[104X
@@ -53,7 +52,6 @@
   degree.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage("CoreFreeSub");;[127X[104X
     [4X[25Xgap>[125X [27Xsp := SymplecticGroup(4,2);;[127X[104X
     [4X[25Xgap>[125X [27Xmin_ftpr := MinimalFaithfulTransitivePermutationRepresentation(sp);[127X[104X
     [4X[28XCompositionMapping( <action epimorphism>, <action isomorphism> )[128X[104X
@@ -75,7 +73,6 @@
   symmetric group of degree n acting transitively on its domain.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XLoadPackage("CoreFreeSub");;[127X[104X
     [4X[25Xgap>[125X [27Xsp := SymplecticGroup(4,2);; g:=SimpleGroup("PSL",3,5);;[127X[104X
     [4X[25Xgap>[125X [27XMinimalFaithfulTransitivePermutationDegree(sp);[127X[104X
     [4X[28X6[128X[104X
