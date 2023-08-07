@@ -139,11 +139,11 @@ DeclareOperation( "FaithfulTransitivePermutationRepresentations", [IsGroup]);
 #! gap> min_ftpr := MinimalFaithfulTransitivePermutationRepresentation(sp);
 #! CompositionMapping( <action epimorphism>, <action isomorphism> )
 #! gap> min_ftpr(sp);
-#! Group([ (1,3,2,4), (1,3)(2,5,6,4) ])
+#! Group([ (1,6,4,3), (1,3)(2,4,6,5) ])
 #! gap> min_ftprs := MinimalFaithfulTransitivePermutationRepresentation(sp,true);
 #! [ CompositionMapping( <action epimorphism>, <action isomorphism> ), CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
 #! gap> min_ftprs[2](sp);
-#! Group([ (1,3,4,2), (1,2,5,3)(4,6) ])
+#! Group([ (2,3,6,5), (1,3)(2,5,6,4) ])
 #! @EndExampleSession
 DeclareOperation( "MinimalFaithfulTransitivePermutationRepresentation", [IsGroup]);
 
