@@ -4,7 +4,7 @@
 #############################################################################
 
 if not IsBound(VizOptionsForSplash) then 
-  BindGlobal("VizOptionsForSplash",["path","directory","file","viewer","tikz","filetype","latexpoints","latexorientation","latexpapersize"]);
+  BindGlobal("VizOptionsForSplash",["viewtex","layout","path","directory","file","viewer","tikz","filetype"]);
 fi;
 
 
@@ -26,9 +26,15 @@ fi;
 if not IsBound(Splash) then 
   BindGlobal("Splash",
   function(arg)
-    local opt, dotstring, f, s, path, dir, tdir, file, viewer, tikz, filetype, i, 
-          latexstring, command;
-
+    local opt, dotstring, PermGroup, GeneralMap, G1, G2, path, dir, tdir, file, viewer, tikz, filetype, i, 
+          latexstring, command, layout, viewtex, tmp;
+    if IsList(arg[1]) then
+      tmp := [];
+      for i in arg do
+        Append(tmp,i);
+      od;
+      arg := tmp;
+    fi;
     ##########
     # there are global warnings concerning the avaiability of software
     # there is no need to put them here
@@ -38,17 +44,21 @@ if not IsBound(Splash) then
       opt := rec();
     else
       if not IsSubset(VizOptionsForSplash,RecNames( opt)) then
-        Info(InfoViz,1,"The options ", Difference(RecNames(opt),
+        Info(InfoDrawFTPR,1,"The options ", Difference(RecNames(opt),
          VizOptionsForSplash)," have no effect.");
       fi;
     fi;
     dotstring := First(arg, k -> IsString(k));
     if dotstring = fail then
-      f := First(arg, k -> IsFunction(k));
-      s := First(arg, k -> IsSemigroup(k));
-      dotstring := f(s);
+      PermGroup := First(arg, k -> IsPermGroup(k));
+      GeneralMap := First(arg, k -> IsGeneralMapping(k));
+      G1 := First(arg, k -> IsGroup(k));
+      G2 := First(arg, k -> IsGroup(k) and IsSubgroup(G1,k) and G1 <> k);
+      if PermGroup <> fail and G2 = fail then dotstring := DotFTPRGraph(PermGroup);
+      elif GeneralMap <> fail then dotstring := DotFTPRGraph(GeneralMap);
+      elif G1 <> fail and G2 <> fail then dotstring := DotFTPRGraph(G1,G2);
+      fi;
     fi;
-
     # begin options
     #path
     if IsBound(opt.path) then
@@ -61,7 +71,7 @@ if not IsBound(Splash) then
     if IsBound(opt.directory) then
       if not opt.directory in DirectoryContents(path) then
         Exec(Concatenation("mkdir ",path,opt.directory));
-        Info(InfoViz, 1, "The temporary directory ",path,opt.directory, 
+        Info(InfoDrawFTPR, 1, "The temporary directory ",path,opt.directory, 
          " has been created");
       fi;
       dir := Concatenation(path,opt.directory,"/");
@@ -75,7 +85,7 @@ if not IsBound(Splash) then
       dir := Filename(tdir, "");
     fi;
     #
-    Info(InfoViz,1,"The temporary directory used is: ", dir,"\n");
+    Info(InfoDrawFTPR,2,"The temporary directory used is: ", dir,"\n");
 
     #file
     if IsBound(opt.file) then
@@ -102,48 +112,32 @@ if not IsBound(Splash) then
       filetype := opt.filetype;
     else
       filetype := "pdf";
-    fi;  
+    fi;
+
+    # layout
+    if IsBound(opt.layout) and opt.layout in ["dot", "neato", "twopi", "circo", "fdp", "sfdp", "patchwork", "osage"] then
+      layout := opt.layout;
+    elif IsBound(opt.layout) and not opt.layout in ["dot", "neato", "twopi", "circo", "fdp", "sfdp", "patchwork", "osage"] and not tikz then
+      Info(InfoDrawFTPR,1,"The layout is not supported. Using neato instead.\n");
+      layout := "neato";
+    else
+      layout := "neato";
+    fi;
+
+    #texview
+    if IsBound(opt.viewtex) then
+      viewtex := opt.viewtex;
+    else
+      viewtex := false;
+    fi;
     ######################
-    if tikz or dotstring{[1..5]}="%tikz" then
-      if dotstring{[1..5]}="%tikz" then #the string is a latex string
-        #process specific options
-        #for i in RecNames(VizDefaultOptionsRecordForDisplayingWithLatex) do
-        #  if not IsBound(opt.(i)) then
-        #    opt.(i) := VizDefaultOptionsRecordForDisplayingWithLatex.(i);
-        #  fi;
-        #od;
-      #  latexstring := "\\documentclass[";
-      #  for i in RecNames(VizDefaultOptionsRecordForDisplayingWithLatex) do
-      #    Append(latexstring,Concatenation(opt.(i),","));
-      #  od;
-      #  Append(latexstring,"]{article}\n");
-      #  Append(latexstring,"\\usepackage[vmargin=2cm,hmargin=2cm]{geometry}\n");
-      #  Append(latexstring,"\\usepackage[x11names, rgb]{xcolor}\n");
-   #  #   Append(latexstring,"\\usepackage[utf8]{inputenc}\n");
-      #  Append(latexstring,"\\usepackage{pgf}\n");
-      #  Append(latexstring,"\\usepackage{tikz}\n");
-      #  Append(latexstring,"\\usepgfmodule{plot}\n");
-      #  Append(latexstring,"\\usepgflibrary{plothandlers}\n");
-      #  Append(latexstring,"\\usetikzlibrary{shapes.geometric}\n");
-      #  Append(latexstring,"\\usetikzlibrary{shadings}\n");
-      #  Append(latexstring,"\\usepackage{amsmath}\n");
-      #  Append(latexstring,"\%\n");
-      #  Append(latexstring,"\\begin{document}\n");
-      #  Append(latexstring,"\\pagestyle{empty}\n");
-      #  Append(latexstring,"\\begin{center}\n");
-      #  Append(latexstring,Concatenation("\\input{",file,"1}\n"));
-      #  Append(latexstring,"\\end{center}\n");
-      #  Append(latexstring,"\\end{document}\n");
-        FileString(Concatenation(dir, file, ".tex"), dotstring);
-
-        #FileString(Concatenation(dir,file,"1.tex"),dotstring);
-      else
-
-        FileString(Concatenation(dir,file,".dot"),dotstring);
-
-        command := Concatenation("dot2tex -ftikz ",dir,file,".dot"," > ",
-         dir,file,".tex");
-        Exec(command);
+    if tikz or viewtex then
+      FileString(Concatenation(dir,file,".dot"),dotstring);
+      command := Concatenation("dot2tex -ftikz ",dir,file,".dot"," > ",
+        dir,file,".tex");
+      Exec(command);
+      if viewtex then
+        return ReadAll(InputTextFile(Concatenation(dir,file,".tex")));
       fi;
 
       command := Concatenation("cd ",dir,"; ","pdflatex ",dir,file, 
@@ -155,10 +149,9 @@ if not IsBound(Splash) then
     fi;
 
     FileString(Concatenation(dir,file,".dot"),dotstring);
-    command := Concatenation("dot -T",filetype," ",dir,file,".dot"," -o ", dir,file,".",filetype);
+    command := Concatenation(layout," -T",filetype," ",dir,file,".dot"," -o ", dir,file,".",filetype);
     Exec(command);
     Exec (Concatenation(viewer, " ",dir,file,".",filetype," 2>/dev/null 1>/dev/null &"));
     return;
-
   end);
 fi;
