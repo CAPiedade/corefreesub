@@ -5,43 +5,8 @@
 #
 #
 #
-InstallGlobalFunction( IsCoreFree,
-        function(G,H)
-  if Size(Core(G,H)) = 1 then return true; else return false; fi; 
-end);
 
-InstallGlobalFunction( CoreFreeConjugacyClassesSubgroups,
-        function(G)
-  local iso, H, n, i, classes;
-  if IsGroup(G) and IsFinite(G) then
-    if IsBound(G!.coreFreeConjugacyClassesSubgroups) then
-      return G!.coreFreeConjugacyClassesSubgroups;
-    elif IsTrivial(G) then
-      G!.coreFreeConjugacyClassesSubgroups := [ConjugacyClassSubgroups(G,G)];
-      G!.coreFreeDegrees := [1];
-      return G!.coreFreeConjugacyClassesSubgroups;
-    elif HasIsHandledByNiceMonomorphism(G) then
-      return CoreFreeConjugacyClassesSubgroupsNiceMonomorphism(G);
-    elif IsSolvableGroup(G) then
-      return CoreFreeConjugacyClassesSubgroupsOfSolvableGroup(G);
-    elif not IsPermGroup(G) then 
-      iso := IsomorphismPermGroup(G);
-      H := Image(iso);
-      classes := List(Filtered(CoreFreeConjugacyClassesSubgroupsCyclicExtension(H), n -> IsCoreFree(H,n[1])), i -> ConjugacyClassSubgroups(G,PreImage(iso,Representative(i))) );
-      G!.coreFreeConjugacyClassesSubgroups := classes;
-      G!.coreFreeDegrees := H!.coreFreeDegrees;
-      return G!.coreFreeConjugacyClassesSubgroups;
-    else
-      return CoreFreeConjugacyClassesSubgroupsCyclicExtension(G);
-    fi;
-  elif IsGroup(G) and not IsFinite(G) then
-    Error("Group should be finite");
-  else
-    Error("Argument has to be a Group"); 
-  fi;
-end );
-
-InstallMethod( CoreFreeConjugacyClassesSubgroupsOfSolvableGroup, [IsGroup and IsFinite and IsSolvableGroup],
+BindGlobal( "CoreFreeConjugacyClassesSubgroupsOfSolvableGroup",
         function(G)
   local s,i,c,CoreFreeClasses,CoreFreeDegrees,map,GI;
 
@@ -80,7 +45,7 @@ end);
 SOLVABILITY_IMPLYING_FUNCTIONS:=
   [IsSolvableGroup,IsNilpotentGroup,IsPGroup,IsCyclic];
 
-InstallGlobalFunction(CoreFreeConjugacyClassesSubgroupsCyclicExtension,
+BindGlobal("CoreFreeConjugacyClassesSubgroupsCyclicExtension",
         function(arg)
   local G,                 # group
         func,              # test function
@@ -540,7 +505,7 @@ InstallGlobalFunction(CoreFreeConjugacyClassesSubgroupsCyclicExtension,
   return G!.coreFreeConjugacyClassesSubgroups;
 end);
 
-InstallMethod( CoreFreeConjugacyClassesSubgroupsNiceMonomorphism, [IsGroup and IsFinite and IsHandledByNiceMonomorphism],
+BindGlobal( "CoreFreeConjugacyClassesSubgroupsNiceMonomorphism",
         function(G)
   local hom, classes,NiceO;
   hom:= NiceMonomorphism( G );
@@ -555,6 +520,44 @@ InstallMethod( CoreFreeConjugacyClassesSubgroupsNiceMonomorphism, [IsGroup and I
   G!.coreFreeDegrees := Unique(NiceO!.coreFreeDegrees);
   return G!.coreFreeConjugacyClassesSubgroups;
 end );
+
+InstallGlobalFunction( IsCoreFree,
+        function(G,H)
+  if Size(Core(G,H)) = 1 then return true; else return false; fi; 
+end);
+
+InstallGlobalFunction( CoreFreeConjugacyClassesSubgroups,
+        function(G)
+  local iso, H, n, i, classes;
+  if IsGroup(G) and IsFinite(G) then
+    if IsBound(G!.coreFreeConjugacyClassesSubgroups) then
+      return G!.coreFreeConjugacyClassesSubgroups;
+    elif IsTrivial(G) then
+      G!.coreFreeConjugacyClassesSubgroups := [ConjugacyClassSubgroups(G,G)];
+      G!.coreFreeDegrees := [1];
+      return G!.coreFreeConjugacyClassesSubgroups;
+    elif HasIsHandledByNiceMonomorphism(G) then
+      return CoreFreeConjugacyClassesSubgroupsNiceMonomorphism(G);
+    elif IsSolvableGroup(G) then
+      return CoreFreeConjugacyClassesSubgroupsOfSolvableGroup(G);
+    elif not IsPermGroup(G) then 
+      iso := IsomorphismPermGroup(G);
+      H := Image(iso);
+      classes := List(Filtered(CoreFreeConjugacyClassesSubgroupsCyclicExtension(H), n -> IsCoreFree(H,n[1])), i -> ConjugacyClassSubgroups(G,PreImage(iso,Representative(i))) );
+      G!.coreFreeConjugacyClassesSubgroups := classes;
+      G!.coreFreeDegrees := H!.coreFreeDegrees;
+      return G!.coreFreeConjugacyClassesSubgroups;
+    else
+      return CoreFreeConjugacyClassesSubgroupsCyclicExtension(G);
+    fi;
+  elif IsGroup(G) and not IsFinite(G) then
+    Error("Group should be finite");
+  else
+    Error("Argument has to be a Group"); 
+  fi;
+end );
+
+
 
 
 InstallGlobalFunction( AllCoreFreeSubgroups,
@@ -573,9 +576,11 @@ InstallGlobalFunction( CoreFreeDegrees,
   if IsBound(G!.coreFreeDegrees) then
     return G!.coreFreeDegrees;
   elif IsBound(G!.coreFreeConjugacyClassesSubgroups) then
-    return Unique(List(G!.coreFreeConjugacyClassesSubgroups, n -> Index(G,n[1])));
+    G!.coreFreeDegrees := Unique(List(G!.coreFreeConjugacyClassesSubgroups, n -> Index(G,n[1])));
+    return G!.coreFreeDegrees;
   else
-    return Unique(List(CoreFreeConjugacyClassesSubgroups(G), n -> Index(G,n[1])));
+    G!.coreFreeDegrees := Unique(List(CoreFreeConjugacyClassesSubgroups(G), n -> Index(G,n[1])));
+    return G!.coreFreeDegrees;
   fi;
 end );
 
