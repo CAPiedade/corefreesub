@@ -1,3 +1,6 @@
+[![Build Status](https://github.com/CAPiedade/corefreesub/workflows/CI/badge.svg?branch=master)](https://github.com/CAPiedade/corefreesub/actions?query=workflow%3ACI+branch%3Amaster)
+[![Code Coverage](https://codecov.io/github/CAPiedade/corefreesub/coverage.svg?branch=master&token=)](https://codecov.io/gh/CAPiedade/corefreesub)
+
 # GAP Package corefreesub
 
 The CoreFreeSub package is a package to compute faithful transitive permutation representations (FTPRs) of groups. Moreover, this package provides tools to determine the degrees of these FTPRs and lists core-free subgroups. Furthermore, this package allows a graph representation of the permutation representations.
