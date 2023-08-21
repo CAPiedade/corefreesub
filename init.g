@@ -6,4 +6,3 @@
 
 ReadPackage( "corefreesub", "gap/corefreesub.gd");
 ReadPackage( "corefreesub", "gap/drawftpr.gd");
-ReadPackage( "corefreesub", "gap/corefreesub-display.gd");

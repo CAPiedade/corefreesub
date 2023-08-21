@@ -7,7 +7,7 @@
 ##    
 ##    
 ##
-## Licensed under the GPL 3 or later.
+## Licensed under the GPL 2 or later.
 ##
 ########################################################################
 # 

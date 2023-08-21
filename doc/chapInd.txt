@@ -2,16 +2,15 @@
   
   [1XIndex[101X
   
-  [2XAllCoreFreeSubgroups[102X 2.1-7 
-  [2XCoreFreeConjugacyClassesSubgroups[102X 2.1-3 
-      for IsGroup and IsFinite 2.1-2 
-  [2XCoreFreeConjugacyClassesSubgroupsCyclicExtension[102X 2.1-5 
-  [2XCoreFreeConjugacyClassesSubgroupsNiceMonomorphism[102X, for IsGroup and IsFinite and IsHandledByNiceMonomorphism 2.1-6 
-  [2XCoreFreeConjugacyClassesSubgroupsOfSolvableGroup[102X, for IsGroup and IsFinite and IsSolvableGroup 2.1-4 
+  [2XAllCoreFreeSubgroups[102X 2.1-3 
+  [2XCoreFreeConjugacyClassesSubgroups[102X 2.1-2 
   [2XCoreFreeDegrees[102X 2.2-1 
   [2XDotFTPRGraph[102X, for IsGeneralMapping 4.1-1 
+      for IsGeneralMapping, IsList 4.1-1 
       for IsGroup,IsGroup 4.1-1 
+      for IsGroup,IsGroup, IsList 4.1-1 
       for IsPermGroup 4.1-1 
+      for IsPermGroup, IsList 4.1-1 
   [2XDrawFTPRGraph[102X 4.1-2 
   [2XDrawTeXFTPRGraph[102X 4.1-4 
   [2XFaithfulTransitivePermutationRepresentations[102X, for IsGroup 3.1-1 

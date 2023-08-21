@@ -12,19 +12,18 @@
 \makelabel{corefreesub:Drawing functions}{4.1}{X82F35AB4823114BD}
 \makelabel{corefreesub:Index}{Ind}{X83A0356F839C696F}
 \makelabel{corefreesub:IsCoreFree}{2.1.1}{X7A9042C27F0BA85B}
-\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroups for IsGroup and IsFinite}{2.1.2}{X79F841B27961E0BA}
-\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroups}{2.1.3}{X7D0391668782765C}
-\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroupsOfSolvableGroup for IsGroup and IsFinite and IsSolvableGroup}{2.1.4}{X86BA81DD84900187}
-\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroupsCyclicExtension}{2.1.5}{X82E7BE6081D48BE7}
-\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroupsNiceMonomorphism for IsGroup and IsFinite and IsHandledByNiceMonomorphism}{2.1.6}{X843DA0F77A0F3074}
-\makelabel{corefreesub:AllCoreFreeSubgroups}{2.1.7}{X821F9BD687383C1F}
+\makelabel{corefreesub:CoreFreeConjugacyClassesSubgroups}{2.1.2}{X7D0391668782765C}
+\makelabel{corefreesub:AllCoreFreeSubgroups}{2.1.3}{X821F9BD687383C1F}
 \makelabel{corefreesub:CoreFreeDegrees}{2.2.1}{X844F04457C6EDC67}
 \makelabel{corefreesub:FaithfulTransitivePermutationRepresentations for IsGroup}{3.1.1}{X80D610507B1029C9}
 \makelabel{corefreesub:MinimalFaithfulTransitivePermutationRepresentation for IsGroup}{3.2.1}{X8746DBA2866336CC}
 \makelabel{corefreesub:MinimalFaithfulTransitivePermutationDegree}{3.2.2}{X7B0EBFFA86B38A0F}
 \makelabel{corefreesub:DotFTPRGraph for IsPermGroup}{4.1.1}{X785A165E8417A1D8}
+\makelabel{corefreesub:DotFTPRGraph for IsPermGroup, IsList}{4.1.1}{X785A165E8417A1D8}
 \makelabel{corefreesub:DotFTPRGraph for IsGeneralMapping}{4.1.1}{X785A165E8417A1D8}
+\makelabel{corefreesub:DotFTPRGraph for IsGeneralMapping, IsList}{4.1.1}{X785A165E8417A1D8}
 \makelabel{corefreesub:DotFTPRGraph for IsGroup,IsGroup}{4.1.1}{X785A165E8417A1D8}
+\makelabel{corefreesub:DotFTPRGraph for IsGroup,IsGroup, IsList}{4.1.1}{X785A165E8417A1D8}
 \makelabel{corefreesub:DrawFTPRGraph}{4.1.2}{X8692BA897CFF04D4}
 \makelabel{corefreesub:TeXFTPRGraph}{4.1.3}{X7D0B40427CC8BFC5}
 \makelabel{corefreesub:DrawTeXFTPRGraph}{4.1.4}{X8721FD6E83582BA3}

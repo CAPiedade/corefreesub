@@ -1,4 +1,6 @@
 This is makeindex, version 2.15 [TeX Live 2022/dev] (kpathsea + Thai support).
-Scanning input file corefreesub.idx...done (0 entries accepted, 0 rejected).
-Nothing written in corefreesub.ind.
+Scanning input file corefreesub.idx....done (16 entries accepted, 0 rejected).
+Sorting entries....done (66 comparisons).
+Generating output file corefreesub.ind....done (42 lines written, 0 warnings).
+Output written in corefreesub.ind.
 Transcript written in corefreesub.ilg.

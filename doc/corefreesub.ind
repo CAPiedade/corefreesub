@@ -1,0 +1,42 @@
+\begin{theindex}
+
+  \item \texttt  {AllCoreFreeSubgroups}, \hyperpage{5}
+
+  \indexspace
+
+  \item \texttt  {CoreFreeConjugacyClassesSubgroups}, \hyperpage{4}
+  \item \texttt  {CoreFreeDegrees}, \hyperpage{5}
+
+  \indexspace
+
+  \item \texttt  {DotFTPRGraph}
+    \subitem for IsGeneralMapping, \hyperpage{8}
+    \subitem for IsGeneralMapping, IsList, \hyperpage{8}
+    \subitem for IsGroup,IsGroup, \hyperpage{8}
+    \subitem for IsGroup,IsGroup, IsList, \hyperpage{8}
+    \subitem for IsPermGroup, \hyperpage{8}
+    \subitem for IsPermGroup, IsList, \hyperpage{8}
+  \item \texttt  {DrawFTPRGraph}, \hyperpage{9}
+  \item \texttt  {DrawTeXFTPRGraph}, \hyperpage{10}
+
+  \indexspace
+
+  \item \texttt  {Faithful}\-\texttt  {Transitive}\-\texttt  {Permutation}\-\texttt  {Representations}
+    \subitem for IsGroup, \hyperpage{6}
+
+  \indexspace
+
+  \item \texttt  {IsCoreFree}, \hyperpage{4}
+
+  \indexspace
+
+  \item \texttt  {Minimal}\-\texttt  {Faithful}\-\texttt  {Transitive}\-\texttt  {Permutation}\-\texttt  {Degree}, 
+		\hyperpage{7}
+  \item \texttt  {Minimal}\-\texttt  {Faithful}\-\texttt  {Transitive}\-\texttt  {Permutation}\-\texttt  {Representation}
+    \subitem for IsGroup, \hyperpage{7}
+
+  \indexspace
+
+  \item \texttt  {TeXFTPRGraph}, \hyperpage{10}
+
+\end{theindex}
