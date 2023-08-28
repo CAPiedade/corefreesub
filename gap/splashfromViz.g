@@ -131,7 +131,7 @@ if not IsBound(Splash) then
       viewtexfile := false;
     fi;
     ######################
-    if tikz or viewdrawntex then
+    if tikz or viewtexfile then
       FileString(Concatenation(dir,file,".dot"),dotstring);
       command := Concatenation("dot2tex --prog=",layout," -ftikz ",dir,file,".dot"," > ",
         dir,file,".tex");
