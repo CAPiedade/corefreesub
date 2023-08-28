@@ -98,7 +98,7 @@ InstallGlobalFunction( DrawFTPRGraph,
 function( arg )
 	local opt;
 	opt := First(arg, k -> IsRecord(k));
-	if opt <> fail and IsBound(opt.viewtex) and opt.viewtex = true then return Splash(arg);fi;
+	if opt <> fail and IsBound(opt.viewtexfile) and opt.viewtexfile = true then return Splash(arg);fi;
 	Splash(arg);
 end );
 

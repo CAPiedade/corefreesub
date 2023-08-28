@@ -4,7 +4,7 @@
 #############################################################################
 
 if not IsBound(VizOptionsForSplash) then 
-  BindGlobal("VizOptionsForSplash",["viewtex","layout","path","directory","file","viewer","tikz","filetype"]);
+  BindGlobal("VizOptionsForSplash",["viewtexfile","layout","path","directory","file","viewer","tikz","filetype"]);
 fi;
 
 
