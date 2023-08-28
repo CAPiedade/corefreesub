@@ -84,12 +84,12 @@ DeclareOperation("DotFTPRGraph", [IsGroup,IsGroup, IsList]);
 #! * <A>filetype</A> - (a string) the image file type that will be created. By default, the filetype will be "pdf".
 #! * <A>viewer</A> - (a string) the name of the visualizer used to open the image. The supported ones are "evince","xpdf","xdg-open","okular", "gv", "open" (for the different System Architectures).
 #! * <A>tikz</A> - (a boolean) if true, then the function will produce a TeX file, compile it to pdf and open.
-#! * <A>viewtex</A> - (a boolean) if true, then the function will produce a TeX file and return the Tex file (but it will not compile and open any pdf from the TeX file).
+#! * <A>viewtexfile</A> - (a boolean) if true, then the function will produce a TeX file and return the text of the Tex file (but it will not compile and open any pdf from the TeX file).
 #!
 #! @BeginExampleSession
 #! gap> G := SymmetricGroup(4);; H := Subgroup(G,[(1,2)]);; K := Subgroup(G,[(1,2,3)]);;
 #! gap> DrawFTPRGraph(G);
-#! gap> texfile := DrawFTPRGraph(G,H,rec(viewtex := true));; Print(texfile{[1..152]});
+#! gap> texfile := DrawFTPRGraph(G,H,rec(viewtexfile := true));; Print(texfile{[1..152]});
 #! \documentclass{article}
 #! \usepackage[x11names, svgnames, rgb]{xcolor}
 #! \usepackage[utf8]{inputenc}
@@ -104,7 +104,7 @@ DeclareGlobalFunction("DrawFTPRGraph");
 
 #! @Returns an image of the faithful transitive permutation representation graph
 #! @Description
-#! The same as <A>DrawFTPRGraph</A> with the parameter <A>viewtex := true</A>.
+#! The same as <A>DrawFTPRGraph</A> with the parameter <A>viewtexfile := true</A>.
 DeclareGlobalFunction("TeXFTPRGraph");
 
 #! @Returns an image of the faithful transitive permutation representation graph

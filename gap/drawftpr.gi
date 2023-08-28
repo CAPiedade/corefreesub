@@ -108,12 +108,12 @@ function( arg )
 	opt := First(arg, k -> IsRecord(k));
 	if opt = fail then
 		opt := rec();
-		opt.viewtex := true;
+		opt.viewtexfile := true;
 		opt.tikz := true;
 		Append(arg,[opt]);
 	else
 		pos := Position(arg,opt);
-		opt.viewtex := true;
+		opt.viewtexfile := true;
 		opt.tikz := true;
 		arg[pos] := opt;
 	fi;

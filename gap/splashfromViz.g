@@ -27,7 +27,7 @@ if not IsBound(Splash) then
   BindGlobal("Splash",
   function(arg)
     local opt, dotstring, PermGroup, GeneralMap, G1, G2, path, dir, tdir, file, viewer, tikz, filetype, i, 
-          latexstring, command, layout, viewtex, tmp;
+          latexstring, command, layout, viewtexfile, tmp;
     if IsList(arg[1]) then
       tmp := [];
       for i in arg do
@@ -125,18 +125,18 @@ if not IsBound(Splash) then
     fi;
 
     #texview
-    if IsBound(opt.viewtex) then
-      viewtex := opt.viewtex;
+    if IsBound(opt.viewtexfile) then
+      viewtexfile := opt.viewtexfile;
     else
-      viewtex := false;
+      viewtexfile := false;
     fi;
     ######################
-    if tikz or viewtex then
+    if tikz or viewdrawntex then
       FileString(Concatenation(dir,file,".dot"),dotstring);
-      command := Concatenation("dot2tex -ftikz ",dir,file,".dot"," > ",
+      command := Concatenation("dot2tex --prog=",layout," -ftikz ",dir,file,".dot"," > ",
         dir,file,".tex");
       Exec(command);
-      if viewtex then
+      if viewtexfile then
         return ReadAll(InputTextFile(Concatenation(dir,file,".tex")));
       fi;
 
