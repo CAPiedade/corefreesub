@@ -517,8 +517,9 @@ ones are "evince","xpdf","xdg-open","okular", "gv", "open" (for the different
 System Architectures). 
 \item  \mbox{\texttt{\mdseries\slshape tikz}} - (a boolean) if true, then the function will produce a TeX file, compile it
 to pdf and open. 
-\item  \mbox{\texttt{\mdseries\slshape viewtex}} - (a boolean) if true, then the function will produce a TeX file and return
-the Tex file (but it will not compile and open any pdf from the TeX file). 
+\item  \mbox{\texttt{\mdseries\slshape viewtexfile}} - (a boolean) if true, then the function will produce a TeX file and return
+the text of the Tex file (but it will not compile and open any pdf from the
+TeX file). 
 \end{itemize}
  
 
@@ -526,7 +527,7 @@ the Tex file (but it will not compile and open any pdf from the TeX file).
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@G := SymmetricGroup(4);; H := Subgroup(G,[(1,2)]);; K := Subgroup(G,[(1,2,3)]);;|
   !gapprompt@gap>| !gapinput@DrawFTPRGraph(G);|
-  !gapprompt@gap>| !gapinput@texfile := DrawFTPRGraph(G,H,rec(viewtex := true));; Print(texfile{[1..152]});|
+  !gapprompt@gap>| !gapinput@texfile := DrawFTPRGraph(G,H,rec(viewtexfile := true));; Print(texfile{[1..152]});|
   \documentclass{article}
   \usepackage[x11names, svgnames, rgb]{xcolor}
   \usepackage[utf8]{inputenc}
@@ -552,7 +553,7 @@ an image of the faithful transitive permutation representation graph
 
 
 
- The same as \mbox{\texttt{\mdseries\slshape DrawFTPRGraph}} with the parameter \mbox{\texttt{\mdseries\slshape viewtex := true}}. }
+ The same as \mbox{\texttt{\mdseries\slshape DrawFTPRGraph}} with the parameter \mbox{\texttt{\mdseries\slshape viewtexfile := true}}. }
 
  
 

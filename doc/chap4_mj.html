@@ -137,7 +137,7 @@ digraph {
 <li><p><var class="Arg">tikz</var> - (a boolean) if true, then the function will produce a TeX file, compile it to pdf and open.</p>
 
 </li>
-<li><p><var class="Arg">viewtex</var> - (a boolean) if true, then the function will produce a TeX file and return the Tex file (but it will not compile and open any pdf from the TeX file).</p>
+<li><p><var class="Arg">viewtexfile</var> - (a boolean) if true, then the function will produce a TeX file and return the text of the Tex file (but it will not compile and open any pdf from the TeX file).</p>
 
 </li>
 </ul>
@@ -145,7 +145,7 @@ digraph {
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup(4);; H := Subgroup(G,[(1,2)]);; K := Subgroup(G,[(1,2,3)]);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DrawFTPRGraph(G);</span>
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">texfile := DrawFTPRGraph(G,H,rec(viewtex := true));; Print(texfile{[1..152]});</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">texfile := DrawFTPRGraph(G,H,rec(viewtexfile := true));; Print(texfile{[1..152]});</span>
 \documentclass{article}
 \usepackage[x11names, svgnames, rgb]{xcolor}
 \usepackage[utf8]{inputenc}
@@ -164,7 +164,7 @@ digraph {
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; TeXFTPRGraph</code>( <var class="Arg">arg</var> )</td><td class="tdright">(&nbsp;function&nbsp;)</td></tr></table></div>
 <p>Returns: an image of the faithful transitive permutation representation graph</p>
 
-<p>The same as <var class="Arg">DrawFTPRGraph</var> with the parameter <var class="Arg">viewtex := true</var>.</p>
+<p>The same as <var class="Arg">DrawFTPRGraph</var> with the parameter <var class="Arg">viewtexfile := true</var>.</p>
 
 <p><a id="X8721FD6E83582BA3" name="X8721FD6E83582BA3"></a></p>
 

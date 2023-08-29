@@ -115,14 +115,14 @@
   [30X    [33X[0;6Y[3Xtikz[103X - (a boolean) if true, then the function will produce a TeX file,
         compile it to pdf and open.[133X
   
-  [30X    [33X[0;6Y[3Xviewtex[103X  -  (a  boolean) if true, then the function will produce a TeX
-        file and return the Tex file (but it will not compile and open any pdf
-        from the TeX file).[133X
+  [30X    [33X[0;6Y[3Xviewtexfile[103X  -  (a  boolean) if true, then the function will produce a
+        TeX  file and return the text of the Tex file (but it will not compile
+        and open any pdf from the TeX file).[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XG := SymmetricGroup(4);; H := Subgroup(G,[(1,2)]);; K := Subgroup(G,[(1,2,3)]);;[127X[104X
     [4X[25Xgap>[125X [27XDrawFTPRGraph(G);[127X[104X
-    [4X[25Xgap>[125X [27Xtexfile := DrawFTPRGraph(G,H,rec(viewtex := true));; Print(texfile{[1..152]});[127X[104X
+    [4X[25Xgap>[125X [27Xtexfile := DrawFTPRGraph(G,H,rec(viewtexfile := true));; Print(texfile{[1..152]});[127X[104X
     [4X[28X\documentclass{article}[128X[104X
     [4X[28X\usepackage[x11names, svgnames, rgb]{xcolor}[128X[104X
     [4X[28X\usepackage[utf8]{inputenc}[128X[104X
@@ -140,7 +140,7 @@
   [6XReturns:[106X  [33X[0;10Yan  image  of  the  faithful transitive permutation representation
             graph[133X
   
-  [33X[0;0YThe same as [3XDrawFTPRGraph[103X with the parameter [3Xviewtex := true[103X.[133X
+  [33X[0;0YThe same as [3XDrawFTPRGraph[103X with the parameter [3Xviewtexfile := true[103X.[133X
   
   [1X4.1-4 DrawTeXFTPRGraph[101X
   
