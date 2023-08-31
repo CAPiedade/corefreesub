@@ -4,7 +4,7 @@
 #############################################################################
 
 if not IsBound(VizOptionsForSplash) then 
-  BindGlobal("VizOptionsForSplash",["viewtexfile","layout","path","directory","file","viewer","tikz","filetype"]);
+  BindGlobal("VizOptionsForSplash",["viewtexfile","layout","path","directory","file","viewer","tikz","filetype", "gen_name"]);
 fi;
 
 
@@ -27,7 +27,7 @@ if not IsBound(Splash) then
   BindGlobal("Splash",
   function(arg)
     local opt, dotstring, PermGroup, GeneralMap, G1, G2, path, dir, tdir, file, viewer, tikz, filetype, i, 
-          latexstring, command, layout, viewtexfile, tmp;
+          latexstring, command, layout, viewtexfile, tmp, gen_name;
     if IsList(arg[1]) then
       tmp := [];
       for i in arg do
@@ -48,15 +48,25 @@ if not IsBound(Splash) then
          VizOptionsForSplash)," have no effect.");
       fi;
     fi;
+
+
     dotstring := First(arg, k -> IsString(k));
     if dotstring = fail then
       PermGroup := First(arg, k -> IsPermGroup(k));
       GeneralMap := First(arg, k -> IsGeneralMapping(k));
       G1 := First(arg, k -> IsGroup(k));
       G2 := First(arg, k -> IsGroup(k) and IsSubgroup(G1,k) and G1 <> k);
-      if PermGroup <> fail and G2 = fail then dotstring := DotFTPRGraph(PermGroup);
-      elif GeneralMap <> fail then dotstring := DotFTPRGraph(GeneralMap);
-      elif G1 <> fail and G2 <> fail then dotstring := DotFTPRGraph(G1,G2);
+      if IsBound(opt.gen_name) then
+        gen_name := opt.gen_name;
+        if PermGroup <> fail and G2 = fail  then dotstring := DotFTPRGraph(PermGroup, gen_name);
+        elif GeneralMap <> fail then dotstring := DotFTPRGraph(GeneralMap, gen_name);
+        elif G1 <> fail and G2 <> fail then dotstring := DotFTPRGraph(G1,G2, gen_name);
+        fi;
+      else
+        if PermGroup <> fail and G2 = fail  then dotstring := DotFTPRGraph(PermGroup);
+        elif GeneralMap <> fail then dotstring := DotFTPRGraph(GeneralMap);
+        elif G1 <> fail and G2 <> fail then dotstring := DotFTPRGraph(G1,G2);
+        fi;
       fi;
     fi;
     # begin options
