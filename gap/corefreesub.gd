@@ -15,8 +15,60 @@ DeclareInfoClass( "InfoCoreFreeSub" );
 SetInfoLevel( InfoCoreFreeSub, 1 );
 #! @Chapter Introduction
 #!
-#! corefreesub is a package which calculates the core-free subgroups and their faithful transitive permutation representations
+#! The &corefreesub; package was created to calculate core-free subgroups of a group, their indexes, and faithful transitive permutation representations.
 #! 
+#! A core-free subgroup of a group <A>G</A> is a subgroup <A>H</A> such that
+#! $$ \cap_{g\in G} H =  \{id_G\}. $$
+#! These subgroups are important since the action of <A>G</A> on the cosets of <A>H</A> is both transitive and faithful.
+#! Hence, this gives us a faithful transitive permutation representation of <A>G</A> with degree <A>n</A>, where <A>n</A> is the index of <A>H</A> in <A>G</A>.
+#!
+#! There are many articles studying faithful permutation representation of groups, such as <Cite Key="johnson_minimal_1971"/>, <Cite Key="easdown_minimal_1988"/>, <Cite Key="saunders_minimal_2014"/> and <Cite Key="easdown_minimal_2016"/>.
+#! However the restriction on transitive actions is more recent and there are fewer studies like <Cite Key="FP20Tor"/>,<Cite Key="FP21Cor"/>,<Cite Key="FP21Hyper"/> and <Cite Key="FP22Loc"/>.
+#!
+#! During C.A. Piedade's PhD thesis, he studied many of these faithful transitive permutation representations of automorphism groups of abstract regular polytopes and hypertopes.
+#! It was also during this period that this author noticed the abcense of functions/methods in GAP to compute core-free subgroups of a group.
+#! As a consequence, he created many functions to help in his research, resulting in many of the functions and methods implemented in this package.
+#! 
+#! One of the important tools for studying faithful transitive permutation representations is by using <A>faithful transitive permutation representation graphs</A>, which are <A>Schreier coset graphs</A>.
+#! A <A>Schreier coset graph</A> is a graph associated with a group <A>G</A>, its generators and a subgroup <A>H</A> of <A>G</A>. 
+#! The vertices of the graph are the right cosets of <A>H</A> and there is a directed edge $(Hx,Hy)$
+#! with label $g$ if $g$ is a generator of <A>G</A> and $Hxg = Hy$. When $g$ is an involution, the two directed edges
+#! $(Hx, Hy)$ and $(Hy, Hx)$ are replaced by a single undirected edge $\{Hx, Hy\}$ with label $g$.
+#!
+#! In the &corefreesub; package, this can achieved by creating graphs as DOT files and using an adaptation of the visualization package developed by M. Delgado [CITE HERE] on Chapter <Ref Label="Chapter&uscore;Drawing&uscore;the&uscore;Faithful&uscore;Transitive&uscore;Permutation&uscore;Representation&uscore;Graph"/>.
+#!
+#!
+#! @Section Instalation
+#! 
+#! To install this package, you can simply copy the folder of &corefreesub; and its contents into your <A>/pkg</A> folder inside your &GAP; instalation folder.
+#! This should work for Windows, Ubuntu and MacOS.
+#! If you are using GAP.app on MacOS, the &corefreesub; folder should be copied into your user Library/Preferences/GAP/pkg folder. 
+#!
+#! This package was tested with &GAP; version greater or equal to 4.11.
+#! 
+#! @Section Testing your instalation
+#! 
+#! To test your instalation, you can run the function <A>CF_TESTALL()</A>. 
+#! This function will run two sets of tests, one dependent on the
+#! documentation of the &corefreesub; package and another with assertions with groups with bigger size.
+#! 
+#! If the test runs with no issue, the output should look something similar to the following:
+#! @BeginLogSession
+#! gap> CF_TESTALL();
+#! Running list 1 . . .
+#! Architecture: x86_64-pc-linux-gnu-default64-kv8
+#! 
+#! -----------------------------------
+#! total         0 ms (0 ms GC) and 0.00B allocated
+#!               0 failures in 0 files
+#!
+#! #I  No errors detected while testing
+#! @EndLogSession
+#! This tests will also produce two pictures that are supposed to be outputed and open in the user system.
+#! If the tests run with no error but they do not output any of the graphs, then it may mean the user might not be able to
+#! use this functionality. If so, please report an issue on <URL Text="CoreFreeSub GitHub Issues">https://github.com/CAPiedade/corefreesub/issues</URL>.
+#! Moreover, the Architecture part of the test might vary depending on the Operating System the user might be running.
+#!
 #!
 #! @Chapter Obtaining Core-Free Subgroups
 #
@@ -37,7 +89,7 @@ SetInfoLevel( InfoCoreFreeSub, 1 );
 #! gap> H := Subgroup(G, [(1,4)(2,3), (1,3)(2,4)]);;
 #! gap> IsCoreFree(G,H);
 #! false
-#! gap> Core(G,H); # H is a normal subgroup of G, hence it does not have a trivial core
+#! gap> Core(G,H);# H is a normal subgroup of G, hence it does not have a trivial core
 #! Group([ (1,4)(2,3), (1,3)(2,4) ])
 #! @EndExampleSession
 DeclareGlobalFunction( "IsCoreFree" );
@@ -51,7 +103,9 @@ DeclareGlobalFunction( "IsCoreFree" );
 #! @BeginExampleSession
 #! gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
 #! gap> CoreFreeConjugacyClassesSubgroups(G);
-#! [ Group( () )^G, Group( [ (1,3)(2,4) ] )^G, Group( [ (3,4) ] )^G, Group( [ (2,4,3) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G, Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G ]
+#! [ Group( () )^G, Group( [ (1,3)(2,4) ] )^G, Group( [ (3,4) ] )^G,
+#! Group( [ (2,4,3) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G,
+#! Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G ]
 #! gap> CoreFreeConjugacyClassesSubgroups(dh);
 #! [ Group( <identity> of ... )^G, Group( [ f1 ] )^G ] 
 #!@EndExampleSession
@@ -65,9 +119,18 @@ DeclareGlobalFunction( "CoreFreeConjugacyClassesSubgroups" );
 #! @BeginExampleSession
 #! gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
 #! gap> AllCoreFreeSubgroups(G);
-#! [ Group(()), Group([ (1,3)(2,4) ]), Group([ (1,4)(2,3) ]), Group([ (1,2)(3,4) ]), Group([ (3,4) ]), Group([ (2,4) ]), Group([ (2,3) ]), Group([ (1,4) ]), Group([ (1,3) ]), Group([ (1,2) ]), Group([ (2,4,3) ]), Group([ (1,3,2) ]), Group([ (1,3,4) ]), Group([ (1,4,2) ]), Group([ (3,4), (1,2)(3,4) ]), Group([ (2,4), (1,3)(2,4) ]), Group([ (2,3), (1,4)(2,3) ]), Group([ (1,3,2,4), (1,2)(3,4) ]), Group([ (1,2,3,4), (1,3)(2,4) ]), Group([ (1,2,4,3), (1,4)(2,3) ]), Group([ (3,4), (2,4,3) ]), Group([ (1,3), (1,3,2) ]), Group([ (1,3), (1,3,4) ]), Group([ (1,4), (1,4,2) ]) ]
+#! [ Group(()), Group([ (1,3)(2,4) ]), Group([ (1,4)(2,3) ]), Group([ (1,2)(3,4) ]),
+#!  Group([ (3,4) ]), Group([ (2,4) ]), Group([ (2,3) ]), Group([ (1,4) ]),
+#!  Group([ (1,3) ]), Group([ (1,2) ]), Group([ (2,4,3) ]), Group([ (1,3,2) ]),
+#!  Group([ (1,3,4) ]), Group([ (1,4,2) ]), Group([ (3,4), (1,2)(3,4) ]),
+#!  Group([ (2,4), (1,3)(2,4) ]), Group([ (2,3), (1,4)(2,3) ]),
+#!  Group([ (1,3,2,4), (1,2)(3,4) ]), Group([ (1,2,3,4), (1,3)(2,4) ]),
+#!  Group([ (1,2,4,3), (1,4)(2,3) ]), Group([ (3,4), (2,4,3) ]),
+#!  Group([ (1,3), (1,3,2) ]), Group([ (1,3), (1,3,4) ]), Group([ (1,4), (1,4,2) ])
+#! ]
 #! gap> AllCoreFreeSubgroups(dh);
-#! [ Group([  ]), Group([ f1 ]), Group([ f1*f2^2 ]), Group([ f1*f2^4 ]), Group([ f1*f2 ]), Group([ f1*f2^3 ]) ]
+#! [ Group([  ]), Group([ f1 ]), Group([ f1*f2^2 ]), Group([ f1*f2^4 ]), 
+#! Group([ f1*f2 ]), Group([ f1*f2^3 ]) ]
 #!@EndExampleSession
 DeclareGlobalFunction( "AllCoreFreeSubgroups" );
 
@@ -103,10 +166,13 @@ DeclareGlobalFunction( "CoreFreeDegrees" );
 #! @BeginExampleSession
 #! gap> sp := SymplecticGroup(4,2);;
 #! gap> CoreFreeDegrees(sp);
-#! [ 720, 360, 240, 180, 144, 120, 90, 80, 72, 60, 45, 40, 36, 30, 20, 15, 12, 10, 6 ]
-#! gap> ftprs := FaithfulTransitivePermutationRepresentations(sp);; Size(ftprs);
+#! [ 720, 360, 240, 180, 144, 120, 90, 80, 72, 60, 45, 40, 36, 30, 20, 15, 12,
+#! 10, 6 ]
+#! gap> ftprs := FaithfulTransitivePermutationRepresentations(sp);; 
+#! gap> Size(ftprs);
 #! 19
-#! gap> all_ftprs := FaithfulTransitivePermutationRepresentations(sp,true);; Size(all_ftprs);
+#! gap> all_ftprs := FaithfulTransitivePermutationRepresentations(sp,true);; 
+#! gap> Size(all_ftprs);
 #! 54
 #! @EndExampleSession
 DeclareOperation( "FaithfulTransitivePermutationRepresentations", [IsGroup]);
@@ -129,7 +195,8 @@ DeclareOperation( "FaithfulTransitivePermutationRepresentations", [IsGroup]);
 #! gap> min_ftpr(sp);
 #! Group([ (1,6,4,3), (1,3)(2,4,6,5) ])
 #! gap> min_ftprs := MinimalFaithfulTransitivePermutationRepresentation(sp,true);
-#! [ CompositionMapping( <action epimorphism>, <action isomorphism> ), CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
+#! [ CompositionMapping( <action epimorphism>, <action isomorphism> ), 
+#! CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
 #! gap> min_ftprs[2](sp);
 #! Group([ (2,3,6,5), (1,3)(2,5,6,4) ])
 #! @EndExampleSession
