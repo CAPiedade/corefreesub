@@ -5,7 +5,7 @@
 #
 
 
-ReadPackage( "corefreesub", "gap/splashfromViz.g");
+ReadPackage( "corefreesub", "gap/CF_splashfromViz.g");
 ReadPackage( "corefreesub", "gap/corefreesub.gi");
 ReadPackage( "corefreesub", "gap/drawftpr.gi");
 
