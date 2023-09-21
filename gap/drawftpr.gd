@@ -5,7 +5,7 @@
 ## The aim of this function is to "splash" an image directly from the dot code.
 ## To this effect, it adds a preamble and makes a call to the Viz Splash function.
 ## To avoid forcing the user to install the Viz package (under development), a copy 
-## of the Viz Splash function is included in the file "splash_from_viz.g" of this package
+## of the Viz Splash function is included in the file "CF_splashfromviz.g" of this package
 ###########################################################################
 DeclareInfoClass( "InfoDrawFTPR" );
 SetInfoLevel( InfoDrawFTPR, 1 );
@@ -24,7 +24,7 @@ SetInfoLevel( InfoDrawFTPR, 1 );
 #! If given a list of the name of the generators <A>generators_name</A>, these will be given to the label of their action on the graph. Otherwise, the labels will be <A>r0, r1,  r2, ...</A> for the generators <A>G.1, G.2, G.3, ...</A>.
 #!
 #! @BeginExampleSession
-#! gap> G := SymmetricGroup(4);; H := Subgroup(G,[(1,2)]);; K := Subgroup(G,[(1,2,3)]);;
+#! gap> G:= SymmetricGroup(4);;H:= Subgroup(G,[(1,2)]);;K:= Subgroup(G,[(1,2,3)]);;
 #! gap> DotFTPRGraph(G);
 #! "digraph {\n1 -> 2 [label = r1];\n 2 -> 3 [label = r1];\n 3 -> 4 [labe\
 #! l = r1];\n 4 -> 1 [label = r1];\n 1 -> 2 [label = r2,dir=none];\n }\n"
@@ -87,16 +87,17 @@ DeclareOperation("DotFTPRGraph", [IsGroup,IsGroup, IsList]);
 #! * <A>viewtexfile</A> - (a boolean) if true, then the function will produce a TeX file and return the text of the Tex file (but it will not compile and open any pdf from the TeX file).
 #!
 #! @BeginExampleSession
-#! gap> G := SymmetricGroup(4);; H := Subgroup(G,[(1,2)]);; K := Subgroup(G,[(1,2,3)]);;
+#! gap> G:= SymmetricGroup(4);;H:= Subgroup(G,[(1,2)]);;K:= Subgroup(G,[(1,2,3)]);;
 #! gap> DrawFTPRGraph(G);
-#! gap> texfile := DrawFTPRGraph(G,H,rec(viewtexfile := true));; Print(texfile{[1..152]});
+#! gap> texfile := DrawFTPRGraph(G,H,rec(viewtexfile := true));; 
+#! gap> Print(texfile{[1..152]});
 #! \documentclass{article}
 #! \usepackage[x11names, svgnames, rgb]{xcolor}
 #! \usepackage[utf8]{inputenc}
 #! \usepackage{tikz}
 #! \usetikzlibrary{snakes,arrows,shapes}
 #! gap> SetInfoLevel(InfoDrawFTPR,2);
-#! gap> DrawFTPRGraph(FactorCosetAction(G,K),rec(directory := "myfolder", layout := "fdp"));
+#! gap> DrawFTPRGraph(FactorCosetAction(G,K),rec(directory:="myfolder",layout:="fdp"));
 #! #I  The temporary directory used is: ~/myfolder/
 #!
 #! @EndExampleSession
