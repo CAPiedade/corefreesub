@@ -5,6 +5,23 @@
 #
 #
 #
+### Testing Functions
+BindGlobal( "CF_TESTALL",
+  function()
+	local tests, doctests, AUTODOC_file_scan_list;
+  AUTODOC_file_scan_list := [ "../PackageInfo.g", "../gap/CF_splashfromViz.g", "../gap/corefreesub.gd", "../gap/corefreesub.gi", "../gap/drawftpr.gd", "../gap/drawftpr.gi", "../init.g", "../makedoc.g", "../maketest.g", "../read.g", "/mnt/c/Users/Claudio/GAP Packages/pkg/corefreesub/doc/_Chunks.xml" ];
+  LoadPackage( "GAPDoc" );
+  doctests := ExtractExamples( DirectoriesPackageLibrary("corefreesub", "doc"), "corefreesub.xml", AUTODOC_file_scan_list, 500 );
+  RunExamples( doctests, rec( compareFunction := "uptowhitespace" ) );
+	tests := Filtered(DirectoryContents(DirectoriesPackageLibrary("corefreesub", "tst")[1]), i -> i = "testall.g");
+	if tests = [] then
+    Error("Test file not in corefreesub/tst/ folder");
+  else 
+    Read(Filename(DirectoriesPackageLibrary("corefreesub", "tst"), "testall.g"));
+  fi;
+end);
+
+
 
 BindGlobal( "CoreFreeConjugacyClassesSubgroupsOfSolvableGroup",
         function(G)
@@ -523,7 +540,11 @@ end );
 
 InstallGlobalFunction( IsCoreFree,
         function(G,H)
-  if Size(Core(G,H)) = 1 then return true; else return false; fi; 
+  if IsSubgroup(G,H) then   
+    if Size(Core(G,H)) = 1 then return true; else return false; fi; 
+  else
+    Error("The subgroup given is not a subgroup of the given group");
+  fi;
 end);
 
 InstallGlobalFunction( CoreFreeConjugacyClassesSubgroups,
