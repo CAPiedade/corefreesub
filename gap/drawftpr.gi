@@ -5,8 +5,7 @@
 #
 # 
 ##########################################
-# Some functions to be used to check requisites
-#
+
 
 InstallMethod( DotFTPRGraph,[IsPermGroup,IsList],
 function(G, genList)
@@ -90,16 +89,16 @@ end );
 
 
 # The aim of the following functions is to "splash" an image or TeX directly from the dot code.
-# To this effect, it adds a preamble and makes a call to the Viz Splash function.
-# To avoid forcing the user to install the Viz package (under development), a modified copy of the Viz Splash function is included in the file "splashfromViz.g" of this package
+# To this effect, it adds a preamble and makes a call to the Viz CF_Splash function.
+# To avoid forcing the user to install the Viz package (under development), a modified copy of the Viz Splash function is included in the file "CF_splashfromViz.g" of this package
 
 
 InstallGlobalFunction( DrawFTPRGraph,
 function( arg )
 	local opt;
 	opt := First(arg, k -> IsRecord(k));
-	if opt <> fail and IsBound(opt.viewtexfile) and opt.viewtexfile = true then return Splash(arg);fi;
-	Splash(arg);
+	if opt <> fail and IsBound(opt.viewtexfile) and opt.viewtexfile = true then return CF_Splash(arg);fi;
+	CF_Splash(arg);
 end );
 
 InstallGlobalFunction( TeXFTPRGraph,
@@ -117,7 +116,7 @@ function( arg )
 		opt.tikz := true;
 		arg[pos] := opt;
 	fi;
-	return Splash(arg);
+	return CF_Splash(arg);
 end );
 
 InstallGlobalFunction( DrawTeXFTPRGraph,
@@ -133,7 +132,7 @@ function( arg )
 	opt.tikz := true;
 	arg[pos] := opt;
 	fi;
-	Splash(arg);
+	CF_Splash(arg);
 end );
 
 
