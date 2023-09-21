@@ -1,16 +1,16 @@
-\indexentry{IsCoreFree@\texttt  {IsCoreFree}|hyperpage}{4}
-\indexentry{CoreFreeConjugacyClassesSubgroups@\texttt  {CoreFreeConjugacyClassesSubgroups}|hyperpage}{4}
-\indexentry{AllCoreFreeSubgroups@\texttt  {AllCoreFreeSubgroups}|hyperpage}{5}
-\indexentry{CoreFreeDegrees@\texttt  {CoreFreeDegrees}|hyperpage}{5}
-\indexentry{FaithfulTransitivePermutationRepresentations@\texttt  {Faithful}\-\texttt  {Transitive}\-\texttt  {Permutation}\-\texttt  {Representations}!for IsGroup|hyperpage}{6}
-\indexentry{MinimalFaithfulTransitivePermutationRepresentation@\texttt  {Minimal}\-\texttt  {Faithful}\-\texttt  {Transitive}\-\texttt  {Permutation}\-\texttt  {Representation}!for IsGroup|hyperpage}{7}
-\indexentry{MinimalFaithfulTransitivePermutationDegree@\texttt  {Minimal}\-\texttt  {Faithful}\-\texttt  {Transitive}\-\texttt  {Permutation}\-\texttt  {Degree}|hyperpage}{7}
-\indexentry{DotFTPRGraph@\texttt  {DotFTPRGraph}!for IsPermGroup|hyperpage}{8}
-\indexentry{DotFTPRGraph@\texttt  {DotFTPRGraph}!for IsPermGroup, IsList|hyperpage}{8}
-\indexentry{DotFTPRGraph@\texttt  {DotFTPRGraph}!for IsGeneralMapping|hyperpage}{8}
-\indexentry{DotFTPRGraph@\texttt  {DotFTPRGraph}!for IsGeneralMapping, IsList|hyperpage}{8}
-\indexentry{DotFTPRGraph@\texttt  {DotFTPRGraph}!for IsGroup,IsGroup|hyperpage}{8}
-\indexentry{DotFTPRGraph@\texttt  {DotFTPRGraph}!for IsGroup,IsGroup, IsList|hyperpage}{8}
-\indexentry{DrawFTPRGraph@\texttt  {DrawFTPRGraph}|hyperpage}{9}
-\indexentry{TeXFTPRGraph@\texttt  {TeXFTPRGraph}|hyperpage}{10}
-\indexentry{DrawTeXFTPRGraph@\texttt  {DrawTeXFTPRGraph}|hyperpage}{10}
+\indexentry{IsCoreFree@\texttt  {IsCoreFree}|hyperpage}{6}
+\indexentry{CoreFreeConjugacyClassesSubgroups@\texttt  {CoreFreeConjugacyClassesSubgroups}|hyperpage}{6}
+\indexentry{AllCoreFreeSubgroups@\texttt  {AllCoreFreeSubgroups}|hyperpage}{7}
+\indexentry{CoreFreeDegrees@\texttt  {CoreFreeDegrees}|hyperpage}{7}
+\indexentry{FaithfulTransitivePermutationRepresentations@\texttt  {Faithful}\-\texttt  {Transitive}\-\texttt  {Permutation}\-\texttt  {Representations}!for IsGroup|hyperpage}{8}
+\indexentry{MinimalFaithfulTransitivePermutationRepresentation@\texttt  {Minimal}\-\texttt  {Faithful}\-\texttt  {Transitive}\-\texttt  {Permutation}\-\texttt  {Representation}!for IsGroup|hyperpage}{9}
+\indexentry{MinimalFaithfulTransitivePermutationDegree@\texttt  {Minimal}\-\texttt  {Faithful}\-\texttt  {Transitive}\-\texttt  {Permutation}\-\texttt  {Degree}|hyperpage}{9}
+\indexentry{DotFTPRGraph@\texttt  {DotFTPRGraph}!for IsPermGroup|hyperpage}{10}
+\indexentry{DotFTPRGraph@\texttt  {DotFTPRGraph}!for IsPermGroup, IsList|hyperpage}{10}
+\indexentry{DotFTPRGraph@\texttt  {DotFTPRGraph}!for IsGeneralMapping|hyperpage}{10}
+\indexentry{DotFTPRGraph@\texttt  {DotFTPRGraph}!for IsGeneralMapping, IsList|hyperpage}{10}
+\indexentry{DotFTPRGraph@\texttt  {DotFTPRGraph}!for IsGroup,IsGroup|hyperpage}{10}
+\indexentry{DotFTPRGraph@\texttt  {DotFTPRGraph}!for IsGroup,IsGroup, IsList|hyperpage}{10}
+\indexentry{DrawFTPRGraph@\texttt  {DrawFTPRGraph}|hyperpage}{11}
+\indexentry{TeXFTPRGraph@\texttt  {TeXFTPRGraph}|hyperpage}{12}
+\indexentry{DrawTeXFTPRGraph@\texttt  {DrawTeXFTPRGraph}|hyperpage}{12}

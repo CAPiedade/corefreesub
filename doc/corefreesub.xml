@@ -12,5 +12,6 @@
 <Body>
 <#Include SYSTEM "_AutoDocMainFile.xml">
 </Body>
+<Bibliography Databases="corefreesub.bib"/>
 <TheIndex/>
 </Book>

@@ -27,11 +27,31 @@
       Homepage: [7Xhttps://cmup.fc.up.pt/cmup/mdelgado/[107X
   
   -------------------------------------------------------
+  [1XCopyright[101X
+  [33X[0;0Y[5Xcorefreesub[105X  package is free software; you can redistribute it and/or modify
+  it    under    the    terms    of    the    GNU   General   Public   License
+  ([7Xhttp://www.fsf.org/licenses/gpl.html[107X)  as  published  by  the Free Software
+  Foundation;  either  version 2 of the License, or (at your option) any later
+  version.[133X
+  
+  
+  -------------------------------------------------------
+  [1XAcknowledgements[101X
+  [33X[0;0YThe authours wish to thank all the comments, suggestions and issue reporting
+  from  users  and  developers of [5XGAP[105X, both past and future. Both authors were
+  partially supported by CMUP, member of LASI, which is financed by Portuguese
+  national  funds  through FCT – Fundação para a Ciência e a Tecnologia, I.P.,
+  under the project with references UIDB/00144/2020 and UIDP/00144/2020.[133X
+  
+  
+  -------------------------------------------------------
   
   
   [1XContents (corefreesub)[101X
   
   1 [33X[0;0YIntroduction[133X
+    1.1 [33X[0;0YInstalation[133X
+    1.2 [33X[0;0YTesting your instalation[133X
   2 [33X[0;0YObtaining Core-Free Subgroups[133X
     2.1 [33X[0;0YCore-Free Subgroups[133X
       2.1-1 IsCoreFree

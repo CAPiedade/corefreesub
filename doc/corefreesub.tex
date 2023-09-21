@@ -123,9 +123,23 @@ permutation representations \mbox{}}}\\
 \end{titlepage}
 
 \newpage\setcounter{page}{2}
+{\small 
+\section*{Copyright}
+\logpage{[ 0, 0, 1 ]}
+ \textsf{corefreesub} package is free software; you can redistribute it and/or modify it under the
+terms of the \href{http://www.fsf.org/licenses/gpl.html} {GNU General Public License} as published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version. \mbox{}}\\[1cm]
+{\small 
+\section*{Acknowledgements}
+\logpage{[ 0, 0, 2 ]}
+ The authours wish to thank all the comments, suggestions and issue reporting
+from users and developers of \textsf{GAP}, both past and future. Both authors were partially supported by CMUP, member
+of LASI, which is financed by Portuguese national funds through FCT
+{\textendash} Funda{\c c}{\~a}o para a Ci{\^e}ncia e a Tecnologia, I.P., under
+the project with references UIDB/00144/2020 and UIDP/00144/2020. \mbox{}}\\[1cm]
 \newpage
 
-\def\contentsname{Contents\logpage{[ 0, 0, 1 ]}}
+\def\contentsname{Contents\logpage{[ 0, 0, 3 ]}}
 
 \tableofcontents
 \newpage
@@ -137,8 +151,77 @@ permutation representations \mbox{}}}\\
 {
   
 
- corefreesub is a package which calculates the core-free subgroups and their
-faithful transitive permutation representations 
+ The \textsf{corefreesub} package was created to calculate core-free subgroups of a group, their
+indexes, and faithful transitive permutation representations. 
+
+ A core-free subgroup of a group \mbox{\texttt{\mdseries\slshape G}} is a subgroup \mbox{\texttt{\mdseries\slshape H}} such that 
+\[ \cap_{g\in G} H = \{id_G\}. \]
+ These subgroups are important since the action of \mbox{\texttt{\mdseries\slshape G}} on the cosets of \mbox{\texttt{\mdseries\slshape H}} is both transitive and faithful. Hence, this gives us a faithful transitive
+permutation representation of \mbox{\texttt{\mdseries\slshape G}} with degree \mbox{\texttt{\mdseries\slshape n}}, where \mbox{\texttt{\mdseries\slshape n}} is the index of \mbox{\texttt{\mdseries\slshape H}} in \mbox{\texttt{\mdseries\slshape G}}. 
+
+ There are many articles studying faithful permutation representation of
+groups, such as \cite{johnson_minimal_1971}, \cite{easdown_minimal_1988}, \cite{saunders_minimal_2014} and \cite{easdown_minimal_2016}. However the restriction on transitive actions is more recent and there are
+fewer studies like \cite{FP20Tor},\cite{FP21Cor},\cite{FP21Hyper} and \cite{FP22Loc}. 
+
+ During C.A. Piedade's PhD thesis, he studied many of these faithful transitive
+permutation representations of automorphism groups of abstract regular
+polytopes and hypertopes. It was also during this period that this author
+noticed the abcense of functions/methods in GAP to compute core-free subgroups
+of a group. As a consequence, he created many functions to help in his
+research, resulting in many of the functions and methods implemented in this
+package. 
+
+ One of the important tools for studying faithful transitive permutation
+representations is by using \mbox{\texttt{\mdseries\slshape faithful transitive permutation representation graphs}}, which are \mbox{\texttt{\mdseries\slshape Schreier coset graphs}}. A \mbox{\texttt{\mdseries\slshape Schreier coset graph}} is a graph associated with a group \mbox{\texttt{\mdseries\slshape G}}, its generators and a subgroup \mbox{\texttt{\mdseries\slshape H}} of \mbox{\texttt{\mdseries\slshape G}}. The vertices of the graph are the right cosets of \mbox{\texttt{\mdseries\slshape H}} and there is a directed edge $(Hx,Hy)$ with label $g$ if $g$ is a generator of \mbox{\texttt{\mdseries\slshape G}} and $Hxg = Hy$. When $g$ is an involution, the two directed edges $(Hx, Hy)$ and $(Hy, Hx)$ are replaced by a single undirected edge $\{Hx, Hy\}$ with label $g$. 
+
+ In the \textsf{corefreesub} package, this can achieved by creating graphs as DOT files and using an
+adaptation of the visualization package developed by M. Delgado [CITE HERE] on
+Chapter \ref{Chapter{\textunderscore}Drawing{\textunderscore}the{\textunderscore}Faithful{\textunderscore}Transitive{\textunderscore}Permutation{\textunderscore}Representation{\textunderscore}Graph}. 
+
+ 
+\section{\textcolor{Chapter }{Instalation}}\label{Chapter_Introduction_Section_Instalation}
+\logpage{[ 1, 1, 0 ]}
+\hyperdef{L}{X7A5BA34E7CC6300F}{}
+{
+  
+
+ To install this package, you can simply copy the folder of \textsf{corefreesub} and its contents into your \mbox{\texttt{\mdseries\slshape /pkg}} folder inside your \textsf{GAP} instalation folder. This should work for Windows, Ubuntu and MacOS. If you are
+using GAP.app on MacOS, the \textsf{corefreesub} folder should be copied into your user Library/Preferences/GAP/pkg folder. 
+
+ This package was tested with \textsf{GAP} version greater or equal to 4.11. 
+
+ }
+
+ 
+\section{\textcolor{Chapter }{Testing your instalation}}\label{Chapter_Introduction_Section_Testing_your_instalation}
+\logpage{[ 1, 2, 0 ]}
+\hyperdef{L}{X8541922979222078}{}
+{
+  
+
+ To test your instalation, you can run the function \mbox{\texttt{\mdseries\slshape CF{\textunderscore}TESTALL()}}. This function will run two sets of tests, one dependent on the documentation
+of the \textsf{corefreesub} package and another with assertions with groups with bigger size. 
+
+ If the test runs with no issue, the output should look something similar to
+the following: 
+\begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
+  !gapprompt@gap>| !gapinput@CF_TESTALL();|
+  Running list 1 . . .
+  Architecture: x86_64-pc-linux-gnu-default64-kv8
+  
+  -----------------------------------
+  total         0 ms (0 ms GC) and 0.00B allocated
+                0 failures in 0 files
+  
+  #I  No errors detected while testing
+\end{Verbatim}
+ This tests will also produce two pictures that are supposed to be outputed and
+open in the user system. If the tests run with no error but they do not output
+any of the graphs, then it may mean the user might not be able to use this
+functionality. If so, please report an issue on \href{https://github.com/CAPiedade/corefreesub/issues} {CoreFreeSub GitHub Issues}. Moreover, the Architecture part of the test might vary depending on the
+Operating System the user might be running. 
+
+ }
 
  }
 
@@ -179,7 +262,7 @@ a boolean
   !gapprompt@gap>| !gapinput@H := Subgroup(G, [(1,4)(2,3), (1,3)(2,4)]);;|
   !gapprompt@gap>| !gapinput@IsCoreFree(G,H);|
   false
-  !gapprompt@gap>| !gapinput@Core(G,H); # H is a normal subgroup of G, hence it does not have a trivial core|
+  !gapprompt@gap>| !gapinput@Core(G,H);# H is a normal subgroup of G, hence it does not have a trivial core|
   Group([ (1,4)(2,3), (1,3)(2,4) ])
 \end{Verbatim}
  }
@@ -203,7 +286,9 @@ a list
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@G := SymmetricGroup(4);; dh := DihedralGroup(10);;|
   !gapprompt@gap>| !gapinput@CoreFreeConjugacyClassesSubgroups(G);|
-  [ Group( () )^G, Group( [ (1,3)(2,4) ] )^G, Group( [ (3,4) ] )^G, Group( [ (2,4,3) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G, Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G ]
+  [ Group( () )^G, Group( [ (1,3)(2,4) ] )^G, Group( [ (3,4) ] )^G,
+  Group( [ (2,4,3) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G,
+  Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G ]
   !gapprompt@gap>| !gapinput@CoreFreeConjugacyClassesSubgroups(dh);|
   [ Group( <identity> of ... )^G, Group( [ f1 ] )^G ] 
 \end{Verbatim}
@@ -228,9 +313,18 @@ a list
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@G := SymmetricGroup(4);; dh := DihedralGroup(10);;|
   !gapprompt@gap>| !gapinput@AllCoreFreeSubgroups(G);|
-  [ Group(()), Group([ (1,3)(2,4) ]), Group([ (1,4)(2,3) ]), Group([ (1,2)(3,4) ]), Group([ (3,4) ]), Group([ (2,4) ]), Group([ (2,3) ]), Group([ (1,4) ]), Group([ (1,3) ]), Group([ (1,2) ]), Group([ (2,4,3) ]), Group([ (1,3,2) ]), Group([ (1,3,4) ]), Group([ (1,4,2) ]), Group([ (3,4), (1,2)(3,4) ]), Group([ (2,4), (1,3)(2,4) ]), Group([ (2,3), (1,4)(2,3) ]), Group([ (1,3,2,4), (1,2)(3,4) ]), Group([ (1,2,3,4), (1,3)(2,4) ]), Group([ (1,2,4,3), (1,4)(2,3) ]), Group([ (3,4), (2,4,3) ]), Group([ (1,3), (1,3,2) ]), Group([ (1,3), (1,3,4) ]), Group([ (1,4), (1,4,2) ]) ]
+  [ Group(()), Group([ (1,3)(2,4) ]), Group([ (1,4)(2,3) ]), Group([ (1,2)(3,4) ]),
+   Group([ (3,4) ]), Group([ (2,4) ]), Group([ (2,3) ]), Group([ (1,4) ]),
+   Group([ (1,3) ]), Group([ (1,2) ]), Group([ (2,4,3) ]), Group([ (1,3,2) ]),
+   Group([ (1,3,4) ]), Group([ (1,4,2) ]), Group([ (3,4), (1,2)(3,4) ]),
+   Group([ (2,4), (1,3)(2,4) ]), Group([ (2,3), (1,4)(2,3) ]),
+   Group([ (1,3,2,4), (1,2)(3,4) ]), Group([ (1,2,3,4), (1,3)(2,4) ]),
+   Group([ (1,2,4,3), (1,4)(2,3) ]), Group([ (3,4), (2,4,3) ]),
+   Group([ (1,3), (1,3,2) ]), Group([ (1,3), (1,3,4) ]), Group([ (1,4), (1,4,2) ])
+  ]
   !gapprompt@gap>| !gapinput@AllCoreFreeSubgroups(dh);|
-  [ Group([  ]), Group([ f1 ]), Group([ f1*f2^2 ]), Group([ f1*f2^4 ]), Group([ f1*f2 ]), Group([ f1*f2^3 ]) ]
+  [ Group([  ]), Group([ f1 ]), Group([ f1*f2^2 ]), Group([ f1*f2^4 ]), 
+  Group([ f1*f2 ]), Group([ f1*f2^3 ]) ]
 \end{Verbatim}
  }
 
@@ -309,10 +403,13 @@ representations.
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@sp := SymplecticGroup(4,2);;|
   !gapprompt@gap>| !gapinput@CoreFreeDegrees(sp);|
-  [ 720, 360, 240, 180, 144, 120, 90, 80, 72, 60, 45, 40, 36, 30, 20, 15, 12, 10, 6 ]
-  !gapprompt@gap>| !gapinput@ftprs := FaithfulTransitivePermutationRepresentations(sp);; Size(ftprs);|
+  [ 720, 360, 240, 180, 144, 120, 90, 80, 72, 60, 45, 40, 36, 30, 20, 15, 12,
+  10, 6 ]
+  !gapprompt@gap>| !gapinput@ftprs := FaithfulTransitivePermutationRepresentations(sp);; |
+  !gapprompt@gap>| !gapinput@Size(ftprs);|
   19
-  !gapprompt@gap>| !gapinput@all_ftprs := FaithfulTransitivePermutationRepresentations(sp,true);; Size(all_ftprs);|
+  !gapprompt@gap>| !gapinput@all_ftprs := FaithfulTransitivePermutationRepresentations(sp,true);; |
+  !gapprompt@gap>| !gapinput@Size(all_ftprs);|
   54
 \end{Verbatim}
  }
@@ -350,7 +447,8 @@ If \mbox{\texttt{\mdseries\slshape all{\textunderscore}minimal{\textunderscore}f
   !gapprompt@gap>| !gapinput@min_ftpr(sp);|
   Group([ (1,6,4,3), (1,3)(2,4,6,5) ])
   !gapprompt@gap>| !gapinput@min_ftprs := MinimalFaithfulTransitivePermutationRepresentation(sp,true);|
-  [ CompositionMapping( <action epimorphism>, <action isomorphism> ), CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
+  [ CompositionMapping( <action epimorphism>, <action isomorphism> ), 
+  CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
   !gapprompt@gap>| !gapinput@min_ftprs[2](sp);|
   Group([ (2,3,6,5), (1,3)(2,5,6,4) ])
 \end{Verbatim}
@@ -442,7 +540,7 @@ the labels will be \mbox{\texttt{\mdseries\slshape r0, r1, r2, ...}} for the gen
 
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@G := SymmetricGroup(4);; H := Subgroup(G,[(1,2)]);; K := Subgroup(G,[(1,2,3)]);;|
+  !gapprompt@gap>| !gapinput@G:= SymmetricGroup(4);;H:= Subgroup(G,[(1,2)]);;K:= Subgroup(G,[(1,2,3)]);;|
   !gapprompt@gap>| !gapinput@DotFTPRGraph(G);|
   "digraph {\n1 -> 2 [label = r1];\n 2 -> 3 [label = r1];\n 3 -> 4 [labe\
   l = r1];\n 4 -> 1 [label = r1];\n 1 -> 2 [label = r2,dir=none];\n }\n"
@@ -525,16 +623,17 @@ TeX file).
 
  
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
-  !gapprompt@gap>| !gapinput@G := SymmetricGroup(4);; H := Subgroup(G,[(1,2)]);; K := Subgroup(G,[(1,2,3)]);;|
+  !gapprompt@gap>| !gapinput@G:= SymmetricGroup(4);;H:= Subgroup(G,[(1,2)]);;K:= Subgroup(G,[(1,2,3)]);;|
   !gapprompt@gap>| !gapinput@DrawFTPRGraph(G);|
-  !gapprompt@gap>| !gapinput@texfile := DrawFTPRGraph(G,H,rec(viewtexfile := true));; Print(texfile{[1..152]});|
+  !gapprompt@gap>| !gapinput@texfile := DrawFTPRGraph(G,H,rec(viewtexfile := true));; |
+  !gapprompt@gap>| !gapinput@Print(texfile{[1..152]});|
   \documentclass{article}
   \usepackage[x11names, svgnames, rgb]{xcolor}
   \usepackage[utf8]{inputenc}
   \usepackage{tikz}
   \usetikzlibrary{snakes,arrows,shapes}
   !gapprompt@gap>| !gapinput@SetInfoLevel(InfoDrawFTPR,2);|
-  !gapprompt@gap>| !gapinput@DrawFTPRGraph(FactorCosetAction(G,K),rec(directory := "myfolder", layout := "fdp"));|
+  !gapprompt@gap>| !gapinput@DrawFTPRGraph(FactorCosetAction(G,K),rec(directory:="myfolder",layout:="fdp"));|
   #I  The temporary directory used is: ~/myfolder/
   
 \end{Verbatim}
@@ -574,7 +673,16 @@ an image of the faithful transitive permutation representation graph
 
  }
 
- \def\indexname{Index\logpage{[ "Ind", 0, 0 ]}
+ \def\bibname{References\logpage{[ "Bib", 0, 0 ]}
+\hyperdef{L}{X7A6F98FD85F02BFE}{}
+}
+
+\bibliographystyle{alpha}
+\bibliography{corefreesub.bib}
+
+\addcontentsline{toc}{chapter}{References}
+
+\def\indexname{Index\logpage{[ "Ind", 0, 0 ]}
 \hyperdef{L}{X83A0356F839C696F}{}
 }
 

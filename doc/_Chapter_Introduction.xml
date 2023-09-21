@@ -5,7 +5,70 @@
 <Heading>Introduction</Heading>
 
 <P/>
- corefreesub is a package which calculates the core-free subgroups and their faithful transitive permutation representations
+ The &corefreesub; package was created to calculate core-free subgroups of a group, their indexes, and faithful transitive permutation representations.
 <P/>
+ A core-free subgroup of a group <A>G</A> is a subgroup <A>H</A> such that
+ <Display> \cap_{g\in G} H =  \{id_G\}. </Display>
+ These subgroups are important since the action of <A>G</A> on the cosets of <A>H</A> is both transitive and faithful.
+ Hence, this gives us a faithful transitive permutation representation of <A>G</A> with degree <A>n</A>, where <A>n</A> is the index of <A>H</A> in <A>G</A>.
+<P/>
+ There are many articles studying faithful permutation representation of groups, such as <Cite Key="johnson_minimal_1971"/>, <Cite Key="easdown_minimal_1988"/>, <Cite Key="saunders_minimal_2014"/> and <Cite Key="easdown_minimal_2016"/>.
+ However the restriction on transitive actions is more recent and there are fewer studies like <Cite Key="FP20Tor"/>,<Cite Key="FP21Cor"/>,<Cite Key="FP21Hyper"/> and <Cite Key="FP22Loc"/>.
+<P/>
+ During C.A. Piedade's PhD thesis, he studied many of these faithful transitive permutation representations of automorphism groups of abstract regular polytopes and hypertopes.
+ It was also during this period that this author noticed the abcense of functions/methods in GAP to compute core-free subgroups of a group.
+ As a consequence, he created many functions to help in his research, resulting in many of the functions and methods implemented in this package.
+<P/>
+ One of the important tools for studying faithful transitive permutation representations is by using <A>faithful transitive permutation representation graphs</A>, which are <A>Schreier coset graphs</A>.
+ A <A>Schreier coset graph</A> is a graph associated with a group <A>G</A>, its generators and a subgroup <A>H</A> of <A>G</A>. 
+ The vertices of the graph are the right cosets of <A>H</A> and there is a directed edge <Math>(Hx,Hy)</Math>
+ with label <Math>g</Math> if <Math>g</Math> is a generator of <A>G</A> and <Math>Hxg = Hy</Math>. When <Math>g</Math> is an involution, the two directed edges
+ <Math>(Hx, Hy)</Math> and <Math>(Hy, Hx)</Math> are replaced by a single undirected edge <Math>\{Hx, Hy\}</Math> with label <Math>g</Math>.
+<P/>
+ In the &corefreesub; package, this can achieved by creating graphs as DOT files and using an adaptation of the visualization package developed by M. Delgado [CITE HERE] on Chapter <Ref Label="Chapter&uscore;Drawing&uscore;the&uscore;Faithful&uscore;Transitive&uscore;Permutation&uscore;Representation&uscore;Graph"/>.
+<P/>
+<Section Label="Chapter_Introduction_Section_Instalation">
+<Heading>Instalation</Heading>
+
+<P/>
+ To install this package, you can simply copy the folder of &corefreesub; and its contents into your <A>/pkg</A> folder inside your &GAP; instalation folder.
+ This should work for Windows, Ubuntu and MacOS.
+ If you are using GAP.app on MacOS, the &corefreesub; folder should be copied into your user Library/Preferences/GAP/pkg folder. 
+<P/>
+ This package was tested with &GAP; version greater or equal to 4.11.
+<P/>
+</Section>
+
+
+<Section Label="Chapter_Introduction_Section_Testing_your_instalation">
+<Heading>Testing your instalation</Heading>
+
+<P/>
+ To test your instalation, you can run the function <A>CF_TESTALL()</A>. 
+ This function will run two sets of tests, one dependent on the
+ documentation of the &corefreesub; package and another with assertions with groups with bigger size.
+<P/>
+ If the test runs with no issue, the output should look something similar to the following:
+<Log><![CDATA[
+gap> CF_TESTALL();
+Running list 1 . . .
+Architecture: x86_64-pc-linux-gnu-default64-kv8
+
+-----------------------------------
+total         0 ms (0 ms GC) and 0.00B allocated
+              0 failures in 0 files
+
+#I  No errors detected while testing
+]]></Log>
+
+
+ This tests will also produce two pictures that are supposed to be outputed and open in the user system.
+ If the tests run with no error but they do not output any of the graphs, then it may mean the user might not be able to
+ use this functionality. If so, please report an issue on <URL Text="CoreFreeSub GitHub Issues">https://github.com/CAPiedade/corefreesub/issues</URL>.
+ Moreover, the Architecture part of the test might vary depending on the Operating System the user might be running.
+<P/>
+</Section>
+
+
 </Chapter>
 

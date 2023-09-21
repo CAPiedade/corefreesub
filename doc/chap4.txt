@@ -34,7 +34,7 @@
   generators [3XG.1, G.2, G.3, ...[103X.[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XG := SymmetricGroup(4);; H := Subgroup(G,[(1,2)]);; K := Subgroup(G,[(1,2,3)]);;[127X[104X
+    [4X[25Xgap>[125X [27XG:= SymmetricGroup(4);;H:= Subgroup(G,[(1,2)]);;K:= Subgroup(G,[(1,2,3)]);;[127X[104X
     [4X[25Xgap>[125X [27XDotFTPRGraph(G);[127X[104X
     [4X[28X"digraph {\n1 -> 2 [label = r1];\n 2 -> 3 [label = r1];\n 3 -> 4 [labe\[128X[104X
     [4X[28Xl = r1];\n 4 -> 1 [label = r1];\n 1 -> 2 [label = r2,dir=none];\n }\n"[128X[104X
@@ -120,16 +120,17 @@
         and open any pdf from the TeX file).[133X
   
   [4X[32X  Example  [32X[104X
-    [4X[25Xgap>[125X [27XG := SymmetricGroup(4);; H := Subgroup(G,[(1,2)]);; K := Subgroup(G,[(1,2,3)]);;[127X[104X
+    [4X[25Xgap>[125X [27XG:= SymmetricGroup(4);;H:= Subgroup(G,[(1,2)]);;K:= Subgroup(G,[(1,2,3)]);;[127X[104X
     [4X[25Xgap>[125X [27XDrawFTPRGraph(G);[127X[104X
-    [4X[25Xgap>[125X [27Xtexfile := DrawFTPRGraph(G,H,rec(viewtexfile := true));; Print(texfile{[1..152]});[127X[104X
+    [4X[25Xgap>[125X [27Xtexfile := DrawFTPRGraph(G,H,rec(viewtexfile := true));; [127X[104X
+    [4X[25Xgap>[125X [27XPrint(texfile{[1..152]});[127X[104X
     [4X[28X\documentclass{article}[128X[104X
     [4X[28X\usepackage[x11names, svgnames, rgb]{xcolor}[128X[104X
     [4X[28X\usepackage[utf8]{inputenc}[128X[104X
     [4X[28X\usepackage{tikz}[128X[104X
     [4X[28X\usetikzlibrary{snakes,arrows,shapes}[128X[104X
     [4X[25Xgap>[125X [27XSetInfoLevel(InfoDrawFTPR,2);[127X[104X
-    [4X[25Xgap>[125X [27XDrawFTPRGraph(FactorCosetAction(G,K),rec(directory := "myfolder", layout := "fdp"));[127X[104X
+    [4X[25Xgap>[125X [27XDrawFTPRGraph(FactorCosetAction(G,K),rec(directory:="myfolder",layout:="fdp"));[127X[104X
     [4X[28X#I  The temporary directory used is: ~/myfolder/[128X[104X
     [4X[28X[128X[104X
   [4X[32X[104X

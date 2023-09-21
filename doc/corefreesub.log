@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.8.21)  28 AUG 2023 20:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.8.21)  21 SEP 2023 12:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -422,89 +422,163 @@ Underfull \hbox (badness 10000) in paragraph at lines 114--123
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./corefreesub.toc
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 129--133
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 135--140
+
+ []
+
+[2] (./corefreesub.toc
 LaTeX Font Info:    Trying to load font information for OT1+ztmcm on input line
- 3.
+ 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ztmcm.fd
 File: ot1ztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OT1/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OML+ztmcm on input line
- 3.
+ 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlztmcm.fd
 File: omlztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OML/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMS+ztmcm on input line
- 3.
+ 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsztmcm.fd
 File: omsztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMS/ztmcm.
 )
 LaTeX Font Info:    Trying to load font information for OMX+ztmcm on input line
- 3.
+ 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omxztmcm.fd
 File: omxztmcm.fd 2000/01/03 Fontinst v1.801 font definitions for OMX/ztmcm.
 )
-LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 3
+LaTeX Font Info:    Trying to load font information for OT1+ptm on input line 2
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 3.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <8> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 3.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 3.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 2.
 )
 \tf@toc=\write7
 \openout7 = `corefreesub.toc'.
 
- [2
+ [3
 
 ]
 Chapter 1.
-[3
 
-]
-Chapter 2.
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 174.
+Underfull \hbox (badness 7851) in paragraph at lines 174--176
+[]\T1/ptm/m/n/10.95 One of the im-por-tant tools for study-ing faith-ful tran-s
+i-tive per-mu-ta-tion rep-re-sen-ta-
+ []
+
+! Missing \endcsname inserted.
+<to be read again> 
+                   \T1\textunderscore 
+l.179 ...ore}Representation{\textunderscore}Graph}
+                                                  .
+The control sequence marked <to be read again> should
+not appear between \csname and \endcsname.
+
+! Argument of \@setref has an extra }.
+<inserted text> 
+                \par 
+l.179 ...ore}Representation{\textunderscore}Graph}
+                                                  .
+I've run across a `}' that doesn't seem to match anything.
+For example, `\def\a#1{...}' and `\a}' would produce
+this error. If you simply proceed now, the `\par' that
+I've just inserted will cause me to report a runaway
+argument that might be the root of the problem. But if
+your `}' was spurious, just type `2' and it will go away.
+
+Runaway argument?
+! Paragraph ended before \@setref was complete.
+<to be read again> 
+                   \par 
+l.179 ...ore}Representation{\textunderscore}Graph}
+                                                  .
+I suspect you've forgotten a `}', causing me to apply this
+control sequence to too much text. How can we recover?
+My plan is to forget the whole thing and hope for the best.
+
+! Extra \endcsname.
+\NR@setref ... \NR@@setref \csname r@#1\endcsname 
+                                                  
+l.179 ...ore}Representation{\textunderscore}Graph}
+                                                  .
+I'm ignoring this, since I wasn't doing a \csname.
+
+
+Overfull \hbox (277.63008pt too wide) in paragraph at lines 179--186
+[]\T1/ptm/m/n/10.95 Drawing_the_Faithful_Transitive_Permutation_Representation_
+GraphChapter_Drawing_the_Faithful_Transitive_Permutation_Representation_Graph[]
+Instalation[][]
+ []
+
 [4
 
-] [5]
+]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 208.
+
+! Too many }'s.
+l.226  }
+        
+You've closed more groups than you opened.
+Such booboos are generally harmless, so keep going.
+
+[5]
+Chapter 2.
+[6
+
+] [7]
 Chapter 3.
 
-Overfull \hbox (17.10219pt too wide) in paragraph at lines 329--330
+Overfull \hbox (17.10219pt too wide) in paragraph at lines 426--427
 \T1/ptm/m/n/10.95 To com-ple-ment the al-ready ex-ist-ing func-tions in GAP []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 \T1/ptm/m/n/10.95 and [], the fol-low-ing func-tions to re-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 329--330
+Underfull \hbox (badness 10000) in paragraph at lines 426--427
 \T1/ptm/m/n/10.95 treive the [] and
  []
 
-[6
-
-] [7]
-Chapter 4.
 [8
 
+] [9]
+Chapter 4.
+[10
+
 ]
-LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 4
-92.
+LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 5
+90.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [9] [10]
-(./corefreesub.ind
+) [11]
+(./corefreesub.bbl (./corefreesub.brf)
+\tf@brf=\write8
+\openout8 = `corefreesub.brf'.
+
+ [12]) [13
+
+] (./corefreesub.ind
 Underfull \hbox (badness 10000) in paragraph at lines 24--25
 []\T1/cmtt/m/n/10.95 Faithful\T1/ptm/m/n/10.95 -\T1/cmtt/m/n/10.95 Transitive\T
 1/ptm/m/n/10.95 -\T1/cmtt/m/n/10.95 Permutation\T1/ptm/m/n/10.95 -
@@ -524,35 +598,40 @@ tm/m/n/10.95 -\T1/cmtt/m/n/10.95 Transitive\T1/ptm/m/n/10.95 -\T1/cmtt/m/n/10.9
 5 Permutation\T1/ptm/m/n/10.95 -
  []
 
-[11
+[14
 
 
 
 ]) (./corefreesub.aux)
 Package rerunfilecheck Info: File `corefreesub.out' has not changed.
-(rerunfilecheck)             Checksum: CD3CA56CC03FCCD054710A0EF1B85466;2285.
+(rerunfilecheck)             Checksum: 350A2BE074EA81C32AC1AAFB5E277324;2561.
+Package rerunfilecheck Info: File `corefreesub.brf' has not changed.
+(rerunfilecheck)             Checksum: 32FE12DAB4D4E5C0E54C9BFCDF68D68A;367.
  ) 
 Here is how much of TeX's memory you used:
- 10490 strings out of 480247
- 164326 string characters out of 5896151
- 455046 words of memory out of 5000000
- 28221 multiletter control sequences out of 15000+600000
- 526310 words of font info for 91 fonts, out of 8000000 for 9000
+ 10572 strings out of 480247
+ 165569 string characters out of 5896151
+ 455486 words of memory out of 5000000
+ 28266 multiletter control sequences out of 15000+600000
+ 537170 words of font info for 105 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 87i,6n,91p,638b,659s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} </home/claudio/.t
-exlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/ecst1095.600pk> </home/claudio
-/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.600pk> </home/clau
+ 87i,6n,91p,823b,660s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/claudio/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1095.6
+00pk>{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc} </home/claudio
+/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/ecst1095.600pk> </home/clau
 dio/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk></usr/sha
 re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr
-8a.pfb>
-Output written on corefreesub.pdf (11 pages, 115325 bytes).
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-di
+st/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
+/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on corefreesub.pdf (14 pages, 162276 bytes).
 PDF statistics:
- 363 PDF objects out of 1000 (max. 8388607)
- 185 compressed objects within 2 object streams
- 55 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 452 PDF objects out of 1000 (max. 8388607)
+ 253 compressed objects within 3 object streams
+ 73 named destinations out of 1000 (max. 500000)
+ 97 words of extra memory for PDF output out of 10000 (max. 10000000)
 

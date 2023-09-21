@@ -1,6 +1,86 @@
   
   [1X1 [33X[0;0YIntroduction[133X[101X
   
-  [33X[0;0Ycorefreesub  is a package which calculates the core-free subgroups and their
-  faithful transitive permutation representations[133X
+  [33X[0;0YThe  [5Xcorefreesub[105X  package  was created to calculate core-free subgroups of a
+  group, their indexes, and faithful transitive permutation representations.[133X
+  
+  [33X[0;0YA core-free subgroup of a group [3XG[103X is a subgroup [3XH[103X such that[133X
+  
+  
+  [24X[33X[0;6Y\cap_{g\in G} H = \{id_G\}.[133X
+  
+  [124X
+  
+  [33X[0;0YThese  subgroups  are  important since the action of [3XG[103X on the cosets of [3XH[103X is
+  both  transitive  and  faithful.  Hence, this gives us a faithful transitive
+  permutation  representation of [3XG[103X with degree [3Xn[103X, where [3Xn[103X is the index of [3XH[103X in
+  [3XG[103X.[133X
+  
+  [33X[0;0YThere  are  many  articles  studying  faithful permutation representation of
+  groups, such as [Joh71], [EP88], [Sau14] and [EH16]. However the restriction
+  on  transitive  actions  is  more  recent  and  there are fewer studies like
+  [FP20],[FP21a],[FP21b] and [FP22].[133X
+  
+  [33X[0;0YDuring  C.A.  Piedade's  PhD  thesis,  he  studied  many  of  these faithful
+  transitive  permutation  representations  of automorphism groups of abstract
+  regular  polytopes  and hypertopes. It was also during this period that this
+  author  noticed the abcense of functions/methods in GAP to compute core-free
+  subgroups of a group. As a consequence, he created many functions to help in
+  his  research, resulting in many of the functions and methods implemented in
+  this package.[133X
+  
+  [33X[0;0YOne  of  the  important  tools  for studying faithful transitive permutation
+  representations  is  by using [3Xfaithful transitive permutation representation
+  graphs[103X,  which  are [3XSchreier coset graphs[103X. A [3XSchreier coset graph[103X is a graph
+  associated  with  a  group  [3XG[103X,  its  generators  and  a subgroup [3XH[103X of [3XG[103X. The
+  vertices of the graph are the right cosets of [3XH[103X and there is a directed edge
+  [23X(Hx,Hy)[123X  with  label  [23Xg[123X  if [23Xg[123X is a generator of [3XG[103X and [23XHxg = Hy[123X. When [23Xg[123X is an
+  involution,  the  two directed edges [23X(Hx, Hy)[123X and [23X(Hy, Hx)[123X are replaced by a
+  single undirected edge [23X\{Hx, Hy\}[123X with label [23Xg[123X.[133X
+  
+  [33X[0;0YIn  the  [5Xcorefreesub[105X  package,  this  can achieved by creating graphs as DOT
+  files  and  using an adaptation of the visualization package developed by M.
+  Delgado [CITE HERE] on Chapter [14X4[114X.[133X
+  
+  
+  [1X1.1 [33X[0;0YInstalation[133X[101X
+  
+  [33X[0;0YTo  install  this package, you can simply copy the folder of [5Xcorefreesub[105X and
+  its  contents into your [3X/pkg[103X folder inside your [5XGAP[105X instalation folder. This
+  should  work  for  Windows,  Ubuntu  and  MacOS. If you are using GAP.app on
+  MacOS,   the   [5Xcorefreesub[105X   folder   should   be   copied  into  your  user
+  Library/Preferences/GAP/pkg folder.[133X
+  
+  [33X[0;0YThis package was tested with [5XGAP[105X version greater or equal to 4.11.[133X
+  
+  
+  [1X1.2 [33X[0;0YTesting your instalation[133X[101X
+  
+  [33X[0;0YTo  test  your  instalation,  you  can  run  the function [3XCF_TESTALL()[103X. This
+  function  will  run two sets of tests, one dependent on the documentation of
+  the  [5Xcorefreesub[105X package and another with assertions with groups with bigger
+  size.[133X
+  
+  [33X[0;0YIf  the test runs with no issue, the output should look something similar to
+  the following:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XCF_TESTALL();[127X[104X
+    [4X[28XRunning list 1 . . .[128X[104X
+    [4X[28XArchitecture: x86_64-pc-linux-gnu-default64-kv8[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X-----------------------------------[128X[104X
+    [4X[28Xtotal         0 ms (0 ms GC) and 0.00B allocated[128X[104X
+    [4X[28X              0 failures in 0 files[128X[104X
+    [4X[28X[128X[104X
+    [4X[28X#I  No errors detected while testing[128X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YThis  tests  will also produce two pictures that are supposed to be outputed
+  and  open in the user system. If the tests run with no error but they do not
+  output any of the graphs, then it may mean the user might not be able to use
+  this  functionality.  If  so,  please  report an issue on CoreFreeSub GitHub
+  Issues   ([7Xhttps://github.com/CAPiedade/corefreesub/issues[107X).   Moreover,  the
+  Architecture  part  of the test might vary depending on the Operating System
+  the user might be running.[133X
   

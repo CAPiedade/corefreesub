@@ -1,7 +1,11 @@
 \GAPDocLabFile{corefreesub}
 \makelabel{corefreesub:Title page}{}{X7D2C85EC87DD46E5}
+\makelabel{corefreesub:Copyright}{}{X81488B807F2A1CF1}
+\makelabel{corefreesub:Acknowledgements}{}{X82A988D47DFAFCFA}
 \makelabel{corefreesub:Table of Contents}{}{X8537FEB07AF2BEC8}
 \makelabel{corefreesub:Introduction}{1}{X7DFB63A97E67C0A1}
+\makelabel{corefreesub:Instalation}{1.1}{X7A5BA34E7CC6300F}
+\makelabel{corefreesub:Testing your instalation}{1.2}{X8541922979222078}
 \makelabel{corefreesub:Obtaining Core-Free Subgroups}{2}{X78D8803A84DB6CE8}
 \makelabel{corefreesub:Core-Free Subgroups}{2.1}{X79EF503F837B7702}
 \makelabel{corefreesub:Degrees of Core-Free subgroups}{2.2}{X847B222E84342E88}
@@ -10,6 +14,8 @@
 \makelabel{corefreesub:Faithful Transitive Permutation Representation of Minimal Degree}{3.2}{X836069DB849BD28D}
 \makelabel{corefreesub:Drawing the Faithful Transitive Permutation Representation Graph}{4}{X85BCED3F87DE1C07}
 \makelabel{corefreesub:Drawing functions}{4.1}{X82F35AB4823114BD}
+\makelabel{corefreesub:Bibliography}{Bib}{X7A6F98FD85F02BFE}
+\makelabel{corefreesub:References}{Bib}{X7A6F98FD85F02BFE}
 \makelabel{corefreesub:Index}{Ind}{X83A0356F839C696F}
 \makelabel{corefreesub:IsCoreFree}{2.1.1}{X7A9042C27F0BA85B}
 \makelabel{corefreesub:CoreFreeConjugacyClassesSubgroups}{2.1.2}{X7D0391668782765C}
