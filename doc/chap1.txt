@@ -40,7 +40,7 @@
   
   [33X[0;0YIn  the  [5Xcorefreesub[105X  package,  this  can achieved by creating graphs as DOT
   files  and  using an adaptation of the visualization package developed by M.
-  Delgado [CITE HERE] on Chapter [14X4[114X.[133X
+  Delgado et al. [Del17] [DLM05], which can be found on Chapter 4.[133X
   
   
   [1X1.1 [33X[0;0YInstalation[133X[101X

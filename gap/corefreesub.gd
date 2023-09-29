@@ -35,7 +35,7 @@ SetInfoLevel( InfoCoreFreeSub, 1 );
 #! with label $g$ if $g$ is a generator of <A>G</A> and $Hxg = Hy$. When $g$ is an involution, the two directed edges
 #! $(Hx, Hy)$ and $(Hy, Hx)$ are replaced by a single undirected edge $\{Hx, Hy\}$ with label $g$.
 #!
-#! In the &corefreesub; package, this can achieved by creating graphs as DOT files and using an adaptation of the visualization package developed by M. Delgado [CITE HERE] on Chapter <Ref Label="Chapter&uscore;Drawing&uscore;the&uscore;Faithful&uscore;Transitive&uscore;Permutation&uscore;Representation&uscore;Graph"/>.
+#! In the &corefreesub; package, this can achieved by creating graphs as DOT files and using an adaptation of the visualization package developed by M. Delgado et al. <Cite Key="delgado_intpic_2017"/> <Cite Key="delgado_automata_2005"/>, which can be found on Chapter 4.
 #!
 #!
 #! @Section Instalation
@@ -56,13 +56,7 @@ SetInfoLevel( InfoCoreFreeSub, 1 );
 #! @BeginLogSession
 #! gap> CF_TESTALL();
 #! Running list 1 . . .
-#! Architecture: x86_64-pc-linux-gnu-default64-kv8
-#! 
-#! -----------------------------------
-#! total         0 ms (0 ms GC) and 0.00B allocated
-#!               0 failures in 0 files
-#!
-#! #I  No errors detected while testing
+#! gap>
 #! @EndLogSession
 #! This tests will also produce two pictures that are supposed to be outputed and open in the user system.
 #! If the tests run with no error but they do not output any of the graphs, then it may mean the user might not be able to

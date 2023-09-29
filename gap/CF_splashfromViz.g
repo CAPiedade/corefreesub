@@ -1,6 +1,6 @@
 ## The function "Splash" is temporarily borrowed from Viz, while it is in an early stage of development.
 ## 
-## (M. Delgado wrote this file during a visit I made to St Andrews University in January 2012)
+## (M. Delgado wrote this file during a visit made to St Andrews University in January 2012)
 #############################################################################
 
 if not IsBound(CF_VizOptionsForSplash) then 
@@ -81,7 +81,7 @@ if not IsBound(CF_Splash) then
     if IsBound(opt.directory) then
       if not opt.directory in DirectoryContents(path) then
         Exec(Concatenation("mkdir ",path,opt.directory));
-        Info(InfoDrawFTPR, 1, "The temporary directory ",path,opt.directory, 
+        Info(InfoDrawFTPR, 2, "The temporary directory ",path,opt.directory, 
          " has been created");
       fi;
       dir := Concatenation(path,opt.directory,"/");
@@ -95,13 +95,13 @@ if not IsBound(CF_Splash) then
       dir := Filename(tdir, "");
     fi;
     #
-    Info(InfoDrawFTPR,2,"The temporary directory used is: ", dir,"\n");
+    Info(InfoDrawFTPR,2,"The directory used is: ", dir,"\n");
 
     #file
     if IsBound(opt.file) then
       file := opt.file;
     else
-      file := "vizpicture";
+      file := "CF_FTPR";
     fi;
 
     #viewer

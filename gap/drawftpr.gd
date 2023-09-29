@@ -98,7 +98,7 @@ DeclareOperation("DotFTPRGraph", [IsGroup,IsGroup, IsList]);
 #! \usetikzlibrary{snakes,arrows,shapes}
 #! gap> SetInfoLevel(InfoDrawFTPR,2);
 #! gap> DrawFTPRGraph(FactorCosetAction(G,K),rec(directory:="myfolder",layout:="fdp"));
-#! #I  The temporary directory used is: ~/myfolder/
+#! #I  The directory used is: ~/myfolder/
 #!
 #! @EndExampleSession
 DeclareGlobalFunction("DrawFTPRGraph");
@@ -112,3 +112,14 @@ DeclareGlobalFunction("TeXFTPRGraph");
 #! @Description
 #! The same as <A>DrawFTPRGraph</A> with the parameter <A>tikz := true</A>.
 DeclareGlobalFunction("DrawTeXFTPRGraph");
+#!
+#! @Section Information Level of Drawing Functions
+#! We can set the amount of verbosity of the functions "DrawFTPRGraph", "TeXFTPRGraph" and "DrawTeXFTPRGraph", which can be controlled 
+#! by the <A>InfoDrawFTPR</A> variable.
+#! As of right now, there are only two levels of the <A>InfoDrawFTPR</A> and, by default, the level is set as 1.
+#! To change to level 2, you can do the following:
+#! @BeginLogSession
+#! gap> SetInfoLevel(InfoDrawFTPR,2);
+#! @EndLogSession
+#! Particularly, <A>InfoDrawFTPR</A> in level 2 will give information regarding the location in which the files are being created and processed.
+

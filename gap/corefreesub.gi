@@ -13,12 +13,7 @@ BindGlobal( "CF_TESTALL",
   LoadPackage( "GAPDoc" );
   doctests := ExtractExamples( DirectoriesPackageLibrary("corefreesub", "doc"), "corefreesub.xml", AUTODOC_file_scan_list, 500 );
   RunExamples( doctests, rec( compareFunction := "uptowhitespace" ) );
-	tests := Filtered(DirectoryContents(DirectoriesPackageLibrary("corefreesub", "tst")[1]), i -> i = "testall.g");
-	if tests = [] then
-    Error("Test file not in corefreesub/tst/ folder");
-  else 
-    Read(Filename(DirectoriesPackageLibrary("corefreesub", "tst"), "testall.g"));
-  fi;
+  Test(Filename(DirectoriesPackageLibrary( "corefreesub", "tst" )[1],"OtherTest.g"));
 end);
 
 
