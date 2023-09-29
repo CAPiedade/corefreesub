@@ -206,13 +206,7 @@ the following:
 \begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
   !gapprompt@gap>| !gapinput@CF_TESTALL();|
   Running list 1 . . .
-  Architecture: x86_64-pc-linux-gnu-default64-kv8
-  
-  -----------------------------------
-  total         0 ms (0 ms GC) and 0.00B allocated
-                0 failures in 0 files
-  
-  #I  No errors detected while testing
+  gap>
 \end{Verbatim}
  This tests will also produce two pictures that are supposed to be outputed and
 open in the user system. If the tests run with no error but they do not output
@@ -633,7 +627,7 @@ TeX file).
   \usetikzlibrary{snakes,arrows,shapes}
   !gapprompt@gap>| !gapinput@SetInfoLevel(InfoDrawFTPR,2);|
   !gapprompt@gap>| !gapinput@DrawFTPRGraph(FactorCosetAction(G,K),rec(directory:="myfolder",layout:="fdp"));|
-  #I  The temporary directory used is: ~/myfolder/
+  #I  The directory used is: ~/myfolder/
   
 \end{Verbatim}
  }
@@ -668,7 +662,23 @@ an image of the faithful transitive permutation representation graph
 
  The same as \mbox{\texttt{\mdseries\slshape DrawFTPRGraph}} with the parameter \mbox{\texttt{\mdseries\slshape tikz := true}}. }
 
+ 
+
  }
+
+ 
+\section{\textcolor{Chapter }{Information Level of Drawing Functions}}\label{Chapter_Drawing_the_Faithful_Transitive_Permutation_Representation_Graph_Section_Information_Level_of_Drawing_Functions}
+\logpage{[ 4, 2, 0 ]}
+\hyperdef{L}{X8099E0467907387C}{}
+{
+  We can set the amount of verbosity of the functions "DrawFTPRGraph",
+"TeXFTPRGraph" and "DrawTeXFTPRGraph", which can be controlled by the \mbox{\texttt{\mdseries\slshape InfoDrawFTPR}} variable. As of right now, there are only two levels of the \mbox{\texttt{\mdseries\slshape InfoDrawFTPR}} and, by default, the level is set as 1. To change to level 2, you can do the
+following: 
+\begin{Verbatim}[commandchars=!@|,fontsize=\small,frame=single,label=Example]
+  !gapprompt@gap>| !gapinput@SetInfoLevel(InfoDrawFTPR,2);|
+\end{Verbatim}
+ Particularly, \mbox{\texttt{\mdseries\slshape InfoDrawFTPR}} in level 2 will give information regarding the location in which the files are
+being created and processed. }
 
  }
 

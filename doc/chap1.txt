@@ -67,13 +67,7 @@
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27XCF_TESTALL();[127X[104X
     [4X[28XRunning list 1 . . .[128X[104X
-    [4X[28XArchitecture: x86_64-pc-linux-gnu-default64-kv8[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X-----------------------------------[128X[104X
-    [4X[28Xtotal         0 ms (0 ms GC) and 0.00B allocated[128X[104X
-    [4X[28X              0 failures in 0 files[128X[104X
-    [4X[28X[128X[104X
-    [4X[28X#I  No errors detected while testing[128X[104X
+    [4X[28Xgap>[128X[104X
   [4X[32X[104X
   
   [33X[0;0YThis  tests  will also produce two pictures that are supposed to be outputed

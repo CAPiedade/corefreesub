@@ -52,13 +52,7 @@
 <Log><![CDATA[
 gap> CF_TESTALL();
 Running list 1 . . .
-Architecture: x86_64-pc-linux-gnu-default64-kv8
-
------------------------------------
-total         0 ms (0 ms GC) and 0.00B allocated
-              0 failures in 0 files
-
-#I  No errors detected while testing
+gap>
 ]]></Log>
 
 

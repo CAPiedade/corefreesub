@@ -131,7 +131,7 @@
     [4X[28X\usetikzlibrary{snakes,arrows,shapes}[128X[104X
     [4X[25Xgap>[125X [27XSetInfoLevel(InfoDrawFTPR,2);[127X[104X
     [4X[25Xgap>[125X [27XDrawFTPRGraph(FactorCosetAction(G,K),rec(directory:="myfolder",layout:="fdp"));[127X[104X
-    [4X[28X#I  The temporary directory used is: ~/myfolder/[128X[104X
+    [4X[28X#I  The directory used is: ~/myfolder/[128X[104X
     [4X[28X[128X[104X
   [4X[32X[104X
   
@@ -150,4 +150,20 @@
             graph[133X
   
   [33X[0;0YThe same as [3XDrawFTPRGraph[103X with the parameter [3Xtikz := true[103X.[133X
+  
+  
+  [1X4.2 [33X[0;0YInformation Level of Drawing Functions[133X[101X
+  
+  [33X[0;0YWe  can  set  the  amount  of  verbosity  of  the functions "DrawFTPRGraph",
+  "TeXFTPRGraph"  and  "DrawTeXFTPRGraph",  which  can  be  controlled  by the
+  [3XInfoDrawFTPR[103X  variable.  As  of  right now, there are only two levels of the
+  [3XInfoDrawFTPR[103X  and,  by default, the level is set as 1. To change to level 2,
+  you can do the following:[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27XSetInfoLevel(InfoDrawFTPR,2);[127X[104X
+  [4X[32X[104X
+  
+  [33X[0;0YParticularly,  [3XInfoDrawFTPR[103X  in  level 2 will give information regarding the
+  location in which the files are being created and processed.[133X
   

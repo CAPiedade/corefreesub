@@ -30,6 +30,9 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X7D0B40427CC8BFC5">4.1-3 TeXFTPRGraph</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap4.html#X8721FD6E83582BA3">4.1-4 DrawTeXFTPRGraph</a></span>
 </div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap4.html#X8099E0467907387C">4.2 <span class="Heading">Information Level of Drawing Functions</span></a>
+</span>
+</div>
 </div>
 
 <h3>4 <span class="Heading">Drawing the Faithful Transitive Permutation Representation Graph</span></h3>
@@ -151,7 +154,7 @@ digraph {
 \usetikzlibrary{snakes,arrows,shapes}
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetInfoLevel(InfoDrawFTPR,2);</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">DrawFTPRGraph(FactorCosetAction(G,K),rec(directory:="myfolder",layout:="fdp"));</span>
-#I  The temporary directory used is: ~/myfolder/
+#I  The directory used is: ~/myfolder/
 
 </pre></div>
 
@@ -172,6 +175,19 @@ digraph {
 <p>Returns: an image of the faithful transitive permutation representation graph</p>
 
 <p>The same as <var class="Arg">DrawFTPRGraph</var> with the parameter <var class="Arg">tikz := true</var>.</p>
+
+<p><a id="X8099E0467907387C" name="X8099E0467907387C"></a></p>
+
+<h4>4.2 <span class="Heading">Information Level of Drawing Functions</span></h4>
+
+<p>We can set the amount of verbosity of the functions "DrawFTPRGraph", "TeXFTPRGraph" and "DrawTeXFTPRGraph", which can be controlled by the <var class="Arg">InfoDrawFTPR</var> variable. As of right now, there are only two levels of the <var class="Arg">InfoDrawFTPR</var> and, by default, the level is set as 1. To change to level 2, you can do the following:</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">SetInfoLevel(InfoDrawFTPR,2);</span>
+</pre></div>
+
+<p>Particularly, <var class="Arg">InfoDrawFTPR</var> in level 2 will give information regarding the location in which the files are being created and processed.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap3.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chapBib.html">[Next Chapter]</a>&nbsp;  </div>

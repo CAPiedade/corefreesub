@@ -124,7 +124,7 @@ gap> Print(texfile{[1..152]});
 \usetikzlibrary{snakes,arrows,shapes}
 gap> SetInfoLevel(InfoDrawFTPR,2);
 gap> DrawFTPRGraph(FactorCosetAction(G,K),rec(directory:="myfolder",layout:="fdp"));
-#I  The temporary directory used is: ~/myfolder/
+#I  The directory used is: ~/myfolder/
 
 ]]></Example>
 
@@ -153,6 +153,23 @@ gap> DrawFTPRGraph(FactorCosetAction(G,K),rec(directory:="myfolder",layout:="fdp
 </ManSection>
 
 
+<P/>
+</Section>
+
+
+<Section Label="Chapter_Drawing_the_Faithful_Transitive_Permutation_Representation_Graph_Section_Information_Level_of_Drawing_Functions">
+<Heading>Information Level of Drawing Functions</Heading>
+
+ We can set the amount of verbosity of the functions "DrawFTPRGraph", "TeXFTPRGraph" and "DrawTeXFTPRGraph", which can be controlled 
+ by the <A>InfoDrawFTPR</A> variable.
+ As of right now, there are only two levels of the <A>InfoDrawFTPR</A> and, by default, the level is set as 1.
+ To change to level 2, you can do the following:
+<Log><![CDATA[
+gap> SetInfoLevel(InfoDrawFTPR,2);
+]]></Log>
+
+
+ Particularly, <A>InfoDrawFTPR</A> in level 2 will give information regarding the location in which the files are being created and processed.
 </Section>
 
 
