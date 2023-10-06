@@ -61,7 +61,7 @@ SetInfoLevel( InfoCoreFreeSub, 1 );
 #! This tests will also produce two pictures that are supposed to be outputed and open in the user system.
 #! If the tests run with no error but they do not output any of the graphs, then it may mean the user might not be able to
 #! use this functionality. If so, please report an issue on <URL Text="CoreFreeSub GitHub Issues">https://github.com/CAPiedade/corefreesub/issues</URL>.
-#! Moreover, the Architecture part of the test might vary depending on the Operating System the user might be running.
+#! 
 #!
 #!
 #! @Chapter Obtaining Core-Free Subgroups
@@ -174,7 +174,7 @@ DeclareOperation( "FaithfulTransitivePermutationRepresentations", [IsGroup]);
 
 #! @Section Faithful Transitive Permutation Representation of Minimal Degree
 #! 
-#! To complement the already existing functions in GAP <A>MinimalFaithfulPermutationRepresentation</A> and <A>MinimalFaithfulPermutationDegree</A>,
+#! To complement the already existing functions in GAP <A>MinimalFaithfulPermutationDegree</A> and <A>MinimalFaithfulPermutationRepresentation</A>,
 #! the following functions to retreive the <A>MinimalFaithfulTransitivePermutationRepresentation</A> and <A>MinimalFaithfulTransitivePermutationDegree</A>.
 #!
 #! @Arguments G [,all_minimal_ftpr]

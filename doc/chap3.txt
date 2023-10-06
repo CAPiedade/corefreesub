@@ -38,9 +38,9 @@
   [1X3.2 [33X[0;0YFaithful Transitive Permutation Representation of Minimal Degree[133X[101X
   
   [33X[0;0YTo     complement     the     already     existing    functions    in    GAP
-  [3XMinimalFaithfulPermutationRepresentation[103X                                 and
-  [3XMinimalFaithfulPermutationDegree[103X,  the  following  functions to retreive the
-  [3XMinimalFaithfulTransitivePermutationRepresentation[103X                       and
+  [3XMinimalFaithfulPermutationDegree[103X                                         and
+  [3XMinimalFaithfulPermutationRepresentation[103X,   the   following   functions   to
+  retreive    the    [3XMinimalFaithfulTransitivePermutationRepresentation[103X    and
   [3XMinimalFaithfulTransitivePermutationDegree[103X.[133X
   
   [1X3.2-1 MinimalFaithfulTransitivePermutationRepresentation[101X

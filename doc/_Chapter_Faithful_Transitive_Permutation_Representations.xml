@@ -45,7 +45,7 @@ gap> Size(all_ftprs);
 <Heading>Faithful Transitive Permutation Representation of Minimal Degree</Heading>
 
 <P/>
- To complement the already existing functions in GAP <A>MinimalFaithfulPermutationRepresentation</A> and <A>MinimalFaithfulPermutationDegree</A>,
+ To complement the already existing functions in GAP <A>MinimalFaithfulPermutationDegree</A> and <A>MinimalFaithfulPermutationRepresentation</A>,
  the following functions to retreive the <A>MinimalFaithfulTransitivePermutationRepresentation</A> and <A>MinimalFaithfulTransitivePermutationDegree</A>.
 <P/>
 <ManSection>
