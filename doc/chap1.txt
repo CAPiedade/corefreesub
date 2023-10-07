@@ -40,7 +40,10 @@
   
   [33X[0;0YIn  the  [5Xcorefreesub[105X  package,  this  can achieved by creating graphs as DOT
   files  and  using an adaptation of the visualization package developed by M.
-  Delgado et al. [Del17] [DLM05], which can be found on Chapter 4.[133X
+  Delgado et al. [Del22] [DLM22], which can be found on Chapter 4.[133X
+  
+  [33X[0;0YThis  package  was  created using the GAP Package [3XPackageMaker[103X [Hor19], with
+  documentation done using [3XAutoDoc[103X [GH22][133X
   
   
   [1X1.1 [33X[0;0YInstalation[133X[101X

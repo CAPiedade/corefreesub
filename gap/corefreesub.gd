@@ -35,8 +35,9 @@ SetInfoLevel( InfoCoreFreeSub, 1 );
 #! with label $g$ if $g$ is a generator of <A>G</A> and $Hxg = Hy$. When $g$ is an involution, the two directed edges
 #! $(Hx, Hy)$ and $(Hy, Hx)$ are replaced by a single undirected edge $\{Hx, Hy\}$ with label $g$.
 #!
-#! In the &corefreesub; package, this can achieved by creating graphs as DOT files and using an adaptation of the visualization package developed by M. Delgado et al. <Cite Key="delgado_intpic_2017"/> <Cite Key="delgado_automata_2005"/>, which can be found on Chapter 4.
+#! In the &corefreesub; package, this can achieved by creating graphs as DOT files and using an adaptation of the visualization package developed by M. Delgado et al. <Cite Key="IntPic"/> <Cite Key="Automata"/>, which can be found on Chapter 4.
 #!
+#! This package was created using the GAP Package <A>PackageMaker</A> <Cite Key="PackageMaker"/>, with documentation done using <A>AutoDoc</A> <Cite Key="AutoDoc"/>
 #!
 #! @Section Instalation
 #! 

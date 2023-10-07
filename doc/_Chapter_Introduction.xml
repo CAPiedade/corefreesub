@@ -25,7 +25,9 @@
  with label <Math>g</Math> if <Math>g</Math> is a generator of <A>G</A> and <Math>Hxg = Hy</Math>. When <Math>g</Math> is an involution, the two directed edges
  <Math>(Hx, Hy)</Math> and <Math>(Hy, Hx)</Math> are replaced by a single undirected edge <Math>\{Hx, Hy\}</Math> with label <Math>g</Math>.
 <P/>
- In the &corefreesub; package, this can achieved by creating graphs as DOT files and using an adaptation of the visualization package developed by M. Delgado et al. <Cite Key="delgado_intpic_2017"/> <Cite Key="delgado_automata_2005"/>, which can be found on Chapter 4.
+ In the &corefreesub; package, this can achieved by creating graphs as DOT files and using an adaptation of the visualization package developed by M. Delgado et al. <Cite Key="IntPic"/> <Cite Key="Automata"/>, which can be found on Chapter 4.
+<P/>
+ This package was created using the GAP Package <A>PackageMaker</A> <Cite Key="PackageMaker"/>, with documentation done using <A>AutoDoc</A> <Cite Key="AutoDoc"/>
 <P/>
 <Section Label="Chapter_Introduction_Section_Instalation">
 <Heading>Instalation</Heading>

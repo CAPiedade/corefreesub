@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.8.21)  6 OCT 2023 11:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.8.21)  7 OCT 2023 12:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -487,7 +487,7 @@ i-tive per-mu-ta-tion rep-re-sen-ta-
 
 ]
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 207.
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 209.
  [5]
 Chapter 2.
 [6
@@ -495,12 +495,12 @@ Chapter 2.
 ] [7]
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
+Underfull \hbox (badness 10000) in paragraph at lines 420--421
 \T1/ptm/m/n/10.95 and [], the fol-low-ing func-tions
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 418--419
+Underfull \hbox (badness 10000) in paragraph at lines 420--421
 \T1/ptm/m/n/10.95 to re-treive the [] and
  []
 
@@ -512,7 +512,7 @@ Chapter 4.
 
 ]
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 5
-82.
+84.
  (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 ) [11]
@@ -550,13 +550,13 @@ tm/m/n/10.95 -\T1/cmtt/m/n/10.95 Transitive\T1/ptm/m/n/10.95 -\T1/cmtt/m/n/10.9
 Package rerunfilecheck Info: File `corefreesub.out' has not changed.
 (rerunfilecheck)             Checksum: C58372CE4AD89D444D4A3418C5017854;2928.
 Package rerunfilecheck Info: File `corefreesub.brf' has not changed.
-(rerunfilecheck)             Checksum: 0691D67C792EF7F1F028F801404E8EC0;471.
+(rerunfilecheck)             Checksum: 240D72DDD8BB437D2B8008A9E4FA6D31;528.
  ) 
 Here is how much of TeX's memory you used:
- 10587 strings out of 480247
- 165985 string characters out of 5896151
- 455660 words of memory out of 5000000
- 28276 multiletter control sequences out of 15000+600000
+ 10597 strings out of 480247
+ 165988 string characters out of 5896151
+ 455704 words of memory out of 5000000
+ 28284 multiletter control sequences out of 15000+600000
  537170 words of font info for 105 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  87i,6n,91p,823b,659s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -572,10 +572,10 @@ e1/urw/helvetic/uhvr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times
 /utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></u
 sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texliv
 e/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on corefreesub.pdf (14 pages, 163456 bytes).
+Output written on corefreesub.pdf (14 pages, 163837 bytes).
 PDF statistics:
- 469 PDF objects out of 1000 (max. 8388607)
- 270 compressed objects within 3 object streams
- 78 named destinations out of 1000 (max. 500000)
+ 476 PDF objects out of 1000 (max. 8388607)
+ 277 compressed objects within 3 object streams
+ 80 named destinations out of 1000 (max. 500000)
  113 words of extra memory for PDF output out of 10000 (max. 10000000)
 
