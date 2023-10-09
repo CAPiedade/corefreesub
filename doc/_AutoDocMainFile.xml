@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<!-- This is an automatically generated file. -->
-<#Include SYSTEM "_Chapter_Introduction.xml">
-<#Include SYSTEM "_Chapter_Obtaining_Core-Free_Subgroups.xml">
-<#Include SYSTEM "_Chapter_Faithful_Transitive_Permutation_Representations.xml">
-<#Include SYSTEM "_Chapter_Drawing_the_Faithful_Transitive_Permutation_Representation_Graph.xml">
