@@ -43,7 +43,7 @@
   Delgado et al. [Del22] [DLM22], which can be found on Chapter 4.[133X
   
   [33X[0;0YThis  package  was  created using the GAP Package [3XPackageMaker[103X [Hor19], with
-  documentation done using [3XAutoDoc[103X [GH22][133X
+  documentation done using [3XAutoDoc[103X [GH22].[133X
   
   
   [1X1.1 [33X[0;0YInstalation[133X[101X

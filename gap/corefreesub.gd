@@ -37,7 +37,7 @@ SetInfoLevel( InfoCoreFreeSub, 1 );
 #!
 #! In the &corefreesub; package, this can achieved by creating graphs as DOT files and using an adaptation of the visualization package developed by M. Delgado et al. <Cite Key="IntPic"/> <Cite Key="Automata"/>, which can be found on Chapter 4.
 #!
-#! This package was created using the GAP Package <A>PackageMaker</A> <Cite Key="PackageMaker"/>, with documentation done using <A>AutoDoc</A> <Cite Key="AutoDoc"/>
+#! This package was created using the GAP Package <A>PackageMaker</A> <Cite Key="PackageMaker"/>, with documentation done using <A>AutoDoc</A> <Cite Key="AutoDoc"/>.
 #!
 #! @Section Instalation
 #! 
