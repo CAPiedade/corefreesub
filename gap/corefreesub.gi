@@ -9,7 +9,7 @@
 BindGlobal( "CF_TESTALL",
   function()
 	local tests, doctests, AUTODOC_file_scan_list;
-  AUTODOC_file_scan_list := [ "../PackageInfo.g", "../gap/CF_splashfromViz.g", "../gap/corefreesub.gd", "../gap/corefreesub.gi", "../gap/drawftpr.gd", "../gap/drawftpr.gi", "../init.g", "../makedoc.g", "../maketest.g", "../read.g", "/mnt/c/Users/Claudio/GAP Packages/pkg/corefreesub/doc/_Chunks.xml" ];
+  AUTODOC_file_scan_list := [ "../PackageInfo.g", "../gap/CF_splashfromViz.g", "../gap/corefreesub.gd", "../gap/corefreesub.gi", "../gap/drawftpr.gd", "../gap/drawftpr.gi", "../init.g", "../makedoc.g", "../maketest.g", "../read.g", Filename(DirectoriesPackageLibrary("corefreesub", "doc"),"_Chunks.xml") ];
   LoadPackage( "GAPDoc" );
   doctests := ExtractExamples( DirectoriesPackageLibrary("corefreesub", "doc"), "corefreesub.xml", AUTODOC_file_scan_list, 500 );
   RunExamples( doctests, rec( compareFunction := "uptowhitespace" ) );
