@@ -27,7 +27,7 @@ if not IsBound(CF_Splash) then
   BindGlobal("CF_Splash",
   function(arg)
     local opt, dotstring, PermGroup, GeneralMap, G1, G2, path, dir, tdir, file, viewer, tikz, filetype, i, 
-          latexstring, command, layout, viewtexfile, tmp, gen_name;
+          latexstring, command, layout, viewtexfile, tmp, gen_name, eachdir;
     if IsList(arg[1]) then
       tmp := [];
       for i in arg do
@@ -80,15 +80,28 @@ if not IsBound(CF_Splash) then
     #directory
     if IsBound(opt.directory) then
       if not opt.directory in DirectoryContents(path) then
-        Exec(Concatenation("mkdir ",path,opt.directory));
-        Info(InfoDrawFTPR, 2, "The temporary directory ",path,opt.directory, 
-         " has been created");
-      fi;
-      dir := Concatenation(path,opt.directory,"/");
-    elif IsBound(opt.path) then
+        dir := "";
+        for eachdir in SplitString(opt.directory, "/") do
+          Add(eachdir,'/');
+          Append(dir,eachdir);
+          Exec(Concatenation("mkdir ",path,dir,"/"));
+        od;
+          Info(InfoDrawFTPR, 2, "The temporary directory ",path,dir, 
+          " has been created");
+          tdir := Directory(Concatenation(path,dir));
+      else
+        tdir := Directory(Concatenation(path,opt.directory,"/"));
+      fi; 
+      dir := Filename(tdir, "");
+    elif IsBound(opt.path) and not IsBound(opt.directory) then
       if not "tmp.viz" in DirectoryContents(path) then
-        tdir := Directory(Concatenation(path,"/","tmp.viz"));
-        dir := Filename(tdir, "");
+        if path[Size(path)] <> '/' then
+          tdir := Directory(Concatenation(path,"/","tmp.viz"));
+          dir := Filename(tdir, "");
+        else
+          tdir := Directory(Concatenation(path,"/","tmp.viz"));
+          dir := Filename(tdir, "");
+        fi;
       fi;
     else
       tdir := DirectoryTemporary();
