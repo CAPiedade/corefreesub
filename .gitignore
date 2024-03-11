@@ -1,5 +1,5 @@
-#/doc/chap*.html
-#/doc/chap*.txt
+/doc/chap*.html
+/doc/chap*.txt
 /doc/*.css
 /doc/*.js
 /doc/chooser.html
@@ -18,13 +18,13 @@
 /doc/*.tex
 /doc/*.toc
 #/doc/manual.pdf
+/doc/corefreesub.xml
 /doc/title.xml
-/doc/*~
-
-/gap/*~
+/doc/_*.xml
+/doc/manual.pdf
 
 /tmp
 /gh-pages
 /.project
-/*~
+*~
 .DS_Store
