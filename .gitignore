@@ -23,6 +23,8 @@
 /doc/_*.xml
 /doc/manual.pdf
 
+/maketest.g
+
 /tmp
 /gh-pages
 /.project
