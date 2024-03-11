@@ -129,10 +129,7 @@
     [4X[28X\usepackage[utf8]{inputenc}[128X[104X
     [4X[28X\usepackage{tikz}[128X[104X
     [4X[28X\usetikzlibrary{snakes,arrows,shapes}[128X[104X
-    [4X[25Xgap>[125X [27XSetInfoLevel(InfoDrawFTPR,2);[127X[104X
-    [4X[25Xgap>[125X [27XDrawFTPRGraph(FactorCosetAction(G,K),rec(directory:="myfolder",layout:="fdp"));[127X[104X
-    [4X[28X#I  The directory used is: ~/myfolder/[128X[104X
-    [4X[28X[128X[104X
+    [4X[25Xgap>[125X [27XDrawFTPRGraph(FactorCosetAction(G,K),rec(directory := "myfolder", layout:="fdp"));;[127X[104X
   [4X[32X[104X
   
   [1X4.1-3 TeXFTPRGraph[101X

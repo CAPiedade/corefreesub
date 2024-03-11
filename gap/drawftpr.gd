@@ -96,10 +96,7 @@ DeclareOperation("DotFTPRGraph", [IsGroup,IsGroup, IsList]);
 #! \usepackage[utf8]{inputenc}
 #! \usepackage{tikz}
 #! \usetikzlibrary{snakes,arrows,shapes}
-#! gap> SetInfoLevel(InfoDrawFTPR,2);
-#! gap> DrawFTPRGraph(FactorCosetAction(G,K),rec(directory:="myfolder",layout:="fdp"));
-#! #I  The directory used is: ~/myfolder/
-#!
+#! gap> DrawFTPRGraph(FactorCosetAction(G,K),rec(directory := "myfolder", layout:="fdp"));;
 #! @EndExampleSession
 DeclareGlobalFunction("DrawFTPRGraph");
 

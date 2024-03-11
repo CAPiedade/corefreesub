@@ -95,5 +95,37 @@ gap> MinimalFaithfulTransitivePermutationDegree(g);
 </Section>
 
 
+<Section Label="Chapter_Faithful_Transitive_Permutation_Representations_Section_Faithful_Transitive_Permutation_Representation_of_given_Degree">
+<Heading>Faithful Transitive Permutation Representation of given Degree</Heading>
+
+<P/>
+ To obtain a Faithful Transitive Permutation Representatio of a specific Degree, the following function
+ <A>FaithfulTransitivePermutationRepresentationsOfDegree</A> can be used.
+<P/>
+<ManSection>
+  <Oper Arg="G, d [,all_ftpr_of_given_degree]" Name="FaithfulTransitivePermutationRepresentationsOfDegree" Label="for IsGroup,IsInt"/>
+ <Returns>an isomorphism (or a list of isomorphisms)
+</Returns>
+ <Description>
+ For a finite group <A>G</A>, <A>FaithfulTransitivePermutationRepresentationsOfDegree</A> returns an isomorphism of <A>G</A> into the symmetric group of degree <A>d</A> acting transitively on its domain. 
+ If <A>all_ftpr_of_given_degree</A> is set as <A>true</A>, then it returns a list of all isomorphisms <A>G</A> into the symmetric group of degree <A>d</A>.
+<Example><![CDATA[
+gap> sp := SymplecticGroup(4,2);;
+gap> FaithfulTransitivePermutationRepresentationsOfDegree(sp,10);
+CompositionMapping( <action epimorphism>, <action isomorphism> )
+gap> FaithfulTransitivePermutationRepresentationsOfDegree(sp,20, true);
+[ CompositionMapping( <action epimorphism>, <action isomorphism> ),
+ CompositionMapping( <action epimorphism>, <action isomorphism> ),
+ CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
+]]></Example>
+
+
+ </Description>
+</ManSection>
+
+
+</Section>
+
+
 </Chapter>
 

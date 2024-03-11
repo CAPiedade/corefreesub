@@ -211,4 +211,27 @@ DeclareOperation( "MinimalFaithfulTransitivePermutationRepresentation", [IsGroup
 DeclareGlobalFunction( "MinimalFaithfulTransitivePermutationDegree" );
 
 
+#! @Section Faithful Transitive Permutation Representation of given Degree
+#! 
+#! To obtain a Faithful Transitive Permutation Representatio of a specific Degree, the following function
+#! <A>FaithfulTransitivePermutationRepresentationsOfDegree</A> can be used.
+#!
+#! @Arguments G, d [,all_ftpr_of_given_degree]
+#! @Returns an isomorphism (or a list of isomorphisms)
+#! @Description
+#! For a finite group <A>G</A>, <A>FaithfulTransitivePermutationRepresentationsOfDegree</A> returns an isomorphism of <A>G</A> into the symmetric group of degree <A>d</A> acting transitively on its domain. 
+#! If <A>all_ftpr_of_given_degree</A> is set as <A>true</A>, then it returns a list of all isomorphisms <A>G</A> into the symmetric group of degree <A>d</A>.
+#! @BeginExampleSession
+#! gap> sp := SymplecticGroup(4,2);;
+#! gap> FaithfulTransitivePermutationRepresentationsOfDegree(sp,10);
+#! CompositionMapping( <action epimorphism>, <action isomorphism> )
+#! gap> FaithfulTransitivePermutationRepresentationsOfDegree(sp,20, true);
+#! [ CompositionMapping( <action epimorphism>, <action isomorphism> ),
+#!  CompositionMapping( <action epimorphism>, <action isomorphism> ),
+#!  CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
+#! @EndExampleSession
+DeclareOperation( "FaithfulTransitivePermutationRepresentationsOfDegree", [IsGroup,IsInt]);
+
+
+
 

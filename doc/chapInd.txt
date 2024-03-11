@@ -14,6 +14,7 @@
   [2XDrawFTPRGraph[102X 4.1-2 
   [2XDrawTeXFTPRGraph[102X 4.1-4 
   [2XFaithfulTransitivePermutationRepresentations[102X, for IsGroup 3.1-1 
+  [2XFaithfulTransitivePermutationRepresentationsOfDegree[102X, for IsGroup,IsInt 3.3-1 
   [2XIsCoreFree[102X 2.1-1 
   [2XMinimalFaithfulTransitivePermutationDegree[102X 3.2-2 
   [2XMinimalFaithfulTransitivePermutationRepresentation[102X, for IsGroup 3.2-1 

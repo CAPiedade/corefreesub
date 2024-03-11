@@ -65,6 +65,8 @@
     3.2 [33X[0;0YFaithful Transitive Permutation Representation of Minimal Degree[133X
       3.2-1 MinimalFaithfulTransitivePermutationRepresentation
       3.2-2 MinimalFaithfulTransitivePermutationDegree
+    3.3 [33X[0;0YFaithful Transitive Permutation Representation of given Degree[133X
+      3.3-1 FaithfulTransitivePermutationRepresentationsOfDegree
   4 [33X[0;0YDrawing the Faithful Transitive Permutation Representation Graph[133X
     4.1 [33X[0;0YDrawing functions[133X
       4.1-1 DotFTPRGraph

@@ -84,3 +84,31 @@
     [4X[28X31[128X[104X
   [4X[32X[104X
   
+  
+  [1X3.3 [33X[0;0YFaithful Transitive Permutation Representation of given Degree[133X[101X
+  
+  [33X[0;0YTo  obtain  a  Faithful  Transitive  Permutation Representatio of a specific
+  Degree,                 the                following                function
+  [3XFaithfulTransitivePermutationRepresentationsOfDegree[103X can be used.[133X
+  
+  [1X3.3-1 FaithfulTransitivePermutationRepresentationsOfDegree[101X
+  
+  [33X[1;0Y[29X[2XFaithfulTransitivePermutationRepresentationsOfDegree[102X( [3XG[103X, [3Xd[103X[, [3Xall_ftpr_of_given_degree[103X] ) [32X operation[133X
+  [6XReturns:[106X  [33X[0;10Yan isomorphism (or a list of isomorphisms)[133X
+  
+  [33X[0;0YFor  a  finite group [3XG[103X, [3XFaithfulTransitivePermutationRepresentationsOfDegree[103X
+  returns  an  isomorphism  of  [3XG[103X  into the symmetric group of degree [3Xd[103X acting
+  transitively on its domain. If [3Xall_ftpr_of_given_degree[103X is set as [3Xtrue[103X, then
+  it  returns  a list of all isomorphisms [3XG[103X into the symmetric group of degree
+  [3Xd[103X.[133X
+  
+  [4X[32X  Example  [32X[104X
+    [4X[25Xgap>[125X [27Xsp := SymplecticGroup(4,2);;[127X[104X
+    [4X[25Xgap>[125X [27XFaithfulTransitivePermutationRepresentationsOfDegree(sp,10);[127X[104X
+    [4X[28XCompositionMapping( <action epimorphism>, <action isomorphism> )[128X[104X
+    [4X[25Xgap>[125X [27XFaithfulTransitivePermutationRepresentationsOfDegree(sp,20, true);[127X[104X
+    [4X[28X[ CompositionMapping( <action epimorphism>, <action isomorphism> ),[128X[104X
+    [4X[28X CompositionMapping( <action epimorphism>, <action isomorphism> ),[128X[104X
+    [4X[28X CompositionMapping( <action epimorphism>, <action isomorphism> ) ][128X[104X
+  [4X[32X[104X
+  

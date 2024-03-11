@@ -36,6 +36,11 @@
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X8746DBA2866336CC">3.2-1 MinimalFaithfulTransitivePermutationRepresentation</a></span>
 <span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7B0EBFFA86B38A0F">3.2-2 MinimalFaithfulTransitivePermutationDegree</a></span>
 </div></div>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap3_mj.html#X845EED7E826D411B">3.3 <span class="Heading">Faithful Transitive Permutation Representation of given Degree</span></a>
+</span>
+<div class="ContSSBlock">
+<span class="ContSS"><br /><span class="nocss">&nbsp;&nbsp;</span><a href="chap3_mj.html#X7EC3C43C80AAD2CB">3.3-1 FaithfulTransitivePermutationRepresentationsOfDegree</a></span>
+</div></div>
 </div>
 
 <h3>3 <span class="Heading">Faithful Transitive Permutation Representations</span></h3>
@@ -114,6 +119,32 @@ Group([ (2,3,6,5), (1,3)(2,5,6,4) ])
 6
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">MinimalFaithfulTransitivePermutationDegree(g);</span>
 31
+</pre></div>
+
+<p><a id="X845EED7E826D411B" name="X845EED7E826D411B"></a></p>
+
+<h4>3.3 <span class="Heading">Faithful Transitive Permutation Representation of given Degree</span></h4>
+
+<p>To obtain a Faithful Transitive Permutation Representatio of a specific Degree, the following function <var class="Arg">FaithfulTransitivePermutationRepresentationsOfDegree</var> can be used.</p>
+
+<p><a id="X7EC3C43C80AAD2CB" name="X7EC3C43C80AAD2CB"></a></p>
+
+<h5>3.3-1 FaithfulTransitivePermutationRepresentationsOfDegree</h5>
+
+<div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FaithfulTransitivePermutationRepresentationsOfDegree</code>( <var class="Arg">G</var>, <var class="Arg">d</var>[, <var class="Arg">all_ftpr_of_given_degree</var>] )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
+<p>Returns: an isomorphism (or a list of isomorphisms)</p>
+
+<p>For a finite group <var class="Arg">G</var>, <var class="Arg">FaithfulTransitivePermutationRepresentationsOfDegree</var> returns an isomorphism of <var class="Arg">G</var> into the symmetric group of degree <var class="Arg">d</var> acting transitively on its domain. If <var class="Arg">all_ftpr_of_given_degree</var> is set as <var class="Arg">true</var>, then it returns a list of all isomorphisms <var class="Arg">G</var> into the symmetric group of degree <var class="Arg">d</var>.</p>
+
+
+<div class="example"><pre>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sp := SymplecticGroup(4,2);;</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FaithfulTransitivePermutationRepresentationsOfDegree(sp,10);</span>
+CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; )
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FaithfulTransitivePermutationRepresentationsOfDegree(sp,20, true);</span>
+[ CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; ),
+ CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; ),
+ CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; ) ]
 </pre></div>
 
 
