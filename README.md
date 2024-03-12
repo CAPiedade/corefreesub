@@ -2,7 +2,7 @@
 
 The CoreFreeSub package is a package to compute faithful transitive permutation representations (FTPRs) of groups. Moreover, this package provides tools to determine the degrees of these FTPRs and lists core-free subgroups. Furthermore, this package allows a graph representation of the permutation representations.
 
-The current version of this package is version 0.3. For more information, please refer to the package manual, in the "doc" folder.
+For more information, please refer to the package manual, in the "doc" folder.
 
 
 ## Dependencies
