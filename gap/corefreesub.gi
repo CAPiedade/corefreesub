@@ -21,7 +21,7 @@ end);
 
 
 SOLVABILITY_IMPLYING_FUNCTIONS:=
-  [IsSolvableGroup,IsNilpotentGroup,IsPGroup,IsCyclic];
+  [IsSolvableGroup,IsSupersolvableGroup,IsNilpotentGroup,IsPGroup,IsAbelian,IsElementaryAbelian,IsCyclic];
 
 BindGlobal("CoreFreeConjugacyClassesSubgroupsCyclicExtension",
         function(arg)
