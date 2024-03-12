@@ -18,41 +18,7 @@ end);
 
 
 
-BindGlobal( "CoreFreeConjugacyClassesSubgroupsOfSolvableGroup",
-        function(G)
-  local s,i,c,CoreFreeClasses,CoreFreeDegrees,map,GI;
 
-  if not IsPcGroup(G) or IsPermGroup(G) then
-    map:=IsomorphismPcGroup(G);
-    GI:=Image(map,G);
-  else
-    map:=fail;
-    GI:=G;
-  fi;
-  s:=SubgroupsSolvableGroup(GI,rec(retnorm:=true));
-  CoreFreeClasses:=[];
-  CoreFreeDegrees := [];
-  for i in [1..Length(s[1])] do
-    if map=fail and IsCoreFree(GI,s[1][i]) then
-      c:=ConjugacyClassSubgroups(GI,s[1][i]);
-      SetStabilizerOfExternalSet(c,s[2][i]);
-      Add(CoreFreeClasses,c);
-      Add(CoreFreeDegrees,Index(GI,s[1][i]));
-    elif IsCoreFree(GI,s[1][i]) then
-      c:=ConjugacyClassSubgroups(G,PreImage(map,s[1][i]));
-      SetStabilizerOfExternalSet(c,PreImage(map,s[2][i]));
-      Add(CoreFreeClasses,c);
-      Add(CoreFreeDegrees,Index(GI,s[1][i]));
-    fi;
-  od;
-  Sort(CoreFreeClasses,function(a,b)
-    return Size(Representative(a))<Size(Representative(b));
-  end);
-  Sort(CoreFreeDegrees);
-  G!.coreFreeConjugacyClassesSubgroups := CoreFreeClasses;
-  G!.coreFreeDegrees := Unique(CoreFreeDegrees);
-  return [G!.coreFreeConjugacyClassesSubgroups,G!.coreFreeDegrees][1];
-end);
 
 SOLVABILITY_IMPLYING_FUNCTIONS:=
   [IsSolvableGroup,IsNilpotentGroup,IsPGroup,IsCyclic];
@@ -532,6 +498,733 @@ BindGlobal( "CoreFreeConjugacyClassesSubgroupsNiceMonomorphism",
   G!.coreFreeDegrees := Unique(NiceO!.coreFreeDegrees);
   return G!.coreFreeConjugacyClassesSubgroups;
 end );
+
+BindGlobal( "CoreFreeConjugacyClassesSubgroupsSolvable",
+  function(arg)
+  local g,        # group
+        isom,     # isomorphism onto AgSeries group
+        func,     # automorphisms to be invariant under
+        funcs,    # <func>
+        funcnorm, # N_G(funcs)
+        efunc,    # induced automs on factor
+        efnorm,   # funcnorm^epi
+        e,        # EAS
+        len,      # Length(e)
+        start,    # last index with EA factor
+        i,j,k,l,
+        m,kp,     # loop
+        kgens,    # generators of k
+        kconh,    # complemnt conjugacy storage
+        opt,      # options record
+        normal,   # flag for 'normal' option
+        consider, # optional 'consider' function
+        retnorm,  # option: return all normalizers
+        f,        # g/e[i]
+        home,     # HomePcgs(f)
+        epi,      # g -> f
+        lastepi,  # epi of last step
+        n,        # e[i-1]^epi
+        fa,       # f/n = g/e[i-1]
+        hom,      # f -> fa
+        B,        # subgroups of n
+        ophom,    # perm action of f on B (or false if not computed)
+        a,        # preimg. of group over n
+        no,       # N_f(a)
+  #      aop,     # a^ophom
+  #      nohom,   # ophom\rest no
+        oppcgs,   # acting pcgs
+        oppcgsimg,# images under ophom
+        ex,       # external set/orbits
+        bs,       # b\in B normal under a, reps
+        bsp,      # bs index
+        bsnorms,  # respective normalizers
+        b,        # in bs
+        bpos,     # position in bs
+        hom2,     # N_f(b) -> N_f(b)/b
+        nag,      # AgGroup(n^hom2)
+        fghom,    # assoc. epi
+        t,s,      # dnk-transversals
+        z,        # Cocycles
+        coboundbas,# Basis(OneCobounds)
+        field,    # GF(Exponent(n))
+        com,      # complements
+        comnorms, # normalizers supergroups
+        isTrueComnorm, # is comnorms the true normalizer or a supergroup
+        comproj,  # projection onto complement
+        kgn,
+        kgim,     # stored decompositions, translated to matrix language
+        kgnr,     # assoc index
+        ncom,     # dito, tested
+        idmat,    # 1-matrix
+        mat,      # matrix action
+        mats,     # list of mats
+        conj,     # matrix action
+        chom,     # homom onto <conj>
+        shom,     # by s induced autom
+        shoms,    # list of these
+        smats,    # dito, matrices
+        conjnr,   # assoc. index
+        glsyl,
+        glsyr,    # left and right side of eqn system
+        found,    # indicator for success
+        grps,     # list of subgroups
+        ngrps,    # dito, new level
+        gj,       # grps[j]
+        grpsnorms,# normalizers of grps
+        ngrpsnorms,# dito, new level
+        bgids,    # generators of b many 1's (used for copro)
+        opr,      # operation on complements
+        xo;       # xternal orbits
+
+    g:=arg[1];
+    if Length(arg)>1 and IsRecord(arg[Length(arg)]) then
+      opt:=arg[Length(arg)];
+    else
+      opt:=rec();
+    fi;
+
+    # parse options
+    retnorm:=IsBound(opt.retnorm) and opt.retnorm;
+
+    # handle trivial case
+    if IsTrivial(g) then
+      if retnorm then
+        return [[g],[g]];
+      else
+        return [g];
+      fi;
+    fi;
+
+    normal:=IsBound(opt.normal) and opt.normal=true;
+    if IsBound(opt.consider) then
+      consider:=opt.consider;
+    else
+      consider:=false;
+    fi;
+
+    isom:=fail;
+
+    # get automorphisms and compute their normalizer, if applicable
+    if IsBound(opt.actions) then
+      func:=opt.actions;
+      hom2:= Filtered( func,     HasIsConjugatorAutomorphism
+                            and IsInnerAutomorphism );
+      hom2:= List( hom2, ConjugatorOfConjugatorIsomorphism );
+
+      if IsBound(opt.funcnorm) then
+        # get the func. normalizer
+        funcnorm:=opt.funcnorm;
+        b:=g;
+      else
+        funcs:= GroupByGenerators( Filtered( func,
+                    i -> not ( HasIsConjugatorAutomorphism( i ) and
+                              IsInnerAutomorphism( i ) ) ),
+                    IdentityMapping(g));
+        IsGroupOfAutomorphismsFiniteGroup(funcs); # set filter
+        if IsTrivial( funcs ) then
+          b:=ClosureGroup(Parent(g),List(func,ConjugatorOfConjugatorIsomorphism));
+          func:=hom2;
+        else
+          if IsSolvableGroup(funcs) then
+            a:=IsomorphismPcGroup(funcs);
+          else
+            a:=IsomorphismPermGroup(funcs);
+          fi;
+          hom:=InverseGeneralMapping(a);
+          IsTotal(hom); IsSingleValued(hom); # to be sure (should be set anyway)
+          b:=SemidirectProduct(Image(a),hom,g);
+          hom:=Embedding(b,1);
+          funcs:=List(GeneratorsOfGroup(funcs),i->Image(hom,Image(a,i)));
+          isom:=Embedding(b,2);
+          hom2:=List(hom2,i->Image(isom,i));
+          func:=Concatenation(funcs,hom2);
+          g:=Image(isom,g);
+        fi;
+
+        # get the normalizer of <func>
+        funcnorm:=Normalizer(g,SubgroupNC(b,func));
+        func:=List(func,i->ConjugatorAutomorphism(b,i));
+      fi;
+
+      Assert(1,IsSubgroup(g,funcnorm));
+
+      # compute <func> characteristic series
+      e:=InvariantElementaryAbelianSeries(g,func);
+    else
+      func:=[];
+      funcnorm:=g;
+      e:=ElementaryAbelianSeriesLargeSteps(g);
+    fi;
+
+    if IsBound(opt.series) then
+      e:=opt.series;
+    else
+      f:=DerivedSeriesOfGroup(g);
+      if Length(e)>Length(f) and
+        ForAll([1..Length(f)-1],i->IsElementaryAbelian(f[i]/f[i+1])) then
+        Info(InfoPcSubgroup,1,"  Preferring Derived Series");
+        e:=f;
+      fi;
+    fi;
+
+    len:=Length(e);
+
+    if IsBound(opt.groups) then
+      start:=0;
+      while start+1<=Length(e) and ForAll(opt.groups,i->IsSubgroup(e[start+1],i)) do
+        start:=start+1;
+      od;
+      Info(InfoPcSubgroup,1,"starting index ",start);
+      epi:=NaturalHomomorphismByNormalSubgroup(g,e[start]);
+      lastepi:=epi;
+      f:=Image(epi,g);
+      grps:=List(opt.groups,i->Image(epi,i));
+      if not IsBound(opt.grpsnorms) then
+        opt:=ShallowCopy(opt);
+        opt.grpsnorms:=List(opt.groups,i->Normalizer(e[1],i));
+      fi;
+      grpsnorms:=List(opt.grpsnorms,i->Image(epi,i));
+    else
+      # search the largest elementary abelian quotient
+      start:=2;
+      while start<len and IsElementaryAbelian(g/e[start+1]) do
+        start:=start+1;
+      od;
+
+      # compute all subgroups there
+      if start<len then
+        # form only factor groups if necessary
+        epi:=NaturalHomomorphismByNormalSubgroup(g,e[start]);
+        LockNaturalHomomorphismsPool(g,e[start]);
+        f:=Image(epi,g);
+      else
+        f:=g;
+        epi:=IdentityMapping(f);
+      fi;
+      lastepi:=epi;
+      efunc:=List(func,i->InducedAutomorphism(epi,i));
+      grps:=InvariantSubgroupsElementaryAbelianGroup(f,efunc);
+      Assert(1,ForAll(grps,i->ForAll(efunc,j->Image(j,i)=i)));
+      grpsnorms:=List(grps,i->f);
+      Info(InfoPcSubgroup,5,List(grps,Size),List(grpsnorms,Size));
+
+    fi;
+
+    for i in [start+1..len] do
+      Info(InfoPcSubgroup,1," step ",i,": ",Index(e[i-1],e[i]),", ",
+                      Length(grps)," groups");
+      # compute modulo e[i]
+      if i<len then
+        # form only factor groups if necessary
+        epi:=NaturalHomomorphismByNormalSubgroup(g,e[i]);
+        f:=Image(epi,g);
+      else
+        f:=g;
+        epi:=IdentityMapping(g);
+      fi;
+      home:=HomePcgs(f); # we want to compute wrt. this pcgs
+      n:=Image(epi,e[i-1]);
+
+      # the induced factor automs
+      efunc:=List(func,i->InducedAutomorphism(epi,i));
+      # filter the non-trivial ones
+      efunc:=Filtered(efunc,i->ForAny(GeneratorsOfGroup(f),j->Image(i,j)<>j));
+
+      if Length(efunc)>0 then
+        efnorm:=Image(epi,funcnorm);
+      fi;
+
+      if Length(efunc)=0 then
+        ophom:=ActionSubspacesElementaryAbelianGroup(f,n);
+        B:=ophom[1];
+        Info(InfoPcSubgroup,2,"  ",Length(B)," normal subgroups");
+        ophom:=ophom[2];
+
+        ngrps:=[];
+        ngrpsnorms:=[];
+        oppcgs:=Pcgs(Source(ophom));
+        oppcgsimg:=List(oppcgs,i->Image(ophom,i));
+        ex:=[1..Length(B)];
+        IsSSortedList(ex);
+        ex:=ExternalSet(Source(ophom),ex,oppcgs,oppcgsimg,OnPoints);
+        ex:=ExternalOrbitsStabilizers(ex);
+
+        for j in ex do
+          if IsCoreFree(g,PreImage(epi,B[Representative(j)])) then
+            Add(ngrps,B[Representative(j)]);
+            Add(ngrpsnorms,StabilizerOfExternalSet(j));
+          fi;
+        od;
+
+      else
+        B:=InvariantSubgroupsElementaryAbelianGroup(n,efunc);
+        ophom:=false;
+        Info(InfoPcSubgroup,2,"  ",Length(B)," normal subgroups");
+
+        # note the groups in B
+        ngrps:=SubgroupsOrbitsAndNormalizers(f,B,false);
+        ngrpsnorms:=List(ngrps,i->i.normalizer);
+        ngrps:=List(ngrps,i->i.representative);
+        ngrps:=Filtered(ngrps,i->IsCoreFree(g,PreImage(epi,i)));
+      fi;
+
+      # Get epi to the old factor group
+      # as hom:=NaturalHomomorphism(f,fa); does not work, we have to play tricks
+      hom:=lastepi;
+      lastepi:=epi;
+      fa:=Image(hom,g);
+
+      hom:= GroupHomomorphismByImagesNC(f,fa,GeneratorsOfGroup(f),
+            List(GeneratorsOfGroup(f),i->
+              Image(hom,PreImagesRepresentative(epi,i))));
+      Assert(2,KernelOfMultiplicativeGeneralMapping(hom)=n);
+
+      # lift the known groups
+      for j in [1..Length(grps)] do
+
+        gj:=grps[j];
+        if Size(gj)>1 then
+          a:=PreImage(hom,gj);
+          Assert(1,Size(a)=Size(gj)*Size(n));
+          if IsCoreFree(g,PreImage(epi,a)) then 
+            Add(ngrps,a);
+            Add(ngrpsnorms,PreImage(hom,grpsnorms[j]));
+          fi;
+          no:=PreImage(hom,grpsnorms[j]);
+
+          if Length(efunc)>0 then
+            # get the double cosets
+            t:=List(DoubleCosets(f,no,efnorm),Representative);
+            Info(InfoPcSubgroup,2,"  |t|=",Length(t));
+            t:=Filtered(t,i->HasInvariantConjugateSubgroup(a,i,efunc));
+            Info(InfoPcSubgroup,2,"invar:",Length(t));
+          fi;
+
+          # we have to extend with those b in B, that are normal in a
+          if ophom<>false then
+            #aop:=Image(ophom,a);
+            #SetIsSolvableGroup(aop,true);
+
+            if Length(GeneratorsOfGroup(a))>2 then
+              bs:=SmallGeneratingSet(a);
+            else
+              bs:=GeneratorsOfGroup(a);
+            fi;
+            bs:=List(bs,i->Image(ophom,i));
+
+            bsp:=Filtered([1..Length(B)],i->ForAll(bs,j->i^j=i)
+                                          and Size(B[i])<Size(n));
+            bs:=B{bsp};
+          else
+            bsp:=false;
+            bs:=Filtered(B,i->IsNormal(a,i) and Size(i)<Size(n));
+          fi;
+
+          if Length(efunc)>0 and Length(t)>1 then
+            # compute also the invariant ones under the conjugates:
+            # equivalently: Take all equivalent ones and take those, whose
+            # conjugates lie in a and are normal under a
+            for k in Filtered(t,i->not i in no) do
+              bs:=Union(bs,Filtered(List(B,i->ConjugateSubgroup(i,k^(-1))),
+                    i->IsSubset(a,i) and IsNormal(a,i) and Size(i)<Size(n) ));
+            od;
+          fi;
+
+          # take only those bs which are valid
+          if consider<>false then
+            Info(InfoPcSubgroup,2,"  ",Length(bs)," subgroups lead to ");
+            if bsp<>false then
+              bsp:=Filtered(bsp,j->consider(no,a,n,B[j],e[i])<>false);
+              IsSSortedList(bsp);
+              bs:=bsp; # to get the 'Info' right
+            else
+              bs:=Filtered(bs,j->consider(no,a,n,j,e[i])<>false);
+            fi;
+            Info(InfoPcSubgroup,2,Length(bs)," valid ones");
+          fi;
+
+          if ophom<>false then
+            #nohom:=List(GeneratorsOfGroup(no),i->Image(ophom,i));
+            #aop:=SubgroupNC(Image(ophom),nohom);
+            #nohom:=GroupHomomorphismByImagesNC(no,aop,
+            #                                   GeneratorsOfGroup(no),nohom);
+
+            if Length(bsp)>0 then
+              oppcgs:=Pcgs(no);
+              oppcgsimg:=List(oppcgs,i->Image(ophom,i));
+              ex:=ExternalSet(no,bsp,oppcgs,oppcgsimg,OnPoints);
+              ex:=ExternalOrbitsStabilizers(ex);
+
+              bs:=[];
+              bsnorms:=[];
+              for bpos in ex do
+                Add(bs,B[Representative(bpos)]);
+                Add(bsnorms,StabilizerOfExternalSet(bpos));
+  
+              od;
+            fi;
+
+          else
+            # fuse under the action of no and compute the local normalizers
+            bs:=SubgroupsOrbitsAndNormalizers(no,bs,true);
+            bsnorms:=List(bs,i->i.normalizer);
+            bs:=List(bs,i->i.representative);
+          fi;
+
+          Assert(1,ForAll(bs,i->ForAll(efunc,j->Image(j,i)=i)));
+
+          # now run through the b in bs
+          for bpos in [1..Length(bs)] do
+            b:=bs[bpos];
+            Assert(2,IsNormal(a,b));
+            # test, whether we'll have to consider this case
+
+  
+            # test, whether b is invariant
+            if Length(efunc)>0 then
+              # extend to dcs of bnormalizer
+              s:=RightTransversal(no,bsnorms[bpos]);
+              nag:=Length(s);
+              s:=Concatenation(List(s,i->List(t,j->i*j)));
+              z:=Length(s);
+              #NOCH: Fusion
+              # test, which ones are usable at all
+              s:=Filtered(s,i->HasInvariantConjugateSubgroup(b,i,efunc));
+              Info(InfoPcSubgroup,2,"  |s|=",nag,"-(m)>",z,"-(i)>",Length(s));
+            else
+              s:=[()];
+            fi;
+
+            if Length(s)>0 then
+              nag:=InducedPcgs(home,n);
+              nag:=nag mod InducedPcgs(nag,b);
+
+
+              z:=rec(group:=a,
+                  generators:=InducedPcgs(home,a) mod NumeratorOfModuloPcgs(nag),
+                  modulePcgs:=nag);
+              OCOneCocycles(z,true);
+              if IsBound(z.complement) and
+                # normal complements exist, iff the coboundaries are trivial
+                (normal=false or Dimension(z.oneCoboundaries)=0)
+                then
+                # now fetch the complements
+
+                z.factorGens:=z.generators;
+                coboundbas:=Basis(z.oneCoboundaries);
+                com:=BaseSteinitzVectors(BasisVectors(Basis(z.oneCocycles)),
+                                        BasisVectors(coboundbas));
+                field:=LeftActingDomain(z.oneCocycles);
+                if Size(field)^Length(com.factorspace)>100000 then
+                  Info(InfoWarning,1, "Many (",
+                    Size(field)^Length(com.factorspace),") complements!");
+                fi;
+                com:=Enumerator(VectorSpace(field,com.factorspace,
+                                                Zero(z.oneCocycles)));
+                Info(InfoPcSubgroup,3,"  ",Length(com),
+                    " local complement classes");
+
+                # compute fusion
+                kconh:=List([1..Length(com)],i->[i]);
+                if i<len or retnorm then
+                  # we need to compute normalizers
+                  comnorms:=[];
+                else
+                  comnorms:=fail;
+                fi;
+
+                if Length(com)>1 and Size(a)<Size(bsnorms[bpos]) then
+
+                  opr:=function(cyc,elm)
+                        local l,i;
+                          l:=z.cocycleToList(cyc);
+                          for i in [1..Length(l)] do
+                            l[i]:=(z.complementGens[i]*l[i])^elm;
+                          od;
+                          l:=CorrespondingGeneratorsByModuloPcgs(z.origgens,l);
+                          for i in [1..Length(l)] do
+                            l[i]:=LeftQuotient(z.complementGens[i],l[i]);
+                          od;
+                          l:=z.listToCocycle(l);
+                          return SiftedVector(coboundbas,l);
+                        end;
+
+                  xo:=ExternalOrbitsStabilizers(
+                      ExternalSet(bsnorms[bpos],com,opr));
+
+                  for k in xo do
+                    l:=List(k,i->Position(com,i));
+                    if comnorms<>fail then
+                      comnorms[l[1]]:=StabilizerOfExternalSet(k);
+                      isTrueComnorm:=false;
+                    fi;
+                    l:=Set(l);
+                    for kp in l do
+                      kconh[kp]:=l;
+                    od;
+                  od;
+
+                elif comnorms<>fail then
+                  if Size(a)=Size(bsnorms[bpos]) then
+                    comnorms:=List(com,i->z.cocycleToComplement(i));
+                    isTrueComnorm:=true;
+                    comnorms:=List(comnorms,
+                                i->ClosureSubgroup(CentralizerModulo(n,b,i),i));
+                  else
+                    isTrueComnorm:=false;
+                    comnorms:=List(com,i->bsnorms[bpos]);
+                  fi;
+                fi;
+
+
+                if Length(efunc)>0 then
+                  ncom:=[];
+
+
+                  conj:=LinearOperationLayer(a,GeneratorsOfGroup(a),nag);
+
+                  idmat:=conj[1]^0;
+                  mat:= GroupByGenerators( conj, idmat );
+                  chom:= GroupHomomorphismByImagesNC(a,mat,
+                          GeneratorsOfGroup(a),conj);
+
+                  smats:=[];
+                  shoms:=[];
+
+                  fghom:=Concatenation(z.factorGens,GeneratorsOfGroup(n));
+                  bgids:=List(GeneratorsOfGroup(n),i->One(b));
+
+                  # now run through the complements
+                  for kp in [1..Length(com)] do
+
+                    if kconh[kp]=fail then
+                      Info(InfoPcSubgroup,3,"already conjugate");
+                    else
+
+                      l:=z.cocycleToComplement(com[kp]);
+                      # the projection on the complement
+                      k:=ClosureSubgroup(b,l);
+                      if Length(s)=1 and IsOne(s[1]) then
+                        # special case -- no conjugates
+                        if ForAll(efunc,x->ForAll(GeneratorsOfGroup(l),
+                            y->ImagesRepresentative(x,y) in k)) then
+                          l:=rec(representative:=k);
+                          if comnorms<>fail then
+                            if IsBound(comnorms[kp]) then
+                              l.normalizer:=comnorms[kp];
+                            else
+                              l.normalizer:=Normalizer(bsnorms[bpos],
+                                      ClosureSubgroup(b,k));
+                            fi;
+                          fi;
+                          Add(ncom,l);
+
+                          # tag all conjugates
+                          for l in kconh[kp] do
+                            kconh[l]:=fail;
+                          od;
+                        fi;
+
+                      else
+                        # generic case
+
+                        comproj:= GroupHomomorphismByImagesNC(a,a,fghom,
+                                  Concatenation(GeneratorsOfGroup(l),bgids));
+
+                        # now run through the conjugating elements
+                        conjnr:=1;
+                        found:=false;
+                        while conjnr<=Length(s) and found=false do
+                          if not IsBound(smats[conjnr]) then
+                            # compute the matrix action for the induced, jugated
+                            # morphisms
+                            m:=s[conjnr];
+                            smats[conjnr]:=[];
+                            shoms[conjnr]:=[];
+                            for l in efunc do
+                              # the induced, jugated morphism
+                              shom:= GroupHomomorphismByImagesNC(a,a,
+                                      GeneratorsOfGroup(a),
+                                      List(GeneratorsOfGroup(a),
+                                      i->Image(l,i^m)^Inverse(m)));
+
+                              mat:=List(nag,
+                                    i->One(field)*ExponentsOfPcElement(nag,
+                                    Image(shom,i)));
+                              Add(smats[conjnr],mat);
+                              Add(shoms[conjnr],shom);
+                            od;
+                          fi;
+
+                          mats:=smats[conjnr];
+                          # now test whether the complement k can be conjugated to
+                          # be invariant under the morphisms to mats
+                          glsyl:=List(nag,i->[]);
+                          glsyr:=[];
+                          for l in [1..Length(efunc)] do
+                            kgens:=GeneratorsOfGroup(k);
+                            for kgnr in [1..Length(kgens)] do
+
+                              kgn:=Image(shoms[conjnr][l],kgens[kgnr]);
+                              kgim:=Image(comproj,kgn);
+                              Assert(2,kgim^-1*kgn in n);
+                              # nt part
+                              kgn:=kgim^-1*kgn;
+
+                              # translate into matrix terms
+                              kgim:=Image(chom,kgim);
+                              kgn:=One(field)*ExponentsOfPcElement(nag,kgn);
+
+                              # the matrix action
+                              mat:=idmat+(mats[l]-idmat)*kgim-mats[l];
+
+                              # store action and vector
+                              for m in [1..Length(glsyl)] do
+                                glsyl[m]:=Concatenation(glsyl[m],mat[m]);
+                              od;
+                              glsyr:=Concatenation(glsyr,kgn);
+
+                            od;
+                          od;
+
+                          # a possible conjugating element is a solution of the
+                          # large LGS
+                          l:= SolutionMat(glsyl,glsyr);
+                          if l <> fail then
+                            m:=Product([1..Length(l)],
+                                      i->nag[i]^IntFFE(l[i]));
+                            # note that we found one!
+                            found:=[s[conjnr],m];
+                          fi;
+
+                          conjnr:=conjnr+1;
+                        od;
+
+                        # there is an invariant complement?
+                        if found<>false then
+                          found:=found[2]*found[1];
+                          l:=ConjugateSubgroup(ClosureSubgroup(b,k),found);
+                          Assert(1,ForAll(efunc,i->Image(i,l)=l));
+                          l:=rec(representative:=l);
+                          if comnorms<>fail then
+                            if IsBound(comnorms[kp]) then
+                              l.normalizer:=ConjugateSubgroup(comnorms[kp],found);
+                            else
+                              l.normalizer:=ConjugateSubgroup(
+                                              Normalizer(bsnorms[bpos],
+                                      ClosureSubgroup(b,k)), found);
+                            fi;
+                          fi;
+                          Add(ncom,l);
+
+                          # tag all conjugates
+                          for l in kconh[kp] do
+                            kconh[l]:=fail;
+                          od;
+
+                        fi;
+
+                      fi;
+
+                    fi; # if not already a conjugate
+
+                  od;
+
+                  # if invariance test needed
+                else
+                  # get representatives of the fused complement classes
+                  l:=Filtered([1..Length(com)],i->kconh[i][1]=i);
+
+                  ncom:=[];
+                  for kp in l do
+                    m:=rec(representative:=
+                            ClosureSubgroup(b,z.cocycleToComplement(com[kp])));
+                    if comnorms<>fail then
+                      m.normalizer:=comnorms[kp];
+                    fi;
+                    Add(ncom,m);
+                  od;
+                fi;
+                com:=ncom;
+
+                # take the preimages
+                for k in com do
+
+                  Assert(1,ForAll(efunc,i->Image(i,k.representative)
+                                          =k.representative));
+                  if IsCoreFree(g,PreImage(epi,k.representative)) then
+                    Add(ngrps,k.representative);
+                    if IsBound(k.normalizer) then
+                      if isTrueComnorm then
+                        Add(ngrpsnorms,k.normalizer);
+                      else
+                        Add(ngrpsnorms,Normalizer(k.normalizer,k.representative));
+                      fi;
+                    fi;
+                  fi;
+                od;
+              fi;
+            fi;
+          od;
+
+        fi;
+      od;
+
+      grps:=ngrps;
+      grpsnorms:=ngrpsnorms;
+      Info(InfoPcSubgroup,5,List(grps,Size),List(grpsnorms,Size));
+    od;
+
+    if isom<>fail then
+      grps:=List(grps,j->PreImage(isom,j));
+      if retnorm then
+        grpsnorms:=List(grpsnorms,j->PreImage(isom,j));
+      fi;
+    fi;
+
+    if retnorm then
+      return [grps,grpsnorms];
+    else
+      return grps;
+    fi;
+
+end );
+
+BindGlobal( "CoreFreeConjugacyClassesSubgroupsOfSolvableGroup",
+        function(G)
+  local s,i,c,CoreFreeClasses,CoreFreeDegrees,map,GI;
+
+  if not IsPcGroup(G) or IsPermGroup(G) then
+    map:=IsomorphismPcGroup(G);
+    GI:=Image(map,G);
+  else
+    map:=fail;
+    GI:=G;
+  fi;
+  s:=CoreFreeConjugacyClassesSubgroupsSolvable(GI,rec(retnorm:=true));
+  CoreFreeClasses:=[];
+  CoreFreeDegrees := [];
+  for i in [1..Length(s[1])] do
+    if map=fail and IsCoreFree(GI,s[1][i]) then
+      c:=ConjugacyClassSubgroups(GI,s[1][i]);
+      SetStabilizerOfExternalSet(c,s[2][i]);
+      Add(CoreFreeClasses,c);
+      Add(CoreFreeDegrees,Index(GI,s[1][i]));
+    elif IsCoreFree(GI,s[1][i]) then
+      c:=ConjugacyClassSubgroups(G,PreImage(map,s[1][i]));
+      SetStabilizerOfExternalSet(c,PreImage(map,s[2][i]));
+      Add(CoreFreeClasses,c);
+      Add(CoreFreeDegrees,Index(GI,s[1][i]));
+    fi;
+  od;
+  Sort(CoreFreeClasses,function(a,b)
+    return Size(Representative(a))<Size(Representative(b));
+  end);
+  Sort(CoreFreeDegrees);
+  G!.coreFreeConjugacyClassesSubgroups := CoreFreeClasses;
+  G!.coreFreeDegrees := Unique(CoreFreeDegrees);
+  return [G!.coreFreeConjugacyClassesSubgroups,G!.coreFreeDegrees][1];
+end);
 
 InstallGlobalFunction( IsCoreFree,
         function(G,H)
