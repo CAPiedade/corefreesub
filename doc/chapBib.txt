@@ -1,0 +1,50 @@
+  
+  
+  [1XReferences[101X
+  
+  [[20XDel22[120X]  [16XDelgado,  M.[116X, [17XIntPic, A package for drawing integers, Version 0.3.0[117X
+  (2022), (GAP package).
+  
+  [[20XDLM22[120X]  [16XDelgado,  M.,  Linton, S. and Morais, J. J.[116X, [17XAutomata, A package on
+  automata, Version 1.15[117X (2022), (Refereed GAP package).
+  
+  [[20XEH16[120X]  [16XEasdown,  D. and Hendriksen, M.[116X, [17XMinimal permutation representations
+  of  semidirect  products  of  groups[117X, [18XJournal of Group Theory[118X, [19X19[119X, 6 (2016),
+  1017--1048.
+  
+  [[20XEP88[120X]  [16XEasdown,  D.  and  Praeger,  C.  E.[116X, [17XOn minimal faithful permutation
+  representations  of  finite  groups[117X, [18XBulletin of the Australian Mathematical
+  Society[118X, [19X38[119X, 2 (1988), 207--220.
+  
+  [[20XFP20[120X]   [16XFernandes,   M.   E.  and  Piedade,  C.  A.[116X,  [17XFaithful  permutation
+  representations   of   toroidal   regular   maps[117X,   [18XJournal   of   Algebraic
+  Combinatorics[118X, Springer, [19X52[119X, 3 (2020), 317--337.
+  
+  [[20XFP21a[120X]  [16XFernandes,  M.  E.  and  Piedade,  C.  A.[116X,  [17XCorrection to “Faithful
+  permutation  representations of toroidal regular maps”[117X, [18XJournal of Algebraic
+  Combinatorics[118X, Springer, [19X54[119X (2021), 733--738.
+  
+  [[20XFP21b[120X] [16XFernandes, M. E. and Piedade, C. A.[116X, [17XThe degrees of toroidal regular
+  proper  hypermaps[117X, [18XThe Art of Discrete and Applied Mathematics[118X, [19X4[119X, 3 (2021),
+  P3--13.
+  
+  [[20XFP22[120X] [16XFernandes, M. E. and Piedade, C. A.[116X, [17XThe Degrees of Regular Polytopes
+  of Type [4, 4, 4][117X, [18XSIAM Journal on Discrete Mathematics[118X, SIAM, [19X36[119X, 2 (2022),
+  1143--1155.
+  
+  [[20XGH22[120X]  [16XGutsche,  S.  and Horn, M.[116X, [17XAutoDoc, Generate documentation from GAP
+  source code, Version 2022.10.20[117X (2022), (GAP package).
+  
+  [[20XHor19[120X] [16XHorn, M.[116X, [17XPackageMaker, A GAP package for creating new GAP packages,
+  Version 0.9.3[117X (2019), (GAP package).
+  
+  [[20XJoh71[120X]  [16XJohnson,  D.  L.[116X,  [17XMinimal  Permutation  Representations  of Finite
+  Groups[117X, [18XAmerican Journal of Mathematics[118X, [19X93[119X, 4 (1971), 857.
+  
+  [[20XSau14[120X]  [16XSaunders,  N.[116X, [17XMinimal faithful permutation degrees for irreducible
+  Coxeter  groups and binary polyhedral groups[117X, [18XJournal of Group Theory[118X, [19X17[119X, 5
+  (2014), 805--832.
+  
+  
+  
+  [32X
