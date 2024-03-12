@@ -26,7 +26,7 @@ SetInfoLevel( InfoCoreFreeSub, 1 );
 #! However the restriction on transitive actions is more recent and there are fewer studies like <Cite Key="FP20Tor"/>,<Cite Key="FP21Cor"/>,<Cite Key="FP21Hyper"/> and <Cite Key="FP22Loc"/>.
 #!
 #! During C.A. Piedade's PhD thesis, he studied many of these faithful transitive permutation representations of automorphism groups of abstract regular polytopes and hypertopes.
-#! It was also during this period that this author noticed the abcense of functions/methods in GAP to compute core-free subgroups of a group.
+#! It was also during this period that this author noticed the absence of functions/methods in GAP to compute core-free subgroups of a group.
 #! As a consequence, he created many functions to help in his research, resulting in many of the functions and methods implemented in this package.
 #! 
 #! One of the important tools for studying faithful transitive permutation representations is by using <A>faithful transitive permutation representation graphs</A>, which are <A>Schreier coset graphs</A>.
@@ -39,17 +39,17 @@ SetInfoLevel( InfoCoreFreeSub, 1 );
 #!
 #! This package was created using the GAP Package <A>PackageMaker</A> <Cite Key="PackageMaker"/>, with documentation done using <A>AutoDoc</A> <Cite Key="AutoDoc"/>.
 #!
-#! @Section Instalation
+#! @Section Installation
 #! 
-#! To install this package, you can simply copy the folder of &corefreesub; and its contents into your <A>/pkg</A> folder inside your &GAP; instalation folder.
+#! To install this package, you can simply copy the folder of &corefreesub; and its contents into your <F>/pkg</F> folder inside your &GAP; installation folder.
 #! This should work for Windows, Ubuntu and MacOS.
-#! If you are using GAP.app on MacOS, the &corefreesub; folder should be copied into your user Library/Preferences/GAP/pkg folder. 
+#! If you are using GAP.app on MacOS, the &corefreesub; folder should be copied into your user <F>Library/Preferences/GAP/pkg</F> folder.
 #!
 #! This package was tested with &GAP; version greater or equal to 4.11.
 #! 
-#! @Section Testing your instalation
+#! @Section Testing your installation
 #! 
-#! To test your instalation, you can run the function <A>CF_TESTALL()</A>. 
+#! To test your installation, you can run the function <A>CF_TESTALL()</A>. 
 #! This function will run two sets of tests, one dependent on the
 #! documentation of the &corefreesub; package and another with assertions with groups with bigger size.
 #! 
@@ -59,7 +59,7 @@ SetInfoLevel( InfoCoreFreeSub, 1 );
 #! Running list 1 . . .
 #! gap>
 #! @EndLogSession
-#! This tests will also produce two pictures that are supposed to be outputed and open in the user system.
+#! This tests will also produce two pictures that are supposed to be output and open in the user system.
 #! If the tests run with no error but they do not output any of the graphs, then it may mean the user might not be able to
 #! use this functionality. If so, please report an issue on <URL Text="CoreFreeSub GitHub Issues">https://github.com/CAPiedade/corefreesub/issues</URL>.
 #! 
@@ -176,7 +176,7 @@ DeclareOperation( "FaithfulTransitivePermutationRepresentations", [IsGroup]);
 #! @Section Faithful Transitive Permutation Representation of Minimal Degree
 #! 
 #! To complement the already existing functions in GAP <A>MinimalFaithfulPermutationDegree</A> and <A>MinimalFaithfulPermutationRepresentation</A>,
-#! the following functions to retreive the <A>MinimalFaithfulTransitivePermutationRepresentation</A> and <A>MinimalFaithfulTransitivePermutationDegree</A>.
+#! the following functions to retrieve the <A>MinimalFaithfulTransitivePermutationRepresentation</A> and <A>MinimalFaithfulTransitivePermutationDegree</A>.
 #!
 #! @Arguments G [,all_minimal_ftpr]
 #! @Returns an isomorphism (or a list of isomorphisms)
@@ -213,7 +213,7 @@ DeclareGlobalFunction( "MinimalFaithfulTransitivePermutationDegree" );
 
 #! @Section Faithful Transitive Permutation Representation of given Degree
 #! 
-#! To obtain a Faithful Transitive Permutation Representatio of a specific Degree, the following function
+#! To obtain a faithful transitive permutation Representation of a specific degree, the following function
 #! <A>FaithfulTransitivePermutationRepresentationsOfDegree</A> can be used.
 #!
 #! @Arguments G, d [,all_ftpr_of_given_degree]
