@@ -97,7 +97,7 @@ AutoDoc := rec(
       or (at your option) any later version.
       """,
     Acknowledgements := """
-      The authours wish to thank all the comments, suggestions and issue reporting from users and developers of &GAP;, both past and future.
+      The authors wish to thank all the comments, suggestions and issue reporting from users and developers of &GAP;, both past and future.
       Both authors were partially supported by CMUP, member of LASI, which is financed by Portuguese national funds through FCT – Fundação para a Ciência e a Tecnologia, I.P., under the project with references UIDB/00144/2020 and UIDP/00144/2020. 
       """,
   ),
