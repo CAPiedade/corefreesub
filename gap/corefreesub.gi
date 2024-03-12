@@ -1335,7 +1335,7 @@ end );
 InstallMethod( FaithfulTransitivePermutationRepresentationsOfDegree, [IsGroup, IsInt], 
         function(G,ind)
   if not ind in CoreFreeDegrees(G) then
-    Error(Concatenation("There are no Core-free subgroups with index ", String(ind)));
+    Error("There are no Core-free subgroups with index ", ind);
   fi;
   return FactorCosetAction(G,First(CoreFreeConjugacyClassesSubgroups(G), j -> Index(G,j[1]) = ind)[1]);
 end );
@@ -1343,7 +1343,7 @@ end );
 InstallOtherMethod( FaithfulTransitivePermutationRepresentationsOfDegree, [IsGroup, IsInt, IsBool], 
         function(G,ind,bool) #bool here is either "we want all FTPRs" - true, or "only one for each degree"
   if not ind in CoreFreeDegrees(G) then
-    Error(Concatenation("There are no Core-free subgroups with index ", String(ind)));
+    Error("There are no Core-free subgroups with index ", ind);
   fi;
   if bool then
     return List(Filtered(CoreFreeConjugacyClassesSubgroups(G), j -> Index(G,j[1]) = ind), i -> FactorCosetAction(G,i[1]));
