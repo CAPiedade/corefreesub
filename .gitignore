@@ -30,3 +30,8 @@
 /.project
 *~
 .DS_Store
+
+release
+release-gap-package
+release.py
+validate
