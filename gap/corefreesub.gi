@@ -499,7 +499,7 @@ BindGlobal( "CoreFreeConjugacyClassesSubgroupsOfSolvableGroup",
   #### The function "CoreFreeConjugacyClassesSubgroupsOfSolvableGroup" is a modified version from "FiniteSubgroupClassesBySeries" 
   #### from "Polycyclic" version 2.16 GAP Package, under GNU General Public License v2 or above.
     function(G)
-    local s,i,c,CoreFreeClasses,CoreFreeDegrees,map,GI, PCPGI, map2, pcps,
+    local s,i,c,k,CoreFreeClasses,CoreFreeDegrees,map,GI, PCPGI, map2, pcps,
      pcpG, grps, grp, cfgrps, pcp, rels, act, new, newcore, C, tmp ;
 
     if not IsPcGroup(G) or IsPermGroup(G) then
@@ -554,9 +554,11 @@ BindGlobal( "CoreFreeConjugacyClassesSubgroupsOfSolvableGroup",
             fi;
 
             Append( new, tmp );
-            if Size(tmp) > 0 then if IsCoreFree(GI,PreImage(map2,tmp[1].repr)) then
-            Append( newcore, tmp );
-            fi;fi;
+            for k in [1 .. Size(tmp)] do
+              if IsCoreFree(GI,PreImage(map2,tmp[k].repr)) then
+                Append( newcore, [tmp[k]] );
+              fi;
+            od;
         od;
         Append( cfgrps, newcore);
         if C.char = 0 then
