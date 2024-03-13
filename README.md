@@ -14,7 +14,7 @@ In order to produce graph outputs as images, [graphviz](https://graphviz.org/), 
 Moreover, to write the graphs in Tikz as a TeX file, [dot2tex](https://github.com/xyz2tex/dot2tex), version at least 2.11.3, should also be installed.
 
 ## Authors
-Claudio Alexandre Piedade & Manuel Delgado
+[Claudio Alexandre Piedade](https://capiedade.github.io/) & [Manuel Delgado](https://cmup.fc.up.pt/cmup/mdelgado/)
 
 
 ## Citing
