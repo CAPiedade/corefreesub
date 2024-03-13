@@ -76,9 +76,9 @@ PackageDoc := rec(
 
 Dependencies := rec(
   GAP := ">= 4.11",
-  #NeededOtherPackages := ["polycyclic", ">=2.16" ],
+  NeededOtherPackages := [["polycyclic", ">=2.16"]],
   SuggestedOtherPackages := [ ],
-  #ExternalConditions := [ "graphviz", ">=2.43.0", "dot2tex", ">=2.11.3" ],
+  ExternalConditions := [ ["graphviz", ">=2.43.0"], ["dot2tex", ">=2.11.3"] ],
 ),
 
 AvailabilityTest := ReturnTrue,
