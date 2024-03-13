@@ -24,7 +24,7 @@
   [33X[0;0YDuring  C.A.  Piedade's  PhD  thesis,  he  studied  many  of  these faithful
   transitive  permutation  representations  of automorphism groups of abstract
   regular  polytopes  and hypertopes. It was also during this period that this
-  author  noticed the abcense of functions/methods in GAP to compute core-free
+  author  noticed the absence of functions/methods in GAP to compute core-free
   subgroups of a group. As a consequence, he created many functions to help in
   his  research, resulting in many of the functions and methods implemented in
   this package.[133X
@@ -42,24 +42,36 @@
   files  and  using an adaptation of the visualization package developed by M.
   Delgado et al. [Del22] [DLM22], which can be found on Chapter 4.[133X
   
+  [33X[0;0YFor   calculating   core-free  subgroups  of  solvable  groups,  a  function
+  [3XCoreFreeConjugacyClassesSubgroupsOfSolvableGroup[103X  was  written  based on the
+  [3XFiniteSubgroupClassesBySeries[103X  of  [3Xpolycyclic[103X GAP package [ENH20], under GNU
+  General Public License v2 or above.[133X
+  
   [33X[0;0YThis  package  was  created using the GAP Package [3XPackageMaker[103X [Hor19], with
   documentation done using [3XAutoDoc[103X [GH22].[133X
   
   
-  [1X1.1 [33X[0;0YInstalation[133X[101X
+  [1X1.1 [33X[0;0YInstallation[133X[101X
   
   [33X[0;0YTo  install  this package, you can simply copy the folder of [5Xcorefreesub[105X and
-  its  contents into your [3X/pkg[103X folder inside your [5XGAP[105X instalation folder. This
+  its contents into your [11X/pkg[111X folder inside your [5XGAP[105X installation folder. This
   should  work  for  Windows,  Ubuntu  and  MacOS. If you are using GAP.app on
   MacOS,   the   [5Xcorefreesub[105X   folder   should   be   copied  into  your  user
-  Library/Preferences/GAP/pkg folder.[133X
+  [11XLibrary/Preferences/GAP/pkg[111X folder.[133X
   
   [33X[0;0YThis package was tested with [5XGAP[105X version greater or equal to 4.11.[133X
   
+  [33X[0;0YMoreover,  this  package  depends  on  the [3Xpolycyclic[103X GAP package [ENH20] to
+  calculate core-free subgroups of solvable groups.[133X
   
-  [1X1.2 [33X[0;0YTesting your instalation[133X[101X
+  [33X[0;0YFor  the  graphical output of faithful transitive permutation representation
+  of  graphs,  [3Xgraphviz[103X should be installed, as well as [3Xdot2tex[103X for the output
+  of a Tikz-Tex file.[133X
   
-  [33X[0;0YTo  test  your  instalation,  you  can  run  the function [3XCF_TESTALL()[103X. This
+  
+  [1X1.2 [33X[0;0YTesting your installation[133X[101X
+  
+  [33X[0;0YTo  test  your  installation,  you  can  run the function [3XCF_TESTALL()[103X. This
   function  will  run two sets of tests, one dependent on the documentation of
   the  [5Xcorefreesub[105X package and another with assertions with groups with bigger
   size.[133X
@@ -73,8 +85,8 @@
     [4X[28Xgap>[128X[104X
   [4X[32X[104X
   
-  [33X[0;0YThis  tests  will also produce two pictures that are supposed to be outputed
-  and  open in the user system. If the tests run with no error but they do not
+  [33X[0;0YThis tests will also produce two pictures that are supposed to be output and
+  open  in  the  user  system.  If the tests run with no error but they do not
   output any of the graphs, then it may mean the user might not be able to use
   this  functionality.  If  so,  please  report an issue on CoreFreeSub GitHub
   Issues ([7Xhttps://github.com/CAPiedade/corefreesub/issues[107X).[133X

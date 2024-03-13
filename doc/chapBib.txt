@@ -12,6 +12,12 @@
   of  semidirect  products  of  groups[117X, [18XJournal of Group Theory[118X, [19X19[119X, 6 (2016),
   1017--1048.
   
+  [[20XENH20[120X]  [16XEick,  B.,  Nickel,  W.  and Horn, M.[116X, [17XPolycyclic, Computation with
+  polycyclic  groups,  Version  2.16[117X  (2020),  (Refereed  GAP  package), \href
+  {https://gap-packages.github.io/polycyclic/}
+  {\texttt{https://gap-packages.github.io/}\discretionary
+  {}{}{}\texttt{polycyclic/}}.
+  
   [[20XEP88[120X]  [16XEasdown,  D.  and  Praeger,  C.  E.[116X, [17XOn minimal faithful permutation
   representations  of  finite  groups[117X, [18XBulletin of the Australian Mathematical
   Society[118X, [19X38[119X, 2 (1988), 207--220.

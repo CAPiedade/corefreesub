@@ -37,7 +37,7 @@
   
   -------------------------------------------------------
   [1XAcknowledgements[101X
-  [33X[0;0YThe authours wish to thank all the comments, suggestions and issue reporting
+  [33X[0;0YThe  authors wish to thank all the comments, suggestions and issue reporting
   from  users  and  developers of [5XGAP[105X, both past and future. Both authors were
   partially supported by CMUP, member of LASI, which is financed by Portuguese
   national  funds  through FCT – Fundação para a Ciência e a Tecnologia, I.P.,
@@ -50,8 +50,8 @@
   [1XContents (corefreesub)[101X
   
   1 [33X[0;0YIntroduction[133X
-    1.1 [33X[0;0YInstalation[133X
-    1.2 [33X[0;0YTesting your instalation[133X
+    1.1 [33X[0;0YInstallation[133X
+    1.2 [33X[0;0YTesting your installation[133X
   2 [33X[0;0YObtaining Core-Free Subgroups[133X
     2.1 [33X[0;0YCore-Free Subgroups[133X
       2.1-1 IsCoreFree

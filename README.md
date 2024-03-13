@@ -8,8 +8,13 @@ For more information, please refer to the package manual, found in the webpage o
 ## Dependencies
 This package requires GAP version at least 4.11.
 
+Due to its dependency on pc-groups to calculate core-free subgroups of solvable groups, this package also requires the [polycyclic](https://gap-packages.github.io/polycyclic/) GAP package.
+
+In order to produce graph outputs as images, [graphviz](https://graphviz.org/), version at least 2.43.0, should be installed.
+Moreover, to write the graphs in Tikz as a TeX file, [dot2tex](https://github.com/xyz2tex/dot2tex), version at least 2.11.3, should also be installed.
+
 ## Authors
-Claudio Alexandre Piedade & Manuel Delgado
+[Claudio Alexandre Piedade](https://capiedade.github.io/) & [Manuel Delgado](https://cmup.fc.up.pt/cmup/mdelgado/)
 
 
 ## Citing

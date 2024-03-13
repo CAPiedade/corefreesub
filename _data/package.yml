@@ -19,6 +19,11 @@ maintainers:
 
 GAP: ">= 4.11"
 
+needed-pkgs:
+    - name: "polycyclic"
+      version: ">=2.16"
+      url: "https://gap-packages.github.io/polycyclic/"
+
 www: https://CAPiedade.github.io/corefreesub/
 readme: README.md
 packageinfo: https://CAPiedade.github.io/corefreesub/PackageInfo.g

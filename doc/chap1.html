@@ -22,10 +22,10 @@
 <p id="mathjaxlink" class="pcenter"><a href="chap1_mj.html">[MathJax on]</a></p>
 <p><a id="X7DFB63A97E67C0A1" name="X7DFB63A97E67C0A1"></a></p>
 <div class="ChapSects"><a href="chap1.html#X7DFB63A97E67C0A1">1 <span class="Heading">Introduction</span></a>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7A5BA34E7CC6300F">1.1 <span class="Heading">Instalation</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X8360C04082558A12">1.1 <span class="Heading">Installation</span></a>
 </span>
 </div>
-<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X8541922979222078">1.2 <span class="Heading">Testing your instalation</span></a>
+<div class="ContSect"><span class="tocline"><span class="nocss">&nbsp;</span><a href="chap1.html#X7862D3F37C5BBDEF">1.2 <span class="Heading">Testing your installation</span></a>
 </span>
 </div>
 </div>
@@ -42,27 +42,33 @@
 
 <p>There are many articles studying faithful permutation representation of groups, such as <a href="chapBib.html#biBjohnson_minimal_1971">[Joh71]</a>, <a href="chapBib.html#biBeasdown_minimal_1988">[EP88]</a>, <a href="chapBib.html#biBsaunders_minimal_2014">[Sau14]</a> and <a href="chapBib.html#biBeasdown_minimal_2016">[EH16]</a>. However the restriction on transitive actions is more recent and there are fewer studies like <a href="chapBib.html#biBFP20Tor">[FP20]</a>,<a href="chapBib.html#biBFP21Cor">[FP21a]</a>,<a href="chapBib.html#biBFP21Hyper">[FP21b]</a> and <a href="chapBib.html#biBFP22Loc">[FP22]</a>.</p>
 
-<p>During C.A. Piedade's PhD thesis, he studied many of these faithful transitive permutation representations of automorphism groups of abstract regular polytopes and hypertopes. It was also during this period that this author noticed the abcense of functions/methods in GAP to compute core-free subgroups of a group. As a consequence, he created many functions to help in his research, resulting in many of the functions and methods implemented in this package.</p>
+<p>During C.A. Piedade's PhD thesis, he studied many of these faithful transitive permutation representations of automorphism groups of abstract regular polytopes and hypertopes. It was also during this period that this author noticed the absence of functions/methods in GAP to compute core-free subgroups of a group. As a consequence, he created many functions to help in his research, resulting in many of the functions and methods implemented in this package.</p>
 
 <p>One of the important tools for studying faithful transitive permutation representations is by using <var class="Arg">faithful transitive permutation representation graphs</var>, which are <var class="Arg">Schreier coset graphs</var>. A <var class="Arg">Schreier coset graph</var> is a graph associated with a group <var class="Arg">G</var>, its generators and a subgroup <var class="Arg">H</var> of <var class="Arg">G</var>. The vertices of the graph are the right cosets of <var class="Arg">H</var> and there is a directed edge <span class="Math">(Hx,Hy)</span> with label <span class="Math">g</span> if <span class="Math">g</span> is a generator of <var class="Arg">G</var> and <span class="Math">Hxg = Hy</span>. When <span class="Math">g</span> is an involution, the two directed edges <span class="Math">(Hx, Hy)</span> and <span class="Math">(Hy, Hx)</span> are replaced by a single undirected edge <span class="Math">\{Hx, Hy\}</span> with label <span class="Math">g</span>.</p>
 
 <p>In the <strong class="pkg">corefreesub</strong> package, this can achieved by creating graphs as DOT files and using an adaptation of the visualization package developed by M. Delgado et al. <a href="chapBib.html#biBIntPic">[Del22]</a> <a href="chapBib.html#biBAutomata">[DLM22]</a>, which can be found on Chapter 4.</p>
 
+<p>For calculating core-free subgroups of solvable groups, a function <var class="Arg">CoreFreeConjugacyClassesSubgroupsOfSolvableGroup</var> was written based on the <var class="Arg">FiniteSubgroupClassesBySeries</var> of <var class="Arg">polycyclic</var> GAP package <a href="chapBib.html#biBPolycyclic">[ENH20]</a>, under GNU General Public License v2 or above.</p>
+
 <p>This package was created using the GAP Package <var class="Arg">PackageMaker</var> <a href="chapBib.html#biBPackageMaker">[Hor19]</a>, with documentation done using <var class="Arg">AutoDoc</var> <a href="chapBib.html#biBAutoDoc">[GH22]</a>.</p>
 
-<p><a id="X7A5BA34E7CC6300F" name="X7A5BA34E7CC6300F"></a></p>
+<p><a id="X8360C04082558A12" name="X8360C04082558A12"></a></p>
 
-<h4>1.1 <span class="Heading">Instalation</span></h4>
+<h4>1.1 <span class="Heading">Installation</span></h4>
 
-<p>To install this package, you can simply copy the folder of <strong class="pkg">corefreesub</strong> and its contents into your <var class="Arg">/pkg</var> folder inside your <strong class="pkg">GAP</strong> instalation folder. This should work for Windows, Ubuntu and MacOS. If you are using GAP.app on MacOS, the <strong class="pkg">corefreesub</strong> folder should be copied into your user Library/Preferences/GAP/pkg folder.</p>
+<p>To install this package, you can simply copy the folder of <strong class="pkg">corefreesub</strong> and its contents into your <code class="file">/pkg</code> folder inside your <strong class="pkg">GAP</strong> installation folder. This should work for Windows, Ubuntu and MacOS. If you are using GAP.app on MacOS, the <strong class="pkg">corefreesub</strong> folder should be copied into your user <code class="file">Library/Preferences/GAP/pkg</code> folder.</p>
 
 <p>This package was tested with <strong class="pkg">GAP</strong> version greater or equal to 4.11.</p>
 
-<p><a id="X8541922979222078" name="X8541922979222078"></a></p>
+<p>Moreover, this package depends on the <var class="Arg">polycyclic</var> GAP package <a href="chapBib.html#biBPolycyclic">[ENH20]</a> to calculate core-free subgroups of solvable groups.</p>
 
-<h4>1.2 <span class="Heading">Testing your instalation</span></h4>
+<p>For the graphical output of faithful transitive permutation representation of graphs, <var class="Arg">graphviz</var> should be installed, as well as <var class="Arg">dot2tex</var> for the output of a Tikz-Tex file.</p>
 
-<p>To test your instalation, you can run the function <var class="Arg">CF_TESTALL()</var>. This function will run two sets of tests, one dependent on the documentation of the <strong class="pkg">corefreesub</strong> package and another with assertions with groups with bigger size.</p>
+<p><a id="X7862D3F37C5BBDEF" name="X7862D3F37C5BBDEF"></a></p>
+
+<h4>1.2 <span class="Heading">Testing your installation</span></h4>
+
+<p>To test your installation, you can run the function <var class="Arg">CF_TESTALL()</var>. This function will run two sets of tests, one dependent on the documentation of the <strong class="pkg">corefreesub</strong> package and another with assertions with groups with bigger size.</p>
 
 <p>If the test runs with no issue, the output should look something similar to the following:</p>
 
@@ -73,7 +79,7 @@ Running list 1 . . .
 gap&gt;
 </pre></div>
 
-<p>This tests will also produce two pictures that are supposed to be outputed and open in the user system. If the tests run with no error but they do not output any of the graphs, then it may mean the user might not be able to use this functionality. If so, please report an issue on <span class="URL"><a href="https://github.com/CAPiedade/corefreesub/issues">CoreFreeSub GitHub Issues</a></span>.</p>
+<p>This tests will also produce two pictures that are supposed to be output and open in the user system. If the tests run with no error but they do not output any of the graphs, then it may mean the user might not be able to use this functionality. If so, please report an issue on <span class="URL"><a href="https://github.com/CAPiedade/corefreesub/issues">CoreFreeSub GitHub Issues</a></span>.</p>
 
 
 <div class="chlinkprevnextbot">&nbsp;<a href="chap0.html">[Top of Book]</a>&nbsp;  <a href="chap0.html#contents">[Contents]</a>&nbsp;  &nbsp;<a href="chap0.html">[Previous Chapter]</a>&nbsp;  &nbsp;<a href="chap2.html">[Next Chapter]</a>&nbsp;  </div>
