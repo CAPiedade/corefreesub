@@ -149,9 +149,9 @@ DeclareGlobalFunction( "AllCoreFreeSubgroups" );
 #! @BeginExampleSession
 #! gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
 #! gap> CoreFreeDegrees(G);
-#! [ 24, 12, 8, 6, 4 ]
+#! [ 4, 6, 8, 12, 24 ]
 #! gap> CoreFreeDegrees(dh);
-#! [10, 5]
+#! [5, 10]
 #! @EndExampleSession
 DeclareGlobalFunction( "CoreFreeDegrees" );
 
@@ -167,12 +167,12 @@ DeclareGlobalFunction( "CoreFreeDegrees" );
 #! @Returns a list
 #! @Description
 #!  For a finite group <A>G</A>, <A>FaithfulTransitivePermutationRepresentations</A> returns a list of a faithful transitive permutation representation of <A>G</A> for each degree.
-#!  If <A>all_ftpr</A> is true, then it will return a list of all faithful transitive permutation representations.
+#!  If <A>all_ftpr</A> is true, then it will return a list of all faithful transitive permutation representations, up to conjugacy equivalence.
 #! @BeginExampleSession
 #! gap> sp := SymplecticGroup(4,2);;
 #! gap> CoreFreeDegrees(sp);
-#! [ 720, 360, 240, 180, 144, 120, 90, 80, 72, 60, 45, 40, 36, 30, 20, 15, 12,
-#! 10, 6 ]
+#! [ 6, 10, 12, 15, 20, 30, 36, 40, 45, 60, 72, 80, 90, 120, 144, 180, 240,
+#!  360, 720 ]
 #! gap> ftprs := FaithfulTransitivePermutationRepresentations(sp);; 
 #! gap> Size(ftprs);
 #! 19
@@ -203,7 +203,7 @@ DeclareOperation( "FaithfulTransitivePermutationRepresentations", [IsGroup]);
 #! [ CompositionMapping( <action epimorphism>, <action isomorphism> ), 
 #! CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
 #! gap> min_ftprs[2](sp);
-#! Group([ (2,3,6,5), (1,3)(2,5,6,4) ])
+#! Group([ (1,2,5,4), (1,3,5,2)(4,6) ])
 #! @EndExampleSession
 DeclareOperation( "MinimalFaithfulTransitivePermutationRepresentation", [IsGroup]);
 
@@ -229,8 +229,8 @@ DeclareGlobalFunction( "MinimalFaithfulTransitivePermutationDegree" );
 #! @Arguments G, d [,all_ftpr_of_given_degree]
 #! @Returns an isomorphism (or a list of isomorphisms)
 #! @Description
-#! For a finite group <A>G</A>, <A>FaithfulTransitivePermutationRepresentationsOfDegree</A> returns an isomorphism of <A>G</A> into the symmetric group of degree <A>d</A> acting transitively on its domain. 
-#! If <A>all_ftpr_of_given_degree</A> is set as <A>true</A>, then it returns a list of all isomorphisms <A>G</A> into the symmetric group of degree <A>d</A>.
+#! For a finite group <A>G</A>, <A>FaithfulTransitivePermutationRepresentationsOfDegree</A> returns one isomorphism of <A>G</A> into the symmetric group of degree <A>d</A> acting transitively on its domain. 
+#! If <A>all_ftpr_of_given_degree</A> is set as <A>true</A>, then it returns a list of all isomorphisms <A>G</A> into the symmetric group of degree <A>d</A>, up to conjugacy equivalence.
 #! @BeginExampleSession
 #! gap> sp := SymplecticGroup(4,2);;
 #! gap> FaithfulTransitivePermutationRepresentationsOfDegree(sp,10);
