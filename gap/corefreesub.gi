@@ -17,8 +17,6 @@ BindGlobal( "CF_TESTALL",
 end);
 
 
-
-
 BindGlobal("CoreFreeConjugacyClassesSubgroupsCyclicExtension",
         function(arg)
   local G,                 # group
@@ -491,7 +489,6 @@ BindGlobal( "CoreFreeConjugacyClassesSubgroupsNiceMonomorphism",
     return Size(Representative(a))<Size(Representative(b));
   end);
   G!.coreFreeConjugacyClassesSubgroups := classes;
-  G!.coreFreeDegrees := Unique(NiceO!.coreFreeDegrees);
   return G!.coreFreeConjugacyClassesSubgroups;
 end );
 
@@ -499,7 +496,7 @@ BindGlobal( "CoreFreeConjugacyClassesSubgroupsOfSolvableGroup",
   #### The function "CoreFreeConjugacyClassesSubgroupsOfSolvableGroup" is a modified version from "FiniteSubgroupClassesBySeries" 
   #### from "Polycyclic" version 2.16 GAP Package, under GNU General Public License v2 or above.
     function(G)
-    local s,i,c,k,CoreFreeClasses,CoreFreeDegrees,map,GI, PCPGI, map2, pcps,
+    local s,i,c,k,CoreFreeClasses,map,GI, PCPGI, map2, pcps,
      pcpG, grps, grp, cfgrps, pcp, rels, act, new, newcore, C, tmp ;
 
     if not IsPcGroup(G) or IsPermGroup(G) then
@@ -570,7 +567,6 @@ BindGlobal( "CoreFreeConjugacyClassesSubgroupsOfSolvableGroup",
 
 
     CoreFreeClasses := [];
-    CoreFreeDegrees := [];
     # translate to classes and return
 
     for i in [1..Length(cfgrps)] do
@@ -578,12 +574,10 @@ BindGlobal( "CoreFreeConjugacyClassesSubgroupsOfSolvableGroup",
         c:=ConjugacyClassSubgroups(G,PreImage(map2,cfgrps[i].repr));
         SetStabilizerOfExternalSet(c,PreImage(map2,cfgrps[i].norm));
         Add(CoreFreeClasses,c);
-        Add(CoreFreeDegrees,Index(G,c[1]));
         else
         c:=ConjugacyClassSubgroups(G,PreImage(map,PreImage(map2,cfgrps[i].repr)));
         SetStabilizerOfExternalSet(c,PreImage(map,PreImage(map2,cfgrps[i].norm)));
         Add(CoreFreeClasses,c);
-        Add(CoreFreeDegrees,Index(G,c[1]));
         fi;
     od;
     
@@ -591,11 +585,439 @@ BindGlobal( "CoreFreeConjugacyClassesSubgroupsOfSolvableGroup",
     Sort(CoreFreeClasses,function(a,b)
         return Size(Representative(a))<Size(Representative(b));
     end);
-    Sort(CoreFreeDegrees);
     G!.coreFreeConjugacyClassesSubgroups := CoreFreeClasses;
-    G!.coreFreeDegrees := Unique(CoreFreeDegrees);
-    return [G!.coreFreeConjugacyClassesSubgroups,G!.coreFreeDegrees][1];
+    return G!.coreFreeConjugacyClassesSubgroups;
 end);
+
+BindGlobal("CoreFreeSubgroupsTrivialFitting",function(G)
+  local s,a,n,fac,iso,types,t,p,i,map,go,gold,nf,tom,sub,len,pos_list_cf;
+
+  n:=DirectFactorsFittingFreeSocle(G);
+
+  # is it almost simple and stored?
+  if Length(n)=1 then
+    tom:=TomDataAlmostSimpleRecognition(G);
+    if tom<>fail then
+      go:=ImagesSource(tom[1]);
+      len:=LengthsTom(tom[2]);
+      pos_list_cf := Filtered([1..Length(len)], x -> IsCoreFree(go,RepresentativeTom(tom[2],x)));
+      sub:=List(pos_list_cf,x->PreImage(tom[1],RepresentativeTom(tom[2],x)));
+      return sub;
+    fi;
+  fi;
+
+  s:=Socle(G);
+
+  a:=TrivialSubgroup(G);
+  fac:=[];
+  nf:=[];
+  types:=[];
+  gold:=[];
+  iso:=[];
+  for i in n do
+    if not IsSubgroup(a,i) then
+      a:=ClosureGroup(a,i);
+      if not IsNonabelianSimpleGroup(i) then
+        Error("The subgroups are abelian or not simple groups in CoreFreeSubgroupsTrivialFitting");
+      fi;
+      t:=ClassicalIsomorphismTypeFiniteSimpleGroup(i);
+      p:=Position(types,t);
+      if p=fail then
+        Add(types,t);
+
+        # fetch subgroup data from tom library, if possible
+        tom:=TomDataAlmostSimpleRecognition(i);
+        if tom<>fail then
+          go:=ImagesSource(tom[1]);
+          if tom[2]<>fail then
+            len:=LengthsTom(tom[2]);
+            # different than above -- no preimage. We're setting subgroups
+            # of go
+            sub:=List([1..Length(len)],x->RepresentativeTom(tom[2],x));
+            sub:=List(sub,x->ConjugacyClassSubgroups(go,x));
+            SetConjugacyClassesSubgroups(go,sub);
+          fi;
+        fi;
+
+        if tom=fail then
+          go:=SimpleGroup(t);
+        fi;
+        Add(gold,go);
+
+        p:=Length(types);
+      fi;
+      Add(iso,IsomorphismGroups(i,gold[p]));
+      Add(fac,gold[p]);
+      Add(nf,i);
+    fi;
+  od;
+
+  if a<>s then
+    Error("The closure group is not trivial in CoreFreeSubgroupsTrivialFitting");
+  fi;
+
+  if Length(fac)=1 then
+    map:=iso[1];
+    a:=CoreFreeConjugacyClassesSubgroups(gold[1]);
+    a:=List(a,x->PreImage(map,Representative(x)));
+  else
+    n:=DirectProduct(fac);
+
+    # map to direct product
+    a:=[];
+    map:=[];
+    for i in [1..Length(fac)] do
+      Append(a,GeneratorsOfGroup(nf[i]));
+      Append(map,List(GeneratorsOfGroup(nf[i]),
+        x->Image(Embedding(n,i),Image(iso[i],x))));
+    od;
+    map:=GroupHomomorphismByImages(s,n,a,map);
+
+    a:=SubdirectSubgroups(n);
+    a:=List(a,x->PreImage(map,x[1]));
+  fi;
+
+  s:=Filtered(ExtendSubgroupsOfNormal(G,s,a), i -> IsCoreFree(G,i));
+  return s;
+end);
+
+BindGlobal( "CoreFreeConjugacyClassesSubgroupsViaRadical",
+function(G)
+  local H,HN,HNI,ser,pcgs,u,hom,f,c,nu,nn,nf,a,e,kg,k,mpcgs,gf,
+  act,nts,orbs,n,ns,nim,fphom,as,p,isns,lmpc,npcgs,ocr,v,
+  com,cg,i,j,w,ii,first,cgs,presmpcgs,select,fselect,
+  makesubgroupclasses,cefastersize,cfccs, cfccsdeg, new_nu;
+
+  #group order below which cyclic extension is usually faster
+  # WORKAROUND: there is a disparity between the data format returned
+  # by CE and what this code expects. This could be resolved properly,
+  # but since most people will have tomlib loaded anyway, this doesn't
+  # seem worth the effort.
+  #if IsPackageMarkedForLoading("tomlib","")=true then
+    cefastersize:=1;
+  #else
+  #  cefastersize:=40000;
+  #fi;
+
+  makesubgroupclasses:=function(g,l)
+  local i,m,c;
+    m:=[];
+    for i in l do
+      c:=ConjugacyClassSubgroups(g,i);
+      if IsBound(i!.GNormalizer) then
+        SetStabilizerOfExternalSet(c,i!.GNormalizer);
+        Unbind(i!.GNormalizer);
+      fi;
+      Add(m,c);
+    od;
+    return m;
+  end;
+
+  ser:=PermliftSeries(G:limit:=300); # do not form too large spaces as they
+                                     # clog up memory
+  pcgs:=ser[2];
+  ser:=ser[1];
+  if Index(G,ser[1])=1 then
+    Info(InfoWarning,3,"group is solvable");
+    hom:=NaturalHomomorphismByNormalSubgroup(G,G);
+    hom:=hom*IsomorphismFpGroup(Image(hom));
+    u:=[[G],[G],[hom]];
+    cfccs := [];
+    cfccsdeg := [];
+  elif Size(ser[1])=1 then
+    if (HasIsSimpleGroup(G) and IsSimpleGroup(G)) then
+      if IsNonabelianSimpleGroup(G) then
+        c:=TomDataSubgroupsAlmostSimple(G);
+        if c<>fail then
+          if Size(c[Size(c)]) = Size(G) then
+            c:= c{[1..Size(c)-1]};
+          else
+            Remove(c,Position(c,G));
+          fi;
+          c:=makesubgroupclasses(G,c);
+          G!.coreFreeConjugacyClassesSubgroups := c;
+          return G!.coreFreeConjugacyClassesSubgroups;
+        fi;
+      fi;
+      
+      return CoreFreeConjugacyClassesSubgroupsCyclicExtension(G);
+    else
+      if Length(ser) = 1 then
+        c:=CoreFreeSubgroupsTrivialFitting(G);
+        cfccs:=makesubgroupclasses(G,c);
+        if not ForAny(c,x->Size(x)=1) then Add(cfccs,ConjugacyClassSubgroups(G,TrivialSubgroup(G))); fi;
+        G!.coreFreeConjugacyClassesSubgroups := cfccs;
+        return G!.coreFreeConjugacyClassesSubgroups;
+      fi;
+      c:=SubgroupsTrivialFitting(G);
+      c:=makesubgroupclasses(G,c);
+      u:=[List(c,Representative),List(c,StabilizerOfExternalSet)];
+      cfccs := CoreFreeSubgroupsTrivialFitting(G);
+    fi;
+  else
+    hom:=NaturalHomomorphismByNormalSubgroupNC(G,ser[1]);
+    f:=Image(hom,G);
+    c:=SubgroupsTrivialFitting(f);
+    c:=makesubgroupclasses(f,c);
+    nu:=[];
+    nn:=[];
+    nf:=[];
+    kg:=GeneratorsOfGroup(KernelOfMultiplicativeGeneralMapping(hom));
+    for i in c do
+      a:=Representative(i);
+      #k:=PreImage(hom,a);
+      # make generators of homomorphism fit nicely to presentation
+      gf:=IsomorphismFpGroup(a);
+      e:=List(MappingGeneratorsImages(gf)[1],x->PreImagesRepresentative(hom,x));
+      # we cannot guarantee that the parent contains e, so no
+      # ClosureSubgroup.
+      k:=ClosureGroup(KernelOfMultiplicativeGeneralMapping(hom),e);
+      Add(nu,k);
+      Add(nn,PreImage(hom,Stabilizer(i)));
+      Add(nf,GroupHomomorphismByImagesNC(k,Range(gf),Concatenation(e,kg),
+             Concatenation(MappingGeneratorsImages(gf)[2],
+                List(kg,x->One(Range(gf))))));
+    od;
+    u:=[nu,nn,nf];
+    cfccs := makesubgroupclasses(G,Filtered(u[1], i -> IsCoreFree(G,i)));
+    cfccsdeg := List(cfccs, i -> Index(G,i[1]));
+  fi;
+
+
+  for i in [2..Length(ser)] do
+    Info(InfoLattice,1,"Step ",i," : ",Index(ser[i-1],ser[i]));
+    if pcgs=false then
+      mpcgs:=ModuloPcgs(ser[i-1],ser[i]);
+    else
+      mpcgs:=pcgs[i-1] mod pcgs[i];
+    fi;
+    presmpcgs:=mpcgs;
+
+    if Length(mpcgs)>0 then
+      gf:=GF(RelativeOrders(mpcgs)[1]);
+      act:=ActionSubspacesElementaryAbelianGroup(G,mpcgs);
+    else
+      gf:=GF(Factors(Index(ser[i-1],ser[i]))[1]);
+      act:=[[ser[i]],GroupHomomorphismByImagesNC(G,Group(()),
+           GeneratorsOfGroup(G),
+           List(GeneratorsOfGroup(G),i->()))];
+    fi;
+    nts:=act[1];
+    act:=act[2];
+    if IsGroupGeneralMappingByImages(act) then
+      Size(Source(act));
+      Size(Range(act));
+    fi;
+    nu:=[];
+    nn:=[];
+    nf:=[];
+    # Determine which ones we need and keep old ones
+    orbs:=[];
+    for j in [1..Length(u[1])] do
+      a:=u[1][j];
+      n:=u[2][j];
+
+      # find indices of subgroups normal under a and form orbits under the
+      # normalizer
+      if act<>fail then
+        ns:=Difference([1..Length(nts)],MovedPoints(Image(act,a)));
+        nim:=Image(act,n);
+        ns:=Orbits(nim,ns);
+      else
+        nim:=Filtered([1..Length(nts)],x->IsNormal(a,nts[x]));
+        ns:=[];
+        for k in [1..Length(nim)] do
+          if not ForAny(ns,x->nim[k] in x) then
+            p:=Orbit(n,nts[k]);
+            p:=List(p,x->Position(nts,x));
+            p:=Filtered(p,x->x<>fail and x in nim);
+            Add(ns,p);
+          fi;
+        od;
+      fi;
+      if Size(a)>Size(ser[i-1]) then
+        # keep old groups
+        if IsSubset(HN,a) then
+          Add(nu,a);Add(nn,n);
+          if Size(ser[i])>1 then
+            fphom:=LiftFactorFpHom(u[3][j],a,ser[i],presmpcgs);
+            Add(nf,fphom);
+          fi;
+        fi;
+        orbs[j]:=ns;
+      else # here a is the trivial subgroup in the factor. (This will never
+           # happen if we look for perfect or simple groups!)
+        orbs[j]:=[];
+        # previous kernel -- there the orbits are classes of subgroups in G
+        for k in ns do
+          Add(nu,nts[k[1]]);
+          Add(nn,PreImage(act,Stabilizer(nim,k[1])));
+          if Size(ser[i])>1 then
+            fphom:=IsomorphismFpGroupByChiefSeriesFactor(nts[k[1]],"x",ser[i]);
+            Add(nf,fphom);
+          fi;
+        od;
+      fi;
+    od;
+
+    # run through nontrivial subspaces (greedy test whether they are needed)
+    for j in [1..Length(nts)] do
+      if Size(nts[j])<Size(ser[i-1]) then
+        as:=[];
+        for k in [1..Length(orbs)] do
+          p:=PositionProperty(orbs[k],z->j in z);
+          if p<>fail then
+            # remove orbit
+            orbs[k]:=orbs[k]{Difference([1..Length(orbs[k])],[p])};
+            Add(as,k);
+          fi;
+        od;
+        if Length(as)>0 then
+          Info(InfoLattice,2,"Normal subgroup ",j,", Size ",Size(nts[j]),": ",
+               Length(as)," subgroups to consider");
+          # there are subgroups that will complement with this kernel.
+          # Construct the modulo pcgs and the action of the largest subgroup
+          # (which must be the normalizer)
+          isns:=1;
+          for k in as do
+            if Size(u[1][k])>isns then
+              isns:=Size(u[1][k]);
+            fi;
+          od;
+
+          if pcgs=false then
+            lmpc:=ModuloPcgs(ser[i-1],nts[j]);
+            if Size(nts[j])=1 and Size(ser[i])=1 then
+              # avoid degenerate case
+              npcgs:=Pcgs(nts[j]);
+            else
+              npcgs:=ModuloPcgs(nts[j],ser[i]);
+            fi;
+          else
+            if IsTrivial(nts[j]) then
+              lmpc:=pcgs[i-1];
+              npcgs:="not used";
+            else
+              c:=InducedPcgs(pcgs[i-1],nts[j]);
+              lmpc:=pcgs[i-1] mod c;
+              npcgs:=c mod pcgs[i];
+            fi;
+          fi;
+
+          for k in as do
+            a:=u[1][k];
+            if IsNormal(u[2][k],nts[j]) then
+              n:=u[2][k];
+            else
+              n:=Normalizer(u[2][k],nts[j]);
+            fi;
+            if Length(GeneratorsOfGroup(n))>3 then
+              w:=Size(n);
+              n:=Group(SmallGeneratingSet(n));
+              SetSize(n,w);
+            fi;
+            ocr:=rec(group:=a,
+                    modulePcgs:=lmpc);
+            ocr.factorfphom:=u[3][k];
+
+            OCOneCocycles(ocr,true);
+            if IsBound(ocr.complement) then
+              v:=BaseSteinitzVectors(
+                BasisVectors(Basis(ocr.oneCocycles)),
+                BasisVectors(Basis(ocr.oneCoboundaries)));
+              v:=VectorSpace(gf,v.factorspace,Zero(ocr.oneCocycles));
+              com:=[];
+              cgs:=[];
+              first:=false;
+              if Size(v)>100 and Size(ser[i])=1
+                 and HasElementaryAbelianFactorGroup(a,nts[j]) then
+                com:=VectorspaceComplementOrbitsLattice(n,a,ser[i-1],nts[j]);
+                Info(InfoLattice,4,"Subgroup ",Position(as,k),"/",Length(as),
+                      ", ",Size(v)," local complements, ",Length(com)," orbits");
+                for c in com do
+                  if H=fail or IsSubset(HN,c.representative) then
+                    Add(nu,c.representative);
+                    Add(nn,c.normalizer);
+                  fi;
+                od;
+              else
+                for w in Enumerator(v) do
+                  cg:=ocr.cocycleToList(w);
+                  for ii in [1..Length(cg)] do
+                    cg[ii]:=ocr.complementGens[ii]*cg[ii];
+                  od;
+                  if first then
+                    # this is clearly kept -- so calculate a stabchain
+                    c:=ClosureSubgroup(nts[j],cg);
+                  first:=false;
+                  else
+                    c:=SubgroupNC(G,Concatenation(SmallGeneratingSet(nts[j]),cg));
+                  fi;
+                  Assert(1,Size(c)=Index(a,ser[i-1])*Size(nts[j]));
+                  if H=fail or IsSubset(HN,c) then
+                    SetSize(c,Index(a,ser[i-1])*Size(nts[j]));
+                    Add(cgs,cg);
+                    #c!.comgens:=cg;
+                    Add(com,c);
+                  fi;
+                od;
+                w:=Length(com);
+                com:=SubgroupsOrbitsAndNormalizers(n,com,false:savemem:=true);
+                Info(InfoLattice,3,"Subgroup ",Position(as,k),"/",Length(as),
+                      ", ",w," local complements, ",Length(com)," orbits");
+                for w in com do
+                  c:=w.representative;
+                  if fselect=fail or fselect(c) then
+                    Add(nu,c);
+                    Add(nn,w.normalizer);
+                    if Size(ser[i])>1 then
+                      # need to lift presentation
+                      fphom:=ComplementFactorFpHom(ocr.factorfphom,
+                      ser[i-1],nts[j],c,
+                      ocr.generators,cgs[w.pos]);
+
+                      Assert(1,KernelOfMultiplicativeGeneralMapping(fphom)=nts[j]);
+                      if Size(nts[j])>Size(ser[i]) then
+                        fphom:=LiftFactorFpHom(fphom,c,ser[i],npcgs);
+                        Assert(1,
+                          KernelOfMultiplicativeGeneralMapping(fphom)=ser[i]);
+                      fi;
+                      Add(nf,fphom);
+                    fi;
+                  fi;
+
+                od;
+              fi;
+
+              ocr:=false;
+              cgs:=false;
+              com:=false;
+            fi;
+          od;
+        fi;
+      fi;
+    od;
+
+    u:=[nu,nn,nf];
+    new_nu := Filtered(nu, j -> not true in List(cfccs, k -> j in k) );
+    Append(cfccs, makesubgroupclasses(G,Filtered(new_nu, i -> IsCoreFree(G,i))));
+    cfccs := Unique(cfccs);
+    cfccsdeg := List(cfccs, i -> Index(G,i[1]));
+  od;
+  
+  # some `select'ions remove the trivial subgroup
+  if not ForAny(cfccs,x->Size(x[1])=1) then
+    Add(cfccs,ConjugacyClassSubgroups(G,TrivialSubgroup(G)));
+  fi;
+  Sort(cfccs,function(a,b)
+    return Size(Representative(a))<Size(Representative(b));
+  end);
+  G!.coreFreeConjugacyClassesSubgroups := cfccs;
+  return G!.coreFreeConjugacyClassesSubgroups;
+end);
+
+
+#############################################################################################
 
 InstallGlobalFunction( IsCoreFree,
         function(G,H)
@@ -620,13 +1042,15 @@ InstallGlobalFunction( CoreFreeConjugacyClassesSubgroups,
       return CoreFreeConjugacyClassesSubgroupsNiceMonomorphism(G);
     elif IsSolvableGroup(G) then
       return CoreFreeConjugacyClassesSubgroupsOfSolvableGroup(G);
-    elif not IsPermGroup(G) then 
+    elif not IsPermGroup(G) then
       iso := IsomorphismPermGroup(G);
       H := Image(iso);
-      classes := List(Filtered(CoreFreeConjugacyClassesSubgroupsCyclicExtension(H), n -> IsCoreFree(H,n[1])), i -> ConjugacyClassSubgroups(G,PreImage(iso,Representative(i))) );
+      classes := List(CoreFreeConjugacyClassesSubgroups(H), i -> ConjugacyClassSubgroups(G,PreImage(iso,Representative(i))) );
       G!.coreFreeConjugacyClassesSubgroups := classes;
       G!.coreFreeDegrees := H!.coreFreeDegrees;
       return G!.coreFreeConjugacyClassesSubgroups;
+    elif CanComputeFittingFree(G) then
+      return CoreFreeConjugacyClassesSubgroupsViaRadical(G);
     else
       return CoreFreeConjugacyClassesSubgroupsCyclicExtension(G);
     fi;
@@ -636,9 +1060,6 @@ InstallGlobalFunction( CoreFreeConjugacyClassesSubgroups,
     Error("Argument has to be a Group"); 
   fi;
 end );
-
-
-
 
 InstallGlobalFunction( AllCoreFreeSubgroups,
         function(G)
@@ -652,14 +1073,16 @@ end );
 
 InstallGlobalFunction( CoreFreeDegrees,
         function(G)
-  local n;
+  local n, cfd;
   if IsBound(G!.coreFreeDegrees) then
     return G!.coreFreeDegrees;
   elif IsBound(G!.coreFreeConjugacyClassesSubgroups) then
     G!.coreFreeDegrees := Unique(List(G!.coreFreeConjugacyClassesSubgroups, n -> Index(G,n[1])));
     return G!.coreFreeDegrees;
   else
-    G!.coreFreeDegrees := Unique(List(CoreFreeConjugacyClassesSubgroups(G), n -> Index(G,n[1])));
+    cfd := Unique(List(CoreFreeConjugacyClassesSubgroups(G), n -> Index(G,n[1])));
+    Sort(cfd);
+    G!.coreFreeDegrees := cfd;
     return G!.coreFreeDegrees;
   fi;
 end );
