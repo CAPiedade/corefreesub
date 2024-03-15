@@ -21,8 +21,7 @@ Moreover, to write the graphs in Tikz as a TeX file, [dot2tex](https://github.co
 ## Citing
 Please, cite this package as
 
-[PD23]  Piedade, C. A. and Delgado, M., corefreesub, A GAP Package for calculating the core-free subgroups and their
-faithful      transitive      permutation      representations,     Version     0.3     (2023),     GAP     package,
+[PD24]  Piedade,  C.  A. and Delgado, M., corefreesub, A GAP Package for calculating  the  core-free  subgroups  and  their  faithful  transitive permutation   representations,   Version   0.5   (2024),   GAP  package,
 https://CAPiedade.github.io/corefreesub/.
 
 You can get more info by typing Cite("corefreesub"); in the gap prompt.
