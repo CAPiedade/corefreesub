@@ -106,12 +106,11 @@ DeclareGlobalFunction( "IsCoreFree" );
 #! @BeginExampleSession
 #! gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
 #! gap> CoreFreeConjugacyClassesSubgroups(G);
-#! [ Group( () )^G, Group( [ (3,4) ] )^G, Group( [ (1,4)(2,3) ] )^G,
-#!  Group( [ (2,4,3) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G,
-#!  Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G
-#! ]
+#! [ Group( () )^G, Group( [ (3,4) ] )^G, Group( [ (1,4)(2,3) ] )^G, 
+#!   Group( [ (2,4,3) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G, 
+#!   Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G ]
 #! gap> CoreFreeConjugacyClassesSubgroups(dh);
-#! [ Group( <identity> of ... )^G, Group( [ f1 ] )^G ] 
+#! [ Group( <identity> of ... )^G, Group( [ f1 ] )^G ]
 #!@EndExampleSession
 DeclareGlobalFunction( "CoreFreeConjugacyClassesSubgroups" );
 
@@ -123,19 +122,18 @@ DeclareGlobalFunction( "CoreFreeConjugacyClassesSubgroups" );
 #! @BeginExampleSession
 #! gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
 #! gap> AllCoreFreeSubgroups(G);
-#! [ Group(()), Group([ (3,4) ]), Group([ (2,4) ]), Group([ (2,3) ]),
-#!  Group([ (1,4) ]), Group([ (1,3) ]), Group([ (1,2) ]),
-#!  Group([ (1,4)(2,3) ]), Group([ (1,3)(2,4) ]), Group([ (1,2)(3,4) ]),
-#!  Group([ (2,4,3) ]), Group([ (1,3,2) ]), Group([ (1,3,4) ]),
-#!  Group([ (1,4,2) ]), Group([ (3,4), (1,2)(3,4) ]),
-#!  Group([ (2,4), (1,3)(2,4) ]), Group([ (2,3), (1,4)(2,3) ]),
-#!  Group([ (1,3,2,4), (1,2)(3,4) ]), Group([ (1,2,3,4), (1,3)(2,4) ]),
-#!  Group([ (1,2,4,3), (1,4)(2,3) ]), Group([ (3,4), (2,4,3) ]),
-#!  Group([ (1,3), (1,3,2) ]), Group([ (1,3), (1,3,4) ]),
-#!  Group([ (1,4), (1,4,2) ]) ]
+#! [ Group(()), Group([ (3,4) ]), Group([ (2,4) ]), Group([ (2,3) ]), 
+#!   Group([ (1,4) ]), Group([ (1,3) ]), Group([ (1,2) ]), Group([ (1,4)(2,3) ]),
+#!   Group([ (1,3)(2,4) ]), Group([ (1,2)(3,4) ]), Group([ (2,4,3) ]), 
+#!   Group([ (1,3,2) ]), Group([ (1,3,4) ]), Group([ (1,4,2) ]), 
+#!   Group([ (3,4), (1,2)(3,4) ]), Group([ (2,4), (1,3)(2,4) ]), 
+#!   Group([ (2,3), (1,4)(2,3) ]), Group([ (1,3,2,4), (1,2)(3,4) ]), 
+#!   Group([ (1,2,3,4), (1,3)(2,4) ]), Group([ (1,2,4,3), (1,4)(2,3) ]), 
+#!   Group([ (3,4), (2,4,3) ]), Group([ (1,3), (1,3,2) ]), 
+#!   Group([ (1,3), (1,3,4) ]), Group([ (1,4), (1,4,2) ]) ]
 #! gap> AllCoreFreeSubgroups(dh);
 #! [ Group([  ]), Group([ f1 ]), Group([ f1*f2^2 ]), Group([ f1*f2^4 ]), 
-#! Group([ f1*f2 ]), Group([ f1*f2^3 ]) ]
+#!   Group([ f1*f2 ]), Group([ f1*f2^3 ]) ]
 #!@EndExampleSession
 DeclareGlobalFunction( "AllCoreFreeSubgroups" );
 
@@ -151,7 +149,7 @@ DeclareGlobalFunction( "AllCoreFreeSubgroups" );
 #! gap> CoreFreeDegrees(G);
 #! [ 4, 6, 8, 12, 24 ]
 #! gap> CoreFreeDegrees(dh);
-#! [5, 10]
+#! [ 5, 10 ]
 #! @EndExampleSession
 DeclareGlobalFunction( "CoreFreeDegrees" );
 
@@ -171,8 +169,8 @@ DeclareGlobalFunction( "CoreFreeDegrees" );
 #! @BeginExampleSession
 #! gap> sp := SymplecticGroup(4,2);;
 #! gap> CoreFreeDegrees(sp);
-#! [ 6, 10, 12, 15, 20, 30, 36, 40, 45, 60, 72, 80, 90, 120, 144, 180, 240,
-#!  360, 720 ]
+#! [ 6, 10, 12, 15, 20, 30, 36, 40, 45, 60, 72, 80, 90, 120, 144, 180, 240, 360, 
+#!   720 ]
 #! gap> ftprs := FaithfulTransitivePermutationRepresentations(sp);; 
 #! gap> Size(ftprs);
 #! 19
@@ -201,7 +199,7 @@ DeclareOperation( "FaithfulTransitivePermutationRepresentations", [IsGroup]);
 #! Group([ (1,6,4,3), (1,3)(2,4,6,5) ])
 #! gap> min_ftprs := MinimalFaithfulTransitivePermutationRepresentation(sp,true);
 #! [ CompositionMapping( <action epimorphism>, <action isomorphism> ), 
-#! CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
+#!   CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
 #! gap> min_ftprs[2](sp);
 #! Group([ (1,2,5,4), (1,3,5,2)(4,6) ])
 #! @EndExampleSession
@@ -236,9 +234,9 @@ DeclareGlobalFunction( "MinimalFaithfulTransitivePermutationDegree" );
 #! gap> FaithfulTransitivePermutationRepresentationsOfDegree(sp,10);
 #! CompositionMapping( <action epimorphism>, <action isomorphism> )
 #! gap> FaithfulTransitivePermutationRepresentationsOfDegree(sp,20, true);
-#! [ CompositionMapping( <action epimorphism>, <action isomorphism> ),
-#!  CompositionMapping( <action epimorphism>, <action isomorphism> ),
-#!  CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
+#! [ CompositionMapping( <action epimorphism>, <action isomorphism> ), 
+#!   CompositionMapping( <action epimorphism>, <action isomorphism> ), 
+#!   CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
 #! @EndExampleSession
 DeclareOperation( "FaithfulTransitivePermutationRepresentationsOfDegree", [IsGroup,IsInt]);
 

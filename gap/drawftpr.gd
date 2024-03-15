@@ -26,31 +26,30 @@ SetInfoLevel( InfoDrawFTPR, 1 );
 #! @BeginExampleSession
 #! gap> G:= SymmetricGroup(4);;H:= Subgroup(G,[(1,2)]);;K:= Subgroup(G,[(1,2,3)]);;
 #! gap> DotFTPRGraph(G);
-#! "digraph {\n1 -> 2 [label = r1];\n 2 -> 3 [label = r1];\n 3 -> 4 [labe\
-#! l = r1];\n 4 -> 1 [label = r1];\n 1 -> 2 [label = r2,dir=none];\n }\n"
+#! "digraph {\n1 -> 2 [label = r1];\n 2 -> 3 [label = r1];\n 3 -> 4 [label = r1];\
+#! \n 4 -> 1 [label = r1];\n 1 -> 2 [label = r2,dir=none];\n }\n"
 #! gap> DotFTPRGraph(G,H);
-#! "digraph {\n1 -> 10 [label = r1];\n 2 -> 12 [label = r1];\n 3 -> 11 [l\
-#! abel = r1];\n 4 -> 8 [label = r1];\n 5 -> 9 [label = r1];\n 6 -> 7 [la\
-#! bel = r1];\n 7 -> 3 [label = r1];\n 8 -> 2 [label = r1];\n 9 -> 1 [lab\
-#! el = r1];\n 10 -> 5 [label = r1];\n 11 -> 6 [label = r1];\n 12 -> 4 [l\
-#! abel = r1];\n 2 -> 3 [label = r2,dir=none];\n 4 -> 7 [label = r2,dir=n\
-#! one];\n 5 -> 8 [label = r2,dir=none];\n 6 -> 9 [label = r2,dir=none];\
-#! \n 10 -> 11 [label = r2,dir=none];\n }\n"
+#! "digraph {\n1 -> 10 [label = r1];\n 2 -> 12 [label = r1];\n 3 -> 11 [label = r\
+#! 1];\n 4 -> 8 [label = r1];\n 5 -> 9 [label = r1];\n 6 -> 7 [label = r1];\n 7 -\
+#! > 3 [label = r1];\n 8 -> 2 [label = r1];\n 9 -> 1 [label = r1];\n 10 -> 5 [lab\
+#! el = r1];\n 11 -> 6 [label = r1];\n 12 -> 4 [label = r1];\n 2 -> 3 [label = r2\
+#! ,dir=none];\n 4 -> 7 [label = r2,dir=none];\n 5 -> 8 [label = r2,dir=none];\n \
+#! 6 -> 9 [label = r2,dir=none];\n 10 -> 11 [label = r2,dir=none];\n }\n"
 #! gap> Print(DotFTPRGraph(FactorCosetAction(G,K),["A","B"]));
 #! digraph {
 #! 1 -> 3 [label = A];
-#! 2 -> 4 [label = A];
-#! 3 -> 5 [label = A];
-#! 4 -> 6 [label = A];
-#! 5 -> 8 [label = A];
-#! 6 -> 7 [label = A];
-#! 7 -> 2 [label = A];
-#! 8 -> 1 [label = A];
-#! 1 -> 2 [label = B,dir=none];
-#! 3 -> 5 [label = B,dir=none];
-#! 4 -> 6 [label = B,dir=none];
-#! 7 -> 8 [label = B,dir=none];
-#! }
+#!  2 -> 4 [label = A];
+#!  3 -> 5 [label = A];
+#!  4 -> 6 [label = A];
+#!  5 -> 8 [label = A];
+#!  6 -> 7 [label = A];
+#!  7 -> 2 [label = A];
+#!  8 -> 1 [label = A];
+#!  1 -> 2 [label = B,dir=none];
+#!  3 -> 5 [label = B,dir=none];
+#!  4 -> 6 [label = B,dir=none];
+#!  7 -> 8 [label = B,dir=none];
+#!  }
 #! @EndExampleSession
 #! @Arguments G
 DeclareOperation("DotFTPRGraph", [IsPermGroup]);
@@ -95,7 +94,7 @@ DeclareOperation("DotFTPRGraph", [IsGroup,IsGroup, IsList]);
 #! \usepackage[x11names, svgnames, rgb]{xcolor}
 #! \usepackage[utf8]{inputenc}
 #! \usepackage{tikz}
-#! \usetikzlibrary{snakes,arrows,shapes}
+#! \usetikzlibrary{snakes,arrows,shapes}# Newline inserted here by 'rewriteToFile'
 #! gap> DrawFTPRGraph(FactorCosetAction(G,K),rec(directory := "myfolder", layout:="fdp"));;
 #! @EndExampleSession
 DeclareGlobalFunction("DrawFTPRGraph");

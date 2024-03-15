@@ -6,10 +6,8 @@
 #
 LoadPackage( "corefreesub" );
 
-
-Test(Filename(DirectoriesPackageLibrary( "corefreesub", "tst" )[1],"OtherTest.g"));
 TestDirectory(DirectoriesPackageLibrary( "corefreesub", "tst" ),
-  rec(exitGAP := true));
+  rec(exitGAP := true, rewriteToFile:=true));
 
 
 

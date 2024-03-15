@@ -13,8 +13,8 @@ gap> START_TEST("corefreesub02.tst");
 # doc/_Chapter_Faithful_Transitive_Permutation_Representations.xml:23-34
 gap> sp := SymplecticGroup(4,2);;
 gap> CoreFreeDegrees(sp);
-[ 6, 10, 12, 15, 20, 30, 36, 40, 45, 60, 72, 80, 90, 120, 144, 180, 240,
- 360, 720 ]
+[ 6, 10, 12, 15, 20, 30, 36, 40, 45, 60, 72, 80, 90, 120, 144, 180, 240, 360, 
+  720 ]
 gap> ftprs := FaithfulTransitivePermutationRepresentations(sp);; 
 gap> Size(ftprs);
 19
@@ -30,7 +30,7 @@ gap> min_ftpr(sp);
 Group([ (1,6,4,3), (1,3)(2,4,6,5) ])
 gap> min_ftprs := MinimalFaithfulTransitivePermutationRepresentation(sp,true);
 [ CompositionMapping( <action epimorphism>, <action isomorphism> ), 
-CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
+  CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
 gap> min_ftprs[2](sp);
 Group([ (1,2,5,4), (1,3,5,2)(4,6) ])
 
@@ -46,9 +46,9 @@ gap> sp := SymplecticGroup(4,2);;
 gap> FaithfulTransitivePermutationRepresentationsOfDegree(sp,10);
 CompositionMapping( <action epimorphism>, <action isomorphism> )
 gap> FaithfulTransitivePermutationRepresentationsOfDegree(sp,20, true);
-[ CompositionMapping( <action epimorphism>, <action isomorphism> ),
- CompositionMapping( <action epimorphism>, <action isomorphism> ),
- CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
+[ CompositionMapping( <action epimorphism>, <action isomorphism> ), 
+  CompositionMapping( <action epimorphism>, <action isomorphism> ), 
+  CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
 
 #
 gap> STOP_TEST("corefreesub02.tst", 1);
