@@ -37,6 +37,7 @@ jobs:
       - uses: gap-actions/run-pkg-tests@v2
       - uses: gap-actions/process-coverage@v2
       - uses: codecov/codecov-action@v4
+        env: CODECOV_TOKEN: ${{secret.CODECOV_TOKEN }}
 
   # The documentation job
   manual:
