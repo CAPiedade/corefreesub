@@ -10,18 +10,31 @@
 #
 gap> START_TEST("corefreesub03.tst");
 
-# doc/_Chapter_Drawing_the_Faithful_Transitive_Permutation_Representation_Graph.xml:29-57
+# doc/_Chapter_Drawing_the_Faithful_Transitive_Permutation_Representation_Graph.xml:29-69
 gap> G:= SymmetricGroup(4);;H:= Subgroup(G,[(1,2)]);;K:= Subgroup(G,[(1,2,3)]);;
 gap> DotFTPRGraph(G);
 "digraph {\n1 -> 2 [label = r1];\n 2 -> 3 [label = r1];\n 3 -> 4 [label = r1];\
 \n 4 -> 1 [label = r1];\n 1 -> 2 [label = r2,dir=none];\n }\n"
-gap> DotFTPRGraph(G,H);
-"digraph {\n1 -> 10 [label = r1];\n 2 -> 12 [label = r1];\n 3 -> 11 [label = r\
-1];\n 4 -> 8 [label = r1];\n 5 -> 9 [label = r1];\n 6 -> 7 [label = r1];\n 7 -\
-> 3 [label = r1];\n 8 -> 2 [label = r1];\n 9 -> 1 [label = r1];\n 10 -> 5 [lab\
-el = r1];\n 11 -> 6 [label = r1];\n 12 -> 4 [label = r1];\n 2 -> 3 [label = r2\
-,dir=none];\n 4 -> 7 [label = r2,dir=none];\n 5 -> 8 [label = r2,dir=none];\n \
-6 -> 9 [label = r2,dir=none];\n 10 -> 11 [label = r2,dir=none];\n }\n"
+gap> Print(DotFTPRGraph(G,H));
+digraph {
+1 -> 10 [label = r1];
+ 2 -> 12 [label = r1];
+ 3 -> 11 [label = r1];
+ 4 -> 8 [label = r1];
+ 5 -> 9 [label = r1];
+ 6 -> 7 [label = r1];
+ 7 -> 3 [label = r1];
+ 8 -> 2 [label = r1];
+ 9 -> 1 [label = r1];
+ 10 -> 5 [label = r1];
+ 11 -> 6 [label = r1];
+ 12 -> 4 [label = r1];
+ 2 -> 3 [label = r2,dir=none];
+ 4 -> 7 [label = r2,dir=none];
+ 5 -> 8 [label = r2,dir=none];
+ 6 -> 9 [label = r2,dir=none];
+ 10 -> 11 [label = r2,dir=none];
+ }
 gap> Print(DotFTPRGraph(FactorCosetAction(G,K),["A","B"]));
 digraph {
 1 -> 3 [label = A];
@@ -38,16 +51,9 @@ digraph {
  7 -> 8 [label = B,dir=none];
  }
 
-# doc/_Chapter_Drawing_the_Faithful_Transitive_Permutation_Representation_Graph.xml:115-126
+# doc/_Chapter_Drawing_the_Faithful_Transitive_Permutation_Representation_Graph.xml:127-137
 gap> G:= SymmetricGroup(4);;H:= Subgroup(G,[(1,2)]);;K:= Subgroup(G,[(1,2,3)]);;
 gap> DrawFTPRGraph(G);
-gap> texfile := DrawFTPRGraph(G,H,rec(viewtexfile := true));; 
-gap> Print(texfile{[1..152]});
-\documentclass{article}
-\usepackage[x11names, svgnames, rgb]{xcolor}
-\usepackage[utf8]{inputenc}
-\usepackage{tikz}
-\usetikzlibrary{snakes,arrows,shapes}# Newline inserted here by 'rewriteToFile'
 gap> DrawFTPRGraph(FactorCosetAction(G,K),rec(directory := "myfolder", layout:="fdp"));;
 
 #

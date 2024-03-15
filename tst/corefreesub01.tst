@@ -22,7 +22,7 @@ false
 gap> Core(G,H);# H is a normal subgroup of G, hence it does not have a trivial core
 Group([ (1,4)(2,3), (1,3)(2,4) ])
 
-# doc/_Chapter_Obtaining_Core-Free_Subgroups.xml:44-53
+# doc/_Chapter_Obtaining_Core-Free_Subgroups.xml:44-52
 gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
 gap> CoreFreeConjugacyClassesSubgroups(G);
 [ Group( () )^G, Group( [ (3,4) ] )^G, Group( [ (1,4)(2,3) ] )^G, 
@@ -31,7 +31,7 @@ gap> CoreFreeConjugacyClassesSubgroups(G);
 gap> CoreFreeConjugacyClassesSubgroups(dh);
 [ Group( <identity> of ... )^G, Group( [ f1 ] )^G ]
 
-# doc/_Chapter_Obtaining_Core-Free_Subgroups.xml:67-83
+# doc/_Chapter_Obtaining_Core-Free_Subgroups.xml:66-81
 gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
 gap> AllCoreFreeSubgroups(G);
 [ Group(()), Group([ (3,4) ]), Group([ (2,4) ]), Group([ (2,3) ]), 
@@ -47,7 +47,7 @@ gap> AllCoreFreeSubgroups(dh);
 [ Group([  ]), Group([ f1 ]), Group([ f1*f2^2 ]), Group([ f1*f2^4 ]), 
   Group([ f1*f2 ]), Group([ f1*f2^3 ]) ]
 
-# doc/_Chapter_Obtaining_Core-Free_Subgroups.xml:103-109
+# doc/_Chapter_Obtaining_Core-Free_Subgroups.xml:101-107
 gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
 gap> CoreFreeDegrees(G);
 [ 4, 6, 8, 12, 24 ]
