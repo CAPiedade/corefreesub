@@ -682,7 +682,7 @@ BindGlobal("CoreFreeSubgroupsTrivialFitting",function(G)
 end);
 
 BindGlobal( "CoreFreeConjugacyClassesSubgroupsViaRadical",
-function(G)
+  function(G)
   local H,HN,HNI,ser,pcgs,u,hom,f,c,nu,nn,nf,a,e,kg,k,mpcgs,gf,
   act,nts,orbs,n,ns,nim,fphom,as,p,isns,lmpc,npcgs,ocr,v,
   com,cg,i,j,w,ii,first,cgs,presmpcgs,select,fselect,
@@ -757,6 +757,7 @@ function(G)
   else
     hom:=NaturalHomomorphismByNormalSubgroupNC(G,ser[1]);
     f:=Image(hom,G);
+    fselect:=fail;
     c:=SubgroupsTrivialFitting(f);
     c:=makesubgroupclasses(f,c);
     nu:=[];
@@ -837,12 +838,10 @@ function(G)
       fi;
       if Size(a)>Size(ser[i-1]) then
         # keep old groups
-        if IsSubset(HN,a) then
-          Add(nu,a);Add(nn,n);
-          if Size(ser[i])>1 then
-            fphom:=LiftFactorFpHom(u[3][j],a,ser[i],presmpcgs);
-            Add(nf,fphom);
-          fi;
+        Add(nu,a);Add(nn,n);
+        if Size(ser[i])>1 then
+          fphom:=LiftFactorFpHom(u[3][j],a,ser[i],presmpcgs);
+          Add(nf,fphom);
         fi;
         orbs[j]:=ns;
       else # here a is the trivial subgroup in the factor. (This will never
@@ -935,10 +934,8 @@ function(G)
                 Info(InfoLattice,4,"Subgroup ",Position(as,k),"/",Length(as),
                       ", ",Size(v)," local complements, ",Length(com)," orbits");
                 for c in com do
-                  if H=fail or IsSubset(HN,c.representative) then
-                    Add(nu,c.representative);
-                    Add(nn,c.normalizer);
-                  fi;
+                  Add(nu,c.representative);
+                  Add(nn,c.normalizer);
                 od;
               else
                 for w in Enumerator(v) do
@@ -954,12 +951,10 @@ function(G)
                     c:=SubgroupNC(G,Concatenation(SmallGeneratingSet(nts[j]),cg));
                   fi;
                   Assert(1,Size(c)=Index(a,ser[i-1])*Size(nts[j]));
-                  if H=fail or IsSubset(HN,c) then
-                    SetSize(c,Index(a,ser[i-1])*Size(nts[j]));
-                    Add(cgs,cg);
-                    #c!.comgens:=cg;
-                    Add(com,c);
-                  fi;
+                  SetSize(c,Index(a,ser[i-1])*Size(nts[j]));
+                  Add(cgs,cg);
+                  #c!.comgens:=cg;
+                  Add(com,c);
                 od;
                 w:=Length(com);
                 com:=SubgroupsOrbitsAndNormalizers(n,com,false:savemem:=true);
