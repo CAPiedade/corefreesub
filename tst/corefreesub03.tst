@@ -54,6 +54,12 @@ digraph {
 # doc/_Chapter_Drawing_the_Faithful_Transitive_Permutation_Representation_Graph.xml:127-137
 gap> G:= SymmetricGroup(4);;H:= Subgroup(G,[(1,2)]);;K:= Subgroup(G,[(1,2,3)]);;
 gap> DrawFTPRGraph(G);
+gap> texfile := DrawFTPRGraph(G,H,rec(viewtexfile := true));; 
+gap> Print(texfile{[1..115]});
+\documentclass{article}
+\usepackage[x11names, svgnames, rgb]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
 gap> DrawFTPRGraph(FactorCosetAction(G,K),rec(directory := "myfolder", layout:="fdp"));;
 
 #
