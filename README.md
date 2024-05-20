@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/github/CAPiedade/corefreesub/coverage.svg?branch=master&token=)](https://codecov.io/gh/CAPiedade/corefreesub)
 # GAP Package corefreesub
 
 The CoreFreeSub package is a package to compute faithful transitive permutation representations (FTPRs) of groups. Moreover, this package provides tools to determine the degrees of these FTPRs and lists core-free subgroups. Furthermore, this package allows a graph representation of the permutation representations.
@@ -20,8 +21,7 @@ Moreover, to write the graphs in Tikz as a TeX file, [dot2tex](https://github.co
 ## Citing
 Please, cite this package as
 
-[PD24]  Piedade,  C.  A. and Delgado, M., corefreesub, A GAP Package for calculating  the  core-free  subgroups  and  their  faithful  transitive
-permutation   representations,   Version   0.5   (2024),   GAP  package,
+[PD24]  Piedade,  C.  A. and Delgado, M., corefreesub, A GAP Package for calculating  the  core-free  subgroups  and  their  faithful  transitive permutation   representations,   Version   0.5   (2024),   GAP  package,
 https://CAPiedade.github.io/corefreesub/.
 
 You can get more info by typing Cite("corefreesub"); in the gap prompt.

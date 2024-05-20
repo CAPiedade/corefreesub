@@ -19,13 +19,13 @@
   [33X[0;0YFor a finite group [3XG[103X, [3XFaithfulTransitivePermutationRepresentations[103X returns a
   list  of  a  faithful  transitive  permutation  representation of [3XG[103X for each
   degree.  If  [3Xall_ftpr[103X  is  true,  then it will return a list of all faithful
-  transitive permutation representations.[133X
+  transitive permutation representations, up to conjugacy equivalence.[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xsp := SymplecticGroup(4,2);;[127X[104X
     [4X[25Xgap>[125X [27XCoreFreeDegrees(sp);[127X[104X
-    [4X[28X[ 720, 360, 240, 180, 144, 120, 90, 80, 72, 60, 45, 40, 36, 30, 20, 15, 12,[128X[104X
-    [4X[28X10, 6 ][128X[104X
+    [4X[28X[ 6, 10, 12, 15, 20, 30, 36, 40, 45, 60, 72, 80, 90, 120, 144, 180, 240, 360, [128X[104X
+    [4X[28X  720 ][128X[104X
     [4X[25Xgap>[125X [27Xftprs := FaithfulTransitivePermutationRepresentations(sp);; [127X[104X
     [4X[25Xgap>[125X [27XSize(ftprs);[127X[104X
     [4X[28X19[128X[104X
@@ -58,13 +58,13 @@
     [4X[25Xgap>[125X [27Xsp := SymplecticGroup(4,2);;[127X[104X
     [4X[25Xgap>[125X [27Xmin_ftpr := MinimalFaithfulTransitivePermutationRepresentation(sp);[127X[104X
     [4X[28XCompositionMapping( <action epimorphism>, <action isomorphism> )[128X[104X
-    [4X[25Xgap>[125X [27Xmin_ftpr(sp);[127X[104X
+    [4X[25Xgap>[125X [27XImage(min_ftpr,sp);[127X[104X
     [4X[28XGroup([ (1,6,4,3), (1,3)(2,4,6,5) ])[128X[104X
     [4X[25Xgap>[125X [27Xmin_ftprs := MinimalFaithfulTransitivePermutationRepresentation(sp,true);[127X[104X
     [4X[28X[ CompositionMapping( <action epimorphism>, <action isomorphism> ), [128X[104X
-    [4X[28XCompositionMapping( <action epimorphism>, <action isomorphism> ) ][128X[104X
-    [4X[25Xgap>[125X [27Xmin_ftprs[2](sp);[127X[104X
-    [4X[28XGroup([ (2,3,6,5), (1,3)(2,5,6,4) ])[128X[104X
+    [4X[28X  CompositionMapping( <action epimorphism>, <action isomorphism> ) ][128X[104X
+    [4X[25Xgap>[125X [27XImage(min_ftprs[2],sp);[127X[104X
+    [4X[28XGroup([ (1,2,5,4), (1,3,5,2)(4,6) ])[128X[104X
   [4X[32X[104X
   
   [1X3.2-2 MinimalFaithfulTransitivePermutationDegree[101X
@@ -97,18 +97,18 @@
   [6XReturns:[106X  [33X[0;10Yan isomorphism (or a list of isomorphisms)[133X
   
   [33X[0;0YFor  a  finite group [3XG[103X, [3XFaithfulTransitivePermutationRepresentationsOfDegree[103X
-  returns  an  isomorphism  of  [3XG[103X  into the symmetric group of degree [3Xd[103X acting
+  returns  one  isomorphism  of  [3XG[103X into the symmetric group of degree [3Xd[103X acting
   transitively on its domain. If [3Xall_ftpr_of_given_degree[103X is set as [3Xtrue[103X, then
   it  returns  a list of all isomorphisms [3XG[103X into the symmetric group of degree
-  [3Xd[103X.[133X
+  [3Xd[103X, up to conjugacy equivalence.[133X
   
   [4X[32X  Example  [32X[104X
     [4X[25Xgap>[125X [27Xsp := SymplecticGroup(4,2);;[127X[104X
     [4X[25Xgap>[125X [27XFaithfulTransitivePermutationRepresentationsOfDegree(sp,10);[127X[104X
     [4X[28XCompositionMapping( <action epimorphism>, <action isomorphism> )[128X[104X
     [4X[25Xgap>[125X [27XFaithfulTransitivePermutationRepresentationsOfDegree(sp,20, true);[127X[104X
-    [4X[28X[ CompositionMapping( <action epimorphism>, <action isomorphism> ),[128X[104X
-    [4X[28X CompositionMapping( <action epimorphism>, <action isomorphism> ),[128X[104X
-    [4X[28X CompositionMapping( <action epimorphism>, <action isomorphism> ) ][128X[104X
+    [4X[28X[ CompositionMapping( <action epimorphism>, <action isomorphism> ), [128X[104X
+    [4X[28X  CompositionMapping( <action epimorphism>, <action isomorphism> ), [128X[104X
+    [4X[28X  CompositionMapping( <action epimorphism>, <action isomorphism> ) ][128X[104X
   [4X[32X[104X
   

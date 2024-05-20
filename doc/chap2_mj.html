@@ -83,12 +83,11 @@ Group([ (1,4)(2,3), (1,3)(2,4) ])
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup(4);; dh := DihedralGroup(10);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoreFreeConjugacyClassesSubgroups(G);</span>
-[ Group( () )^G, Group( [ (3,4) ] )^G, Group( [ (1,4)(2,3) ] )^G,
- Group( [ (2,4,3) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G,
- Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G
-]
+[ Group( () )^G, Group( [ (3,4) ] )^G, Group( [ (1,4)(2,3) ] )^G, 
+  Group( [ (2,4,3) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G, 
+  Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoreFreeConjugacyClassesSubgroups(dh);</span>
-[ Group( &lt;identity&gt; of ... )^G, Group( [ f1 ] )^G ] 
+[ Group( &lt;identity&gt; of ... )^G, Group( [ f1 ] )^G ]
 </pre></div>
 
 <p><a id="X821F9BD687383C1F" name="X821F9BD687383C1F"></a></p>
@@ -104,19 +103,18 @@ Group([ (1,4)(2,3), (1,3)(2,4) ])
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup(4);; dh := DihedralGroup(10);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AllCoreFreeSubgroups(G);</span>
-[ Group(()), Group([ (3,4) ]), Group([ (2,4) ]), Group([ (2,3) ]),
- Group([ (1,4) ]), Group([ (1,3) ]), Group([ (1,2) ]),
- Group([ (1,4)(2,3) ]), Group([ (1,3)(2,4) ]), Group([ (1,2)(3,4) ]),
- Group([ (2,4,3) ]), Group([ (1,3,2) ]), Group([ (1,3,4) ]),
- Group([ (1,4,2) ]), Group([ (3,4), (1,2)(3,4) ]),
- Group([ (2,4), (1,3)(2,4) ]), Group([ (2,3), (1,4)(2,3) ]),
- Group([ (1,3,2,4), (1,2)(3,4) ]), Group([ (1,2,3,4), (1,3)(2,4) ]),
- Group([ (1,2,4,3), (1,4)(2,3) ]), Group([ (3,4), (2,4,3) ]),
- Group([ (1,3), (1,3,2) ]), Group([ (1,3), (1,3,4) ]),
- Group([ (1,4), (1,4,2) ]) ]
+[ Group(()), Group([ (3,4) ]), Group([ (2,4) ]), Group([ (2,3) ]), 
+  Group([ (1,4) ]), Group([ (1,3) ]), Group([ (1,2) ]), Group([ (1,4)(2,3) ]),
+  Group([ (1,3)(2,4) ]), Group([ (1,2)(3,4) ]), Group([ (2,4,3) ]), 
+  Group([ (1,3,2) ]), Group([ (1,3,4) ]), Group([ (1,4,2) ]), 
+  Group([ (3,4), (1,2)(3,4) ]), Group([ (2,4), (1,3)(2,4) ]), 
+  Group([ (2,3), (1,4)(2,3) ]), Group([ (1,3,2,4), (1,2)(3,4) ]), 
+  Group([ (1,2,3,4), (1,3)(2,4) ]), Group([ (1,2,4,3), (1,4)(2,3) ]), 
+  Group([ (3,4), (2,4,3) ]), Group([ (1,3), (1,3,2) ]), 
+  Group([ (1,3), (1,3,4) ]), Group([ (1,4), (1,4,2) ]) ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">AllCoreFreeSubgroups(dh);</span>
 [ Group([  ]), Group([ f1 ]), Group([ f1*f2^2 ]), Group([ f1*f2^4 ]), 
-Group([ f1*f2 ]), Group([ f1*f2^3 ]) ]
+  Group([ f1*f2 ]), Group([ f1*f2^3 ]) ]
 </pre></div>
 
 <p><a id="X847B222E84342E88" name="X847B222E84342E88"></a></p>
@@ -136,9 +134,9 @@ Group([ f1*f2 ]), Group([ f1*f2^3 ]) ]
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">G := SymmetricGroup(4);; dh := DihedralGroup(10);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoreFreeDegrees(G);</span>
-[ 24, 12, 8, 6, 4 ]
+[ 4, 6, 8, 12, 24 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoreFreeDegrees(dh);</span>
-[10, 5]
+[ 5, 10 ]
 </pre></div>
 
 

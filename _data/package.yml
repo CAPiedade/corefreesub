@@ -1,5 +1,5 @@
 name: corefreesub
-version: "0.5"
+version: "0.6"
 license: "GPL-2.0-or-later"
 date: 2024-03-11
 description: |
@@ -30,7 +30,7 @@ packageinfo: https://CAPiedade.github.io/corefreesub/PackageInfo.g
 
 downloads:
     - name: .tar.gz
-      url: https://github.com/CAPiedade/corefreesub/releases/download/v0.5/corefreesub-0.5.tar.gz
+      url: https://github.com/CAPiedade/corefreesub/releases/download/v0.6/corefreesub-0.6.tar.gz
 
 abstract: |
 
@@ -43,7 +43,7 @@ citeas: |
     <p class='BibEntry'>
     [<span class='BibKey'>PD24</span>]   <b class='BibAuthor'>Piedade, C. A. and Delgado, M.</b>,
      <i class='BibTitle'>corefreesub, A GAP Package for calculating the core-free subgroups and their faithful transitive permutation representations,
-             Version 0.5</i>
+             Version 0.6</i>
      (<span class='BibYear'>2024</span>)<br />
     (<span class='BibNote'>GAP package</span>),
     <span class='BibHowpublished'><a href="https://CAPiedade.github.io/corefreesub/">https://CAPiedade.github.io/corefreesub/</a></span>.
@@ -51,11 +51,11 @@ citeas: |
     
 
 bibtex: |
-    @misc{ corefreesub0.5,
+    @misc{ corefreesub0.6,
       author =           {Piedade, C. A. and Delgado, M.},
       title =            {{corefreesub},  A  GAP  Package  for  calculating  the
                           core-free  subgroups  and  their  faithful  transitive
-                          permutation representations, {V}ersion 0.5},
+                          permutation representations, {V}ersion 0.6},
       month =            {Mar},
       year =             {2024},
       note =             {GAP package},

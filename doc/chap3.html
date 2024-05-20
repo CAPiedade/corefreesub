@@ -55,14 +55,14 @@
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FaithfulTransitivePermutationRepresentations</code>( <var class="Arg">G</var>[, <var class="Arg">all_ftpr</var>] )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: a list</p>
 
-<p>For a finite group <var class="Arg">G</var>, <var class="Arg">FaithfulTransitivePermutationRepresentations</var> returns a list of a faithful transitive permutation representation of <var class="Arg">G</var> for each degree. If <var class="Arg">all_ftpr</var> is true, then it will return a list of all faithful transitive permutation representations.</p>
+<p>For a finite group <var class="Arg">G</var>, <var class="Arg">FaithfulTransitivePermutationRepresentations</var> returns a list of a faithful transitive permutation representation of <var class="Arg">G</var> for each degree. If <var class="Arg">all_ftpr</var> is true, then it will return a list of all faithful transitive permutation representations, up to conjugacy equivalence.</p>
 
 
 <div class="example"><pre>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sp := SymplecticGroup(4,2);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">CoreFreeDegrees(sp);</span>
-[ 720, 360, 240, 180, 144, 120, 90, 80, 72, 60, 45, 40, 36, 30, 20, 15, 12,
-10, 6 ]
+[ 6, 10, 12, 15, 20, 30, 36, 40, 45, 60, 72, 80, 90, 120, 144, 180, 240, 360, 
+  720 ]
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">ftprs := FaithfulTransitivePermutationRepresentations(sp);; </span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Size(ftprs);</span>
 19
@@ -91,13 +91,13 @@
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">sp := SymplecticGroup(4,2);;</span>
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">min_ftpr := MinimalFaithfulTransitivePermutationRepresentation(sp);</span>
 CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; )
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">min_ftpr(sp);</span>
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Image(min_ftpr,sp);</span>
 Group([ (1,6,4,3), (1,3)(2,4,6,5) ])
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">min_ftprs := MinimalFaithfulTransitivePermutationRepresentation(sp,true);</span>
 [ CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; ), 
-CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; ) ]
-<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">min_ftprs[2](sp);</span>
-Group([ (2,3,6,5), (1,3)(2,5,6,4) ])
+  CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; ) ]
+<span class="GAPprompt">gap&gt;</span> <span class="GAPinput">Image(min_ftprs[2],sp);</span>
+Group([ (1,2,5,4), (1,3,5,2)(4,6) ])
 </pre></div>
 
 <p><a id="X7B0EBFFA86B38A0F" name="X7B0EBFFA86B38A0F"></a></p>
@@ -131,7 +131,7 @@ Group([ (2,3,6,5), (1,3)(2,5,6,4) ])
 <div class="func"><table class="func" width="100%"><tr><td class="tdleft"><code class="func">&#8227; FaithfulTransitivePermutationRepresentationsOfDegree</code>( <var class="Arg">G</var>, <var class="Arg">d</var>[, <var class="Arg">all_ftpr_of_given_degree</var>] )</td><td class="tdright">(&nbsp;operation&nbsp;)</td></tr></table></div>
 <p>Returns: an isomorphism (or a list of isomorphisms)</p>
 
-<p>For a finite group <var class="Arg">G</var>, <var class="Arg">FaithfulTransitivePermutationRepresentationsOfDegree</var> returns an isomorphism of <var class="Arg">G</var> into the symmetric group of degree <var class="Arg">d</var> acting transitively on its domain. If <var class="Arg">all_ftpr_of_given_degree</var> is set as <var class="Arg">true</var>, then it returns a list of all isomorphisms <var class="Arg">G</var> into the symmetric group of degree <var class="Arg">d</var>.</p>
+<p>For a finite group <var class="Arg">G</var>, <var class="Arg">FaithfulTransitivePermutationRepresentationsOfDegree</var> returns one isomorphism of <var class="Arg">G</var> into the symmetric group of degree <var class="Arg">d</var> acting transitively on its domain. If <var class="Arg">all_ftpr_of_given_degree</var> is set as <var class="Arg">true</var>, then it returns a list of all isomorphisms <var class="Arg">G</var> into the symmetric group of degree <var class="Arg">d</var>, up to conjugacy equivalence.</p>
 
 
 <div class="example"><pre>
@@ -139,9 +139,9 @@ Group([ (2,3,6,5), (1,3)(2,5,6,4) ])
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FaithfulTransitivePermutationRepresentationsOfDegree(sp,10);</span>
 CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; )
 <span class="GAPprompt">gap&gt;</span> <span class="GAPinput">FaithfulTransitivePermutationRepresentationsOfDegree(sp,20, true);</span>
-[ CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; ),
- CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; ),
- CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; ) ]
+[ CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; ), 
+  CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; ), 
+  CompositionMapping( &lt;action epimorphism&gt;, &lt;action isomorphism&gt; ) ]
 </pre></div>
 
 

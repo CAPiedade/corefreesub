@@ -7,7 +7,7 @@
                     transitive permutation representations [101X
   
   
-                                      0.5
+                                      0.6
   
   
                                  11 March 2024
