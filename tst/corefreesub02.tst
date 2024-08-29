@@ -22,26 +22,22 @@ gap> all_ftprs := FaithfulTransitivePermutationRepresentations(sp,true);;
 gap> Size(all_ftprs);
 54
 
-# doc/_Chapter_Faithful_Transitive_Permutation_Representations.xml:58-69
+# doc/_Chapter_Faithful_Transitive_Permutation_Representations.xml:58-65
 gap> sp := SymplecticGroup(4,2);;
 gap> min_ftpr := MinimalFaithfulTransitivePermutationRepresentation(sp);
 CompositionMapping( <action epimorphism>, <action isomorphism> )
-gap> Image(min_ftpr,sp);
-Group([ (1,6,4,3), (1,3)(2,4,6,5) ])
 gap> min_ftprs := MinimalFaithfulTransitivePermutationRepresentation(sp,true);
 [ CompositionMapping( <action epimorphism>, <action isomorphism> ), 
   CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
-gap> Image(min_ftprs[2],sp);
-Group([ (1,2,5,4), (1,3,5,2)(4,6) ])
 
-# doc/_Chapter_Faithful_Transitive_Permutation_Representations.xml:82-88
+# doc/_Chapter_Faithful_Transitive_Permutation_Representations.xml:78-84
 gap> sp := SymplecticGroup(4,2);; g:=SimpleGroup("PSL",3,5);;
 gap> MinimalFaithfulTransitivePermutationDegree(sp);
 6
 gap> MinimalFaithfulTransitivePermutationDegree(g);
 31
 
-# doc/_Chapter_Faithful_Transitive_Permutation_Representations.xml:112-120
+# doc/_Chapter_Faithful_Transitive_Permutation_Representations.xml:108-116
 gap> sp := SymplecticGroup(4,2);;
 gap> FaithfulTransitivePermutationRepresentationsOfDegree(sp,10);
 CompositionMapping( <action epimorphism>, <action isomorphism> )

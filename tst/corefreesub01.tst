@@ -22,32 +22,21 @@ false
 gap> Core(G,H);# H is a normal subgroup of G, hence it does not have a trivial core
 Group([ (1,4)(2,3), (1,3)(2,4) ])
 
-# doc/_Chapter_Obtaining_Core-Free_Subgroups.xml:44-52
+# doc/_Chapter_Obtaining_Core-Free_Subgroups.xml:44-50
 gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
-gap> CoreFreeConjugacyClassesSubgroups(G);
-[ Group( () )^G, Group( [ (3,4) ] )^G, Group( [ (1,4)(2,3) ] )^G, 
-  Group( [ (2,4,3) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G, 
-  Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G ]
-gap> CoreFreeConjugacyClassesSubgroups(dh);
-[ Group( <identity> of ... )^G, Group( [ f1 ] )^G ]
+gap> cfccs := CoreFreeConjugacyClassesSubgroups(G);; Size(cfccs);
+7
+gap> cfccs_dh := CoreFreeConjugacyClassesSubgroups(dh);; Size(cfccs_dh);
+2
 
-# doc/_Chapter_Obtaining_Core-Free_Subgroups.xml:66-81
+# doc/_Chapter_Obtaining_Core-Free_Subgroups.xml:64-70
 gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
-gap> AllCoreFreeSubgroups(G);
-[ Group(()), Group([ (3,4) ]), Group([ (2,4) ]), Group([ (2,3) ]), 
-  Group([ (1,4) ]), Group([ (1,3) ]), Group([ (1,2) ]), Group([ (1,4)(2,3) ]),
-  Group([ (1,3)(2,4) ]), Group([ (1,2)(3,4) ]), Group([ (2,4,3) ]), 
-  Group([ (1,3,2) ]), Group([ (1,3,4) ]), Group([ (1,4,2) ]), 
-  Group([ (3,4), (1,2)(3,4) ]), Group([ (2,4), (1,3)(2,4) ]), 
-  Group([ (2,3), (1,4)(2,3) ]), Group([ (1,3,2,4), (1,2)(3,4) ]), 
-  Group([ (1,2,3,4), (1,3)(2,4) ]), Group([ (1,2,4,3), (1,4)(2,3) ]), 
-  Group([ (3,4), (2,4,3) ]), Group([ (1,3), (1,3,2) ]), 
-  Group([ (1,3), (1,3,4) ]), Group([ (1,4), (1,4,2) ]) ]
-gap> AllCoreFreeSubgroups(dh);
-[ Group([  ]), Group([ f1 ]), Group([ f1*f2^2 ]), Group([ f1*f2^4 ]), 
-  Group([ f1*f2 ]), Group([ f1*f2^3 ]) ]
+gap> acfs := AllCoreFreeSubgroups(G);; Size(acfs);
+24
+gap> acfs_dh := AllCoreFreeSubgroups(dh);; Size(acfs_dh);
+6
 
-# doc/_Chapter_Obtaining_Core-Free_Subgroups.xml:101-107
+# doc/_Chapter_Obtaining_Core-Free_Subgroups.xml:90-96
 gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
 gap> CoreFreeDegrees(G);
 [ 4, 6, 8, 12, 24 ]

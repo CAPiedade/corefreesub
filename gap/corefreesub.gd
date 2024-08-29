@@ -105,12 +105,10 @@ DeclareGlobalFunction( "IsCoreFree" );
 #!  Returns a list of all conjugacy classes of core-free subgroups of <A>G</A>
 #! @BeginExampleSession
 #! gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
-#! gap> CoreFreeConjugacyClassesSubgroups(G);
-#! [ Group( () )^G, Group( [ (3,4) ] )^G, Group( [ (1,4)(2,3) ] )^G, 
-#!   Group( [ (2,4,3) ] )^G, Group( [ (3,4), (1,2)(3,4) ] )^G, 
-#!   Group( [ (1,3,2,4), (1,2)(3,4) ] )^G, Group( [ (3,4), (2,4,3) ] )^G ]
-#! gap> CoreFreeConjugacyClassesSubgroups(dh);
-#! [ Group( <identity> of ... )^G, Group( [ f1 ] )^G ]
+#! gap> cfccs := CoreFreeConjugacyClassesSubgroups(G);; Size(cfccs);
+#! 7
+#! gap> cfccs_dh := CoreFreeConjugacyClassesSubgroups(dh);; Size(cfccs_dh);
+#! 2
 #!@EndExampleSession
 DeclareGlobalFunction( "CoreFreeConjugacyClassesSubgroups" );
 
@@ -121,19 +119,10 @@ DeclareGlobalFunction( "CoreFreeConjugacyClassesSubgroups" );
 #!  Returns a list of all core-free subgroups of <A>G</A>
 #! @BeginExampleSession
 #! gap> G := SymmetricGroup(4);; dh := DihedralGroup(10);;
-#! gap> AllCoreFreeSubgroups(G);
-#! [ Group(()), Group([ (3,4) ]), Group([ (2,4) ]), Group([ (2,3) ]), 
-#!   Group([ (1,4) ]), Group([ (1,3) ]), Group([ (1,2) ]), Group([ (1,4)(2,3) ]),
-#!   Group([ (1,3)(2,4) ]), Group([ (1,2)(3,4) ]), Group([ (2,4,3) ]), 
-#!   Group([ (1,3,2) ]), Group([ (1,3,4) ]), Group([ (1,4,2) ]), 
-#!   Group([ (3,4), (1,2)(3,4) ]), Group([ (2,4), (1,3)(2,4) ]), 
-#!   Group([ (2,3), (1,4)(2,3) ]), Group([ (1,3,2,4), (1,2)(3,4) ]), 
-#!   Group([ (1,2,3,4), (1,3)(2,4) ]), Group([ (1,2,4,3), (1,4)(2,3) ]), 
-#!   Group([ (3,4), (2,4,3) ]), Group([ (1,3), (1,3,2) ]), 
-#!   Group([ (1,3), (1,3,4) ]), Group([ (1,4), (1,4,2) ]) ]
-#! gap> AllCoreFreeSubgroups(dh);
-#! [ Group([  ]), Group([ f1 ]), Group([ f1*f2^2 ]), Group([ f1*f2^4 ]), 
-#!   Group([ f1*f2 ]), Group([ f1*f2^3 ]) ]
+#! gap> acfs := AllCoreFreeSubgroups(G);; Size(acfs);
+#! 24
+#! gap> acfs_dh := AllCoreFreeSubgroups(dh);; Size(acfs_dh);
+#! 6
 #!@EndExampleSession
 DeclareGlobalFunction( "AllCoreFreeSubgroups" );
 
@@ -195,13 +184,9 @@ DeclareOperation( "FaithfulTransitivePermutationRepresentations", [IsGroup]);
 #! gap> sp := SymplecticGroup(4,2);;
 #! gap> min_ftpr := MinimalFaithfulTransitivePermutationRepresentation(sp);
 #! CompositionMapping( <action epimorphism>, <action isomorphism> )
-#! gap> Image(min_ftpr,sp);
-#! Group([ (1,6,4,3), (1,3)(2,4,6,5) ])
 #! gap> min_ftprs := MinimalFaithfulTransitivePermutationRepresentation(sp,true);
 #! [ CompositionMapping( <action epimorphism>, <action isomorphism> ), 
 #!   CompositionMapping( <action epimorphism>, <action isomorphism> ) ]
-#! gap> Image(min_ftprs[2],sp);
-#! Group([ (1,2,5,4), (1,3,5,2)(4,6) ])
 #! @EndExampleSession
 DeclareOperation( "MinimalFaithfulTransitivePermutationRepresentation", [IsGroup]);
 

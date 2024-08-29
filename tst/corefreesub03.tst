@@ -10,50 +10,33 @@
 #
 gap> START_TEST("corefreesub03.tst");
 
-# doc/_Chapter_Drawing_the_Faithful_Transitive_Permutation_Representation_Graph.xml:29-69
-gap> G:= SymmetricGroup(4);;H:= Subgroup(G,[(1,2)]);;K:= Subgroup(G,[(1,2,3)]);;
-gap> DotFTPRGraph(G);
-"digraph {\n1 -> 2 [label = r1];\n 2 -> 3 [label = r1];\n 3 -> 4 [label = r1];\
-\n 4 -> 1 [label = r1];\n 1 -> 2 [label = r2,dir=none];\n }\n"
-gap> Print(DotFTPRGraph(G,H));
+# doc/_Chapter_Drawing_the_Faithful_Transitive_Permutation_Representation_Graph.xml:29-46
+gap> G:= Group((1,2),(2,3),(3,4));; H :=Subgroup(G,[(1,2),(2,3)]);;
+gap> dotprint := DotFTPRGraph(G);
+"digraph {\n1 -> 2 [label = r1,dir=none];\n 2 -> 3 [label = r2,dir=none];\n 3 \
+-> 4 [label = r3,dir=none];\n }\n"
+gap> Print(dotprint);
 digraph {
-1 -> 10 [label = r1];
- 2 -> 12 [label = r1];
- 3 -> 11 [label = r1];
- 4 -> 8 [label = r1];
- 5 -> 9 [label = r1];
- 6 -> 7 [label = r1];
- 7 -> 3 [label = r1];
- 8 -> 2 [label = r1];
- 9 -> 1 [label = r1];
- 10 -> 5 [label = r1];
- 11 -> 6 [label = r1];
- 12 -> 4 [label = r1];
+1 -> 2 [label = r1,dir=none];
  2 -> 3 [label = r2,dir=none];
- 4 -> 7 [label = r2,dir=none];
- 5 -> 8 [label = r2,dir=none];
- 6 -> 9 [label = r2,dir=none];
- 10 -> 11 [label = r2,dir=none];
+ 3 -> 4 [label = r3,dir=none];
  }
-gap> Print(DotFTPRGraph(FactorCosetAction(G,K),["A","B"]));
+gap> Print(DotFTPRGraph(G,H,["A","B","C"]));
 digraph {
-1 -> 3 [label = A];
- 2 -> 4 [label = A];
- 3 -> 5 [label = A];
- 4 -> 6 [label = A];
- 5 -> 8 [label = A];
- 6 -> 7 [label = A];
- 7 -> 2 [label = A];
- 8 -> 1 [label = A];
- 1 -> 2 [label = B,dir=none];
- 3 -> 5 [label = B,dir=none];
- 4 -> 6 [label = B,dir=none];
- 7 -> 8 [label = B,dir=none];
+3 -> 4 [label = A,dir=none];
+ 2 -> 3 [label = B,dir=none];
+ 1 -> 2 [label = C,dir=none];
  }
 
-# doc/_Chapter_Drawing_the_Faithful_Transitive_Permutation_Representation_Graph.xml:127-137
+# doc/_Chapter_Drawing_the_Faithful_Transitive_Permutation_Representation_Graph.xml:104-114
 gap> G:= SymmetricGroup(4);;H:= Subgroup(G,[(1,2)]);;K:= Subgroup(G,[(1,2,3)]);;
 gap> DrawFTPRGraph(G);
+gap> texfile := DrawFTPRGraph(G,H,rec(viewtexfile := true));; 
+gap> Print(texfile{[1..115]});
+\documentclass{article}
+\usepackage[x11names, svgnames, rgb]{xcolor}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
 gap> DrawFTPRGraph(FactorCosetAction(G,K),rec(directory := "myfolder", layout:="fdp"));;
 
 #
