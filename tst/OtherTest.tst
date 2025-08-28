@@ -17,7 +17,7 @@ gap> d := DirectProduct(SymmetricGroup(5),SymmetricGroup(6));; cfccs := CoreFree
 gap> ccs := Filtered(ConjugacyClassesSubgroups(d), i -> IsCoreFree(d,i[1]));;
 gap> Size(ccs)= Size(cfccs);
 true
-gap> g := SmallGroup(2000,120);; cfccs := CoreFreeConjugacyClassesSubgroupsOfSolvableGroup(g);;
+gap> g := PcGroupCode(105641121221273607348650803, 2000);; cfccs := CoreFreeConjugacyClassesSubgroupsOfSolvableGroup(g);;
 gap> ccs := Filtered(ConjugacyClassesSubgroups(g), i -> IsCoreFree(g,i[1]));;
 gap> Size(ccs)= Size(cfccs);
 true
