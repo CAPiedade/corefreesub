@@ -7,7 +7,7 @@
 LoadPackage( "corefreesub" );
 
 TestDirectory(DirectoriesPackageLibrary( "corefreesub", "tst" ),
-  rec(exitGAP := true, rewriteToFile:=true));
+  rec(exitGAP := true, rewriteToFile:=false));
 
 
 
